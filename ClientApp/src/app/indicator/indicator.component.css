@@ -1,0 +1,13 @@
+.holder {
+    display: flex;
+    flex-direction: row;
+}
+
+.holder>div {
+    flex: 1 0 50%;
+}
+
+img {
+    height: 50px;
+    width: 50px;
+}

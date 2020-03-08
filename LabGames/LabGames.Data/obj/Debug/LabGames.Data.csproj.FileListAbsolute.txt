@@ -1,0 +1,11 @@
+D:\Projects\LabGames\LabGames\LabGames.Data\bin\Debug\LabGames.Data.exe.config
+D:\Projects\LabGames\LabGames\LabGames.Data\bin\Debug\LabGames.Data.exe
+D:\Projects\LabGames\LabGames\LabGames.Data\bin\Debug\LabGames.Data.pdb
+D:\Projects\LabGames\LabGames\LabGames.Data\bin\Debug\EntityFramework.dll
+D:\Projects\LabGames\LabGames\LabGames.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\LabGames\LabGames\LabGames.Data\bin\Debug\EntityFramework.xml
+D:\Projects\LabGames\LabGames\LabGames.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\LabGames\LabGames\LabGames.Data\obj\Debug\LabGames.Data.csprojAssemblyReference.cache
+D:\Projects\LabGames\LabGames\LabGames.Data\obj\Debug\LabGames.Data.csproj.CopyComplete
+D:\Projects\LabGames\LabGames\LabGames.Data\obj\Debug\LabGames.Data.exe
+D:\Projects\LabGames\LabGames\LabGames.Data\obj\Debug\LabGames.Data.pdb

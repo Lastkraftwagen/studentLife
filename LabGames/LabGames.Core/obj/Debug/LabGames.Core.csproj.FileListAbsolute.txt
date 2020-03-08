@@ -1,0 +1,5 @@
+D:\Projects\LabGames\LabGames\LabGames.Core\bin\Debug\LabGames.Core.dll
+D:\Projects\LabGames\LabGames\LabGames.Core\bin\Debug\LabGames.Core.pdb
+D:\Projects\LabGames\LabGames\LabGames.Core\obj\Debug\LabGames.Core.csprojAssemblyReference.cache
+D:\Projects\LabGames\LabGames\LabGames.Core\obj\Debug\LabGames.Core.dll
+D:\Projects\LabGames\LabGames\LabGames.Core\obj\Debug\LabGames.Core.pdb
