@@ -44,13 +44,45 @@
     <Compile Include="Condition.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="Events\Base\BaseEvent.cs" />
+    <Compile Include="Events\DoMorningExercises.cs" />
+    <Compile Include="EventManager.cs" />
+    <Compile Include="Events\DrinkBeerAndSleep.cs" />
+    <Compile Include="Events\Friends\DrinkWithFriends.cs" />
+    <Compile Include="Events\HelpPopleInTrouble.cs" />
+    <Compile Include="Events\Friends\WalkWithFriends.cs" />
+    <Compile Include="Events\Hobby\HobbyReading.cs" />
+    <Compile Include="Events\Hobby\HobbySport.cs" />
+    <Compile Include="Events\Learning\MakeLaba.cs" />
+    <Compile Include="Events\Learning\MakePractice.cs" />
+    <Compile Include="Events\Learning\ReadLections.cs" />
+    <Compile Include="Events\Learning\StudyHard.cs" />
+    <Compile Include="Events\Movement\GoHomeWithBus.cs" />
+    <Compile Include="Events\Movement\GoHomeOnFoot.cs" />
+    <Compile Include="Events\Movement\GoStudyOnBus.cs" />
+    <Compile Include="Events\Movement\GoStudyOnFoot.cs" />
+    <Compile Include="Events\Partner\DoSex.cs" />
+    <Compile Include="Events\Partner\DoWhatLove.cs" />
+    <Compile Include="Events\Partner\GoToCafe.cs" />
+    <Compile Include="Events\Partner\GoToCinema.cs" />
+    <Compile Include="Events\Partner\SleepToogether.cs" />
+    <Compile Include="Events\Partner\WatchSeries.cs" />
+    <Compile Include="Events\PointlessStagnate.cs" />
+    <Compile Include="Events\RobberPeople.cs" />
+    <Compile Include="Events\Sleep.cs" />
     <Compile Include="Events\SleepMore.cs" />
+    <Compile Include="Events\TakeANap.cs" />
+    <Compile Include="Events\WalkAlone.cs" />
+    <Compile Include="Events\Partner\WalkWithPartner.cs" />
     <Compile Include="Interfaces\IEvent.cs" />
+    <Compile Include="Laba.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scene\ChapterA.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="Weather.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Actions\Movement\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

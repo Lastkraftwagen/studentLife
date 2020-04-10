@@ -6,16 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LabGames.Core.Events
+namespace LabGames.Core.Events.Hobby
 {
-    public class SleepMore : BaseEvent, IEvent
+    class HobbyReading : BaseEvent
     {
-        public SleepMore(Player player) : base(player)
+        public HobbyReading(Player player) : base(player)
         {
-            ID = 1;
-            this.EventText = "sleepMore";
-            this.CreateConditions();
+            ID = 5;
+            this.EventText = "Hobby reading";
+            CreateConditions();
         }
+
+
         public override bool Execute()
         {
             if (!this.IsExecutable) return false;
@@ -23,34 +25,46 @@ namespace LabGames.Core.Events
             TimeManager.NextPart();
             return true;
         }
-
         protected override void CreateConditions()
         {
             Conditions.Clear();
             Conditions.Add(new Condition()
             {
+                Day = Constant.WORKDAY_EVENING,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_2,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_3,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
                 Day = Constant.WEEKEND_MORNING,
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.Alone
             });
             Conditions.Add(new Condition()
             {
-                Day = Constant.WORKDAY_MORNING,
+                Day = Constant.WEEKEND_EVENING,
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.Alone
             });
-            Conditions.Add(new Condition()
-            {
-                Day = Constant.WEEKEND_MORNING,
-                Place = PlaceType.Home,
-                CompanyType = CompanyType.WithGF
-            });
-            Conditions.Add(new Condition()
-            {
-                Day = Constant.WORKDAY_MORNING,
-                Place = PlaceType.Home,
-                CompanyType = CompanyType.WithGF
-            });
+
         }
     }
 }

@@ -11,16 +11,16 @@ namespace LabGames.Core.Events.Base
     {
         public BaseEvent(Player player)
         {
-            if (p == null) { throw new ArgumentNullException(); }
+            if (player == null) { throw new ArgumentNullException(); }
             p = player;
         }
         public int ID;
         public string EventText { get; protected set; }
         public bool IsExecutable { get => isExecutable(); }
 
-        protected Player p = null;
+        protected Player p = new Player();
 
-        public List<Condition> Conditions = null;
+        public List<Condition> Conditions = new List<Condition>();
 
         private bool isExecutable()
         {
@@ -31,11 +31,15 @@ namespace LabGames.Core.Events.Base
                 Day = TimeManager.CurrentStep.Description,
                 Place = p.Place
             };
-            if (Conditions.Contains(currentCondition)) return true;
+            if (Conditions.Where(x=>x.CompanyType == currentCondition.CompanyType && 
+                                    x.Day == currentCondition.Day &&
+                                    x.Place == currentCondition.Place).Count()>0) return true;
             return false;
             
         }
-        
+
+        public abstract bool Execute();
+        protected abstract void CreateConditions();
     }
 }
     
