@@ -13,7 +13,7 @@ namespace LabGames.Core.Events.Hobby
         public HobbyReading(Player player) : base(player)
         {
             ID = 5;
-            this.EventText = "Hobby reading";
+            this.EventText = "Почитать";
             CreateConditions();
         }
 
@@ -64,6 +64,24 @@ namespace LabGames.Core.Events.Hobby
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.Alone
             });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_2,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            }); 
 
         }
     }

@@ -5,6 +5,7 @@ using LabGames.Core.Events.Hobby;
 using LabGames.Core.Events.Learning;
 using LabGames.Core.Events.Movement;
 using LabGames.Core.Events.Partner;
+using LabGames.Core.Events.Universitat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,20 @@ namespace LabGames.Core
             EventList.Add(new GoStudyOnFoot(p));
             EventList.Add(new GoStudyOnBus(p));
             EventList.Add(new HelpPopleInTrouble(p));
+            EventList.Add(new RobberPeople(p));
+            EventList.Add(new Sleep(p));
+            EventList.Add(new DrinkBeerAndSleep(p));
+            EventList.Add(new PointlessStagnate(p));
+            EventList.Add(new SleepToogether(p));
+            EventList.Add(new ShowCityForTourists(p));
+            EventList.Add(new GoStudyOnTaxi(p));
+            EventList.Add(new ListenLection(p));
+            EventList.Add(new Konspekt(p));
+            EventList.Add(new UseSmartphone(p));
+            EventList.Add(new SpeekWithFriends(p));
+            EventList.Add(new ListenPractice(p));
+            EventList.Add(new HelpPopleInTrouble(p));
+
 
         }
 

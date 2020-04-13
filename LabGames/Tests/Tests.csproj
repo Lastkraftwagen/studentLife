@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LabGames.Core\LabGames.Core.csproj">
+      <Project>{7acb0521-fd1d-47a9-895c-9c5f5c3fa879}</Project>
+      <Name>LabGames.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

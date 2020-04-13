@@ -12,7 +12,7 @@ namespace LabGames.Core.Events.Movement
         public GoHomeWithBus(Player player) : base(player)
         {
             ID = 7;
-            this.EventText = "goHomeWithBus";
+            this.EventText = "Домой на автобусе";
             this.CreateConditions();
         }
 
@@ -53,6 +53,42 @@ namespace LabGames.Core.Events.Movement
                 Day = Constant.WEEKEND_EVENING,
                 Place = PlaceType.Place,
                 CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Outside,
+                CompanyType = CompanyType.WithFriends
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithFriends
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Outside,
+                CompanyType = CompanyType.WithFriends
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithFriends
             });
 
         }

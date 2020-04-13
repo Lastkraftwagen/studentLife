@@ -13,7 +13,7 @@ namespace LabGames.Core.Events
         public SleepMore(Player player) : base(player)
         {
             ID = 1;
-            this.EventText = "sleepMore";
+            this.EventText = "Поваляться в корвати";
             this.CreateConditions();
         }
         public override bool Execute()
@@ -51,6 +51,7 @@ namespace LabGames.Core.Events
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.WithGF
             });
+            
         }
     }
 }

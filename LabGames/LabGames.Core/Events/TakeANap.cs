@@ -12,7 +12,7 @@ namespace LabGames.Core.Events
         public TakeANap(Player player) : base(player)
         {
             ID = 20;
-            this.EventText = "Поспати трохи"; 
+            this.EventText = "Вздремнуть"; 
             this.CreateConditions();
         }
 
@@ -28,6 +28,18 @@ namespace LabGames.Core.Events
             {
                 Day = Constant.WEEKEND_EVENING,
                 Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Universitat,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_2,
+                Place = PlaceType.Universitat,
                 CompanyType = CompanyType.Alone
             });
         }

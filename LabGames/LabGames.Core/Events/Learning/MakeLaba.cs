@@ -12,7 +12,7 @@ namespace LabGames.Core.Events.Learning
         public MakeLaba(Player player) : base(player)
         {
             ID = 17;
-            this.EventText = "Робити лабу";
+            this.EventText = "Делать лабу";
             this.CreateConditions();
         }
 
@@ -42,6 +42,31 @@ namespace LabGames.Core.Events.Learning
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.Alone
             });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Universitat,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_2,
+                Place = PlaceType.Universitat,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+
         }
     }
 }

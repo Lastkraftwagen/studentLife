@@ -12,7 +12,7 @@ namespace LabGames.Core.Events.Partner
         public WatchSeries(Player player) : base(player)
         {
             ID = 13;
-            this.EventText = "Подивитися серіали";
+            this.EventText = "Смотреть сериалы";
             this.CreateConditions();
         }
 
@@ -39,6 +39,18 @@ namespace LabGames.Core.Events.Partner
             Conditions.Add(new Condition()
             {
                 Day = Constant.NIGHT,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.WithGF
             });

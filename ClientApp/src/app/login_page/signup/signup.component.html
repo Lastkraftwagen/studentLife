@@ -3,15 +3,19 @@
     <input placeholder="Email adress" type="email" required>
 </div>
 <div class="block">
-    <p class="label">Password</p>
+    <p class="label">Пароль</p>
     <input placeholder="Password" type="password">
 </div>
 <div class="block">
-    <p class="label">Repeat password</p>
+    <p class="label">Повторіть пароль</p>
     <input placeholder="Password" type="password">
 </div>
 <div class="block">
-    <p class="label">Create a </p>
-    <input placeholder="Nickname" type="password">
+    <p class="label">Ім'я для таблиці рекордів</p>
+    <input placeholder="Nickname">
 </div>
-<p>Have a nice game :)</p>
+<div class="buttons">
+    <button class="button" (click)="SignUp()">Зареєструватися</button>
+    <p class="help-label">Вже зареєстровані?</p>
+    <button class="button" [routerLink]="['/login']">Увійти</button>
+</div>

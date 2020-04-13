@@ -12,7 +12,7 @@ namespace LabGames.Core.Events
         public WalkAlone(Player player) : base(player)
         {
             ID = 9;
-            this.EventText = "walkAlone";
+            this.EventText = "Прогуляться одному";
             this.CreateConditions();
         }
 
@@ -65,6 +65,30 @@ namespace LabGames.Core.Events
                 Day = Constant.NIGHT,
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Outside,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithGF
             });
         }
     }

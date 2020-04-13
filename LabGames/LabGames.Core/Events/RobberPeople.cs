@@ -12,7 +12,7 @@ namespace LabGames.Core.Events
         public RobberPeople(Player player) : base(player)
         {
             ID = 24;
-            this.EventText = "GoToCinema";
+            this.EventText = "Устроить гоп-стоп";
             this.CreateConditions();
 
         }
@@ -35,6 +35,12 @@ namespace LabGames.Core.Events
             {
                 Day = Constant.NIGHT,
                 Place = PlaceType.Outside,
+                CompanyType = CompanyType.WithFriends
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.NIGHT,
+                Place = PlaceType.Place,
                 CompanyType = CompanyType.WithFriends
             });
         }

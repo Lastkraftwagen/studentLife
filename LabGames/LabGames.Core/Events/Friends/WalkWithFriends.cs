@@ -12,7 +12,7 @@ namespace LabGames.Core.Events.Friends
         public WalkWithFriends(Player player) : base(player)
         {
             ID = 8;
-            this.EventText = "walkWithFriends";
+            this.EventText = "Гулять с друзьями";
             this.CreateConditions();
         }
 
@@ -77,7 +77,60 @@ namespace LabGames.Core.Events.Friends
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.Alone
             });
-
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.NIGHT,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithFriends
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Outside,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Outside,
+                CompanyType = CompanyType.WithFriends
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithFriends
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithFriends
+            });
 
         }
     }

@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace LabGames.Data
 {
-    class DataContext : DbContext
+    public class UnitOfWork : DbContext
     {
-        public DataContext()
-            : base("DbConnection")
+        private DbSet<User> users;
+
+        public UnitOfWork(): base("UnitOfWork")
         { }
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get => users; set => users = value; }
     }
 }

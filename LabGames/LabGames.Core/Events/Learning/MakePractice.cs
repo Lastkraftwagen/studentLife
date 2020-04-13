@@ -12,7 +12,7 @@ namespace LabGames.Core.Events.Learning
         public MakePractice(Player player) : base(player)
         {
             ID = 19;
-            this.EventText = "Практикуватися в слабких місцях по навчанню";
+            this.EventText = "Практиковаться в слабых местах";
             this.CreateConditions();
         }
 
@@ -45,6 +45,18 @@ namespace LabGames.Core.Events.Learning
             Conditions.Add(new Condition()
             {
                 Day = Constant.NIGHT,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.Alone
             });

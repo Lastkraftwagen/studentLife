@@ -1,14 +1,10 @@
 <div class="canvas">
     <div class="center-dialog">
         <p class="title">Student Game</p>
-
-        <app-login class="holder" [hidden]="!login"></app-login>
-        <app-signup class="holder" [hidden]="login"></app-signup>
-        <div class="buttons">
-
-            <button class="button" (click)="logIn()">{{this.leftButtonText}}</button>
-            <p class="help-label">{{this.helpLabel}}</p>
-            <button class="button" (click)="changeVis()">{{this.rightButtonText}}</button>
+        <div class="holder">
+            <router-outlet></router-outlet>
+            <!-- <app-login  [hidden]="!login"></app-login> -->
+            <!--<app-signup class="holder" [hidden]="login"></app-signup> -->
         </div>
     </div>
 </div>

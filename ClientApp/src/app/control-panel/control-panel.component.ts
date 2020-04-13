@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import {HttpService} from 'src/app/services/httpservise'
 @Component({
   selector: 'app-control-panel',
   templateUrl: './control-panel.component.html',
@@ -12,7 +13,7 @@ export class ControlPanelComponent implements OnInit {
   public time: Time;
   public step: string;
   public baseUrl: string = "https://localhost:44393/";
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient,private httpService: HttpService ) {
     this.http = http;
   }
 
@@ -24,6 +25,11 @@ export class ControlPanelComponent implements OnInit {
   }
 
   NextDay(): void {
+    this.httpService.LogIn('sdcsd', 'this.password').subscribe(
+      result=>{
+        alert(result);
+      }
+    )
     this.http.get<string>(this.baseUrl + 'api/values').subscribe(result => {
       this.step = result;
     }, error => console.error(error));

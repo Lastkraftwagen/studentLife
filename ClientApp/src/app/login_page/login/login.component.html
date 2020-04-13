@@ -1,9 +1,13 @@
 <div class="block">
     <p class="label">Email</p>
-    <input placeholder="Email adress" type="email">
+    <input placeholder="Email adress" type="email" [(ngModel)]="email">
 </div>
 <div class="block">
     <p class="label">Пароль</p>
-    <input placeholder="Password" type="password">
+    <input placeholder="Password" type="password" [(ngModel)]="password">
 </div>
-<p>Have a nice game :)</p>
+<div class="buttons">
+    <button class="button" (click)="logIn()">Увійти</button>
+    <p class="help-label">Ще не маєете аккаунта?</p>
+    <button class="button" [routerLink]="['/signup']">Зареєструватися</button>
+</div>

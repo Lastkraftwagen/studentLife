@@ -48,6 +48,8 @@
     <Compile Include="EventManager.cs" />
     <Compile Include="Events\DrinkBeerAndSleep.cs" />
     <Compile Include="Events\Friends\DrinkWithFriends.cs" />
+    <Compile Include="Events\Friends\ShowCityForTourists.cs" />
+    <Compile Include="Events\Friends\SpeekWithFriends.cs" />
     <Compile Include="Events\HelpPopleInTrouble.cs" />
     <Compile Include="Events\Friends\WalkWithFriends.cs" />
     <Compile Include="Events\Hobby\HobbyReading.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="Events\Movement\GoHomeOnFoot.cs" />
     <Compile Include="Events\Movement\GoStudyOnBus.cs" />
     <Compile Include="Events\Movement\GoStudyOnFoot.cs" />
+    <Compile Include="Events\Movement\GoStudyOnTaxi.cs" />
     <Compile Include="Events\Partner\DoSex.cs" />
     <Compile Include="Events\Partner\DoWhatLove.cs" />
     <Compile Include="Events\Partner\GoToCafe.cs" />
@@ -71,6 +74,10 @@
     <Compile Include="Events\Sleep.cs" />
     <Compile Include="Events\SleepMore.cs" />
     <Compile Include="Events\TakeANap.cs" />
+    <Compile Include="Events\Universitat\Konspekt.cs" />
+    <Compile Include="Events\Universitat\ListenLection.cs" />
+    <Compile Include="Events\Universitat\ListenPractice.cs" />
+    <Compile Include="Events\UseSmartphone.cs" />
     <Compile Include="Events\WalkAlone.cs" />
     <Compile Include="Events\Partner\WalkWithPartner.cs" />
     <Compile Include="Interfaces\IEvent.cs" />

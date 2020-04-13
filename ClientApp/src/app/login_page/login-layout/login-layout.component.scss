@@ -21,45 +21,13 @@
     align-items: center;
     flex-direction: column;
     transition: .2s linear;
-}
-
-.buttons {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    .button:hover {
-        background-color: rgb(18, 18, 179);
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    }
-    transition: .2s linear;
-}
-
-.button {
-    padding: 10px 20px 10px 20px;
-    font-size: 20px;
-    border-radius: 10px;
-    border: 0 solid green;
-    background-color: blue;
-    color: white;
-    margin-bottom: 10px;
-    width: 80%;
-    transition: .2s linear;
-}
-
-.buttons :last-of-type {
-    margin-bottom: 0px;
-}
-
-.help-label {
-    padding: 0;
-    margin: 0;
+    padding-top: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .holder {
     width: 50%;
+    padding-bottom: 30px;
 }
 
 @keyframes fadeEffect {
@@ -81,16 +49,8 @@
     .center-dialog {
         width: 90%;
     }
-    .buttons {
-        width: 75%;
-    }
     .holder {
         width: 85%;
-    }
-    .button {
-        padding: 7px 14px 7px 14px;
-        font-size: 16px;
-        border-radius: 8px;
     }
 }
 

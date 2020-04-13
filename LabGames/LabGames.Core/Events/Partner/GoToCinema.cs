@@ -12,7 +12,7 @@ namespace LabGames.Core.Events.Partner
         public GoToCinema(Player player) : base(player)
         {
             ID = 12;
-            this.EventText = "GoToCinema";
+            this.EventText = "Пойти в кино";
             this.CreateConditions();
         }
 
@@ -54,7 +54,36 @@ namespace LabGames.Core.Events.Partner
                 Place = PlaceType.Outside,
                 CompanyType = CompanyType.WithGF
             });
-
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Outside,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Outside,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Outside,
+                CompanyType = CompanyType.WithGF
+            });
         }
     }
 }

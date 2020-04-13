@@ -12,7 +12,7 @@ namespace LabGames.Core.Events.Movement
         public GoHomeOnFoot(Player player): base(player)
         {
             ID = 4;
-            this.EventText = "Додому ногами";
+            this.EventText = "Домой пешком";
             this.CreateConditions();
         }
 
@@ -52,6 +52,42 @@ namespace LabGames.Core.Events.Movement
                 Day = Constant.WORKDAY_MORNING,
                 Place = PlaceType.Outside,
                 CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Outside,
+                CompanyType = CompanyType.WithFriends
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithFriends
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Outside,
+                CompanyType = CompanyType.WithFriends
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithFriends
             });
         }
     }

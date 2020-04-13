@@ -36,6 +36,12 @@ namespace LabGames.Core.Events
                 Place = PlaceType.Outside,
                 CompanyType = CompanyType.WithFriends
             });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.NIGHT,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.WithFriends
+            });
         }
     }
 }

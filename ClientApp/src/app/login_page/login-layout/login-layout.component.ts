@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpService} from 'src/app/services/httpservise'
 
 @Component({
   selector: 'app-login-layout',
@@ -11,7 +12,8 @@ export class LoginLayoutComponent implements OnInit {
   leftButtonText: string = "Увійти";
   rightButtonText: string = "Зареєструватися";
   helpLabel: string = "Ще не маєте аккаунта?";
-  constructor() { }
+
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
   }

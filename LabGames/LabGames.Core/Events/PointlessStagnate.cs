@@ -30,6 +30,12 @@ namespace LabGames.Core.Events
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.Alone
             });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
         }
     }
 }

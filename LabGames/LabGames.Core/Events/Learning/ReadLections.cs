@@ -13,7 +13,7 @@ namespace LabGames.Core.Events.Learning
         public ReadLections(Player player) : base(player)
         {
             ID = 6;
-            this.EventText = "reed lections";
+            this.EventText = "Читать лекции";
             Conditions.Clear();
             this.CreateConditions();
         }
@@ -35,6 +35,18 @@ namespace LabGames.Core.Events.Learning
             Conditions.Add(new Condition()
             {
                 Day = Constant.NIGHT,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.Alone
             });

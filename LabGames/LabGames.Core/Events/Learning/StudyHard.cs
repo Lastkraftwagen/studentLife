@@ -12,7 +12,7 @@ namespace LabGames.Core.Events.Learning
         public StudyHard(Player player) : base(player)
         {
             ID = 18;
-            this.EventText = "Зусередити всі зусилля на навчанні";
+            this.EventText = "Учиться изо всех сил";
             this.CreateConditions();
         }
 
@@ -39,6 +39,18 @@ namespace LabGames.Core.Events.Learning
             Conditions.Add(new Condition()
             {
                 Day = Constant.NIGHT,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.Alone
             });

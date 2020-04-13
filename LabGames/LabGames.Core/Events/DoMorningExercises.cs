@@ -13,7 +13,7 @@ namespace LabGames.Core.Events
         public DoMorningExercises(Player player) : base(player)
         {
             ID = 2;
-            this.EventText = "doMorningExercises";
+            this.EventText = "Заниматься спортом";
             this.CreateConditions();
         }
 

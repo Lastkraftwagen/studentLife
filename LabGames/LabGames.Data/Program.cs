@@ -11,7 +11,7 @@ namespace LabGames.Data
     {
         static void Main(string[] args)
         {
-            using (DataContext db = new DataContext())
+            using (UnitOfWork db = new UnitOfWork())
             {
                 // создаем два объекта User
                 User user1 = new User { Name = "Tom", Password = "pass", Email="test@test.com"};
