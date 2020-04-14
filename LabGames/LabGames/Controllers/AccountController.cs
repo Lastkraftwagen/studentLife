@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LabGames.API.Interfaces;
+using LabGames.API.Results;
 using LabGames.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,17 +21,23 @@ namespace LabGames.API.Controllers
         }
         [HttpPost]
         [Route("LogIn")]
-        public ActionResult<User> LogIn(string email, string password)
+        public async Task<ActionResult<User>> LogIn()
         {
-            User user = dataService.LogIn(email, password);
+            IFormCollection req = await HttpContext.Request.ReadFormAsync();
+            User user = dataService.LogIn(req["email"].ToString(), req["password"].ToString());
             return Ok(user);
         }
-        [HttpGet]
-        public ActionResult<bool> LogIn()
-        {
 
-                return Ok(true);
+        [HttpPost]
+        [Route("SignUp")]
+        public ActionResult<User> SignUp(User user)
+        {
+            RegisterResult result = dataService.RegisterUser(user);
+            if (!result.Exist) return null;
+
+            return Ok(result.User);
         }
+       
 
     }
 }

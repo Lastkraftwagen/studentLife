@@ -10,10 +10,8 @@ namespace LabGames.Data
 {
     public class UnitOfWork : DbContext
     {
-        private DbSet<User> users;
-
-        public UnitOfWork(): base("UnitOfWork")
+        public UnitOfWork(): base("Connection")
         { }
-        public DbSet<User> Users { get => users; set => users = value; }
+        public DbSet<User> Users { get; set; }
     }
 }

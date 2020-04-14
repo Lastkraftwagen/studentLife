@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService} from 'src/app/services/httpservise'
-import {Router} from '@angular/router'
+import {Md5} from 'ts-md5/dist/md5'
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +11,20 @@ import {Router} from '@angular/router'
 export class LoginComponent implements OnInit {
   email: string;
   password: string;
-  constructor(private httpService: HttpService, private router: Router) { }
+  constructor( private userService: UserService, private _router: Router) { }
 
 
   ngOnInit() {
   }
 
   logIn(){
-    
-      this.httpService.LogIn(this.email, this.password).subscribe(
+      this.userService.LogIn(this.email, Md5.hashAsciiStr(this.password).toString()).subscribe(
         result=>{
-          alert(result);
+          if(result){
+            this._router.navigate(['/']);
+          }
         }
       )
-  
   }
 
 }

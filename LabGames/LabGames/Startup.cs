@@ -45,7 +45,7 @@ namespace LabGames
             {
                 app.UseHsts();
             }
-            app.UseCors(builder => builder.AllowAnyOrigin());
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseMvc();
         }

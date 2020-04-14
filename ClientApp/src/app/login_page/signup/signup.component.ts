@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/services/httpservise';
+import { User } from 'src/app/models/User';
+import { Md5 } from 'ts-md5';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+  nick: string;
+  spassword: string;
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
   }
 
+  signUp(){
+    if(this.spassword!=this.password)
+    {alert('Паролі не співпадають!'); return;}
+    
+
+    const user: User = new User();
+    user.Email = this.email;
+    user.Name = this.nick;
+    user.Password = Md5.hashAsciiStr(this.password).toString();
+
+    this.httpService.SignUp(user).subscribe(
+      result=>{
+
+      }
+    )
+
+  }
 }

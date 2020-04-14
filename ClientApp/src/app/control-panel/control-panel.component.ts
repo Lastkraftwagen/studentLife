@@ -25,11 +25,6 @@ export class ControlPanelComponent implements OnInit {
   }
 
   NextDay(): void {
-    this.httpService.LogIn('sdcsd', 'this.password').subscribe(
-      result=>{
-        alert(result);
-      }
-    )
     this.http.get<string>(this.baseUrl + 'api/values').subscribe(result => {
       this.step = result;
     }, error => console.error(error));
