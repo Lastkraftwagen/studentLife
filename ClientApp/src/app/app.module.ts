@@ -12,18 +12,19 @@ import { AComponent } from './a/a.component';
 import { FooterComponent } from './footer/footer.component';
 import { ControlPanelComponent } from './control-panel/control-panel.component';
 import { LoginComponent } from './login_page/login/login.component';
-import { PlayerCreateComponent } from './player-create/player-create.component';
 import { SignupComponent } from './login_page/signup/signup.component';
 import { LoginLayoutComponent } from './login_page/login-layout/login-layout.component';
 import { IndicatorComponent } from './indicator/indicator.component';
 import { HttpService } from './services/httpservise'
 import { AuthGuard } from './guards/auth.guard'
 import { UserService } from './services/user.service';
+import { PlayerCreationComponent } from './create-player/player-creation/player-creation.component';
+import { SkillsComponent } from './create-player/skills/skills.component';
 
 
 const appRoures: Routes = [
   {
-    path: '', component: AComponent,
+    path: '', component: PlayerCreationComponent,
     canActivate: [AuthGuard] 
   },
   {
@@ -51,10 +52,11 @@ const appRoures: Routes = [
     FooterComponent,
     ControlPanelComponent,
     LoginComponent,
-    PlayerCreateComponent,
     SignupComponent,
     LoginLayoutComponent,
-    IndicatorComponent
+    IndicatorComponent,
+    PlayerCreationComponent,
+    SkillsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -1,0 +1,60 @@
+<div class="skills">
+    <p class="label">Сила</p>
+
+    <div class="block">
+        <img src="../../../assets/arrow_left.png" class="button" (click)="minus('power')">
+        <progress max="10" [value]="getPower()"></progress>
+        <img src="../../../assets/arrow_right.png" class="button" (click)="plus('power')">
+        <p class="points_count">{{getPower()}}</p>
+    </div>
+
+    <p class="label">Спритність</p>
+
+    <div class="block">
+        <img src="../../../assets/arrow_left.png" class="button" (click)="minus('agile')">
+        <progress max="10" [value]="Agility"></progress>
+        <img src="../../../assets/arrow_right.png" class="button" (click)="plus('agile')">
+        <p class="points_count">{{Agility}}</p>
+
+    </div>
+
+    <p class="label">Інтелект</p>
+
+    <div class="block">
+        <img src="../../../assets/arrow_left.png" class="button" (click)="minus('intel')">
+        <progress max="10" [value]="Intelligence"></progress>
+        <img src="../../../assets/arrow_right.png" class="button" (click)="plus('intel')">
+        <p class="points_count">{{Intelligence}}</p>
+    </div>
+
+    <p class="label">Красномовнісь</p>
+
+    <div class="block">
+        <img src="../../../assets/arrow_left.png" class="button" (click)="minus('speek')">
+        <progress max="10" [value]="Speek"></progress>
+        <img src="../../../assets/arrow_right.png" class="button" (click)="plus('speek')">
+        <p class="points_count">{{Speek}}</p>
+
+    </div>
+
+    <p class="label">Увага</p>
+
+    <div class="block">
+        <img src="../../../assets/arrow_left.png" class="button" (click)="minus('attention')">
+        <progress max="10" [value]="Attention"></progress>
+        <img src="../../../assets/arrow_right.png" class="button" (click)="plus('attention')">
+        <p class="points_count">{{Attention}}</p>
+
+    </div>
+
+    <p class="label">Чарівність</p>
+
+    <div class="block">
+        <img src="../../../assets/arrow_left.png" class="button" (click)="minus('glamor')">
+        <progress max="10" [value]="getGlamor()"></progress>
+        <img src="../../../assets/arrow_right.png" class="button" (click)="plus('glamor')">
+        <p class="points_count">{{getGlamor()}}</p>
+    </div>
+    <!-- <li *ngFor="let item of items">{{item}}</li> -->
+
+</div>

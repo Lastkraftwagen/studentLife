@@ -15,6 +15,7 @@ export class UserService {
         return this.httpService.LogIn(email, password).pipe(
             map(result => {
                 this.user = result;
+                localStorage.setItem('user',JSON.stringify(this.user));
                 return this.isLoggedIn();
             })
         );
@@ -22,6 +23,9 @@ export class UserService {
     }
 
     public isLoggedIn(): boolean {
-        return !(this.user === null)
+        if(!this.user){
+            this.user = JSON.parse(localStorage.getItem('user'));
+        }
+        return !!(this.user);
     }
 }

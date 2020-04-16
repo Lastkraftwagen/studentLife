@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/httpservise';
 import { User } from 'src/app/models/User';
 import { Md5 } from 'ts-md5';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +15,7 @@ export class SignupComponent implements OnInit {
   password: string;
   nick: string;
   spassword: string;
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private _router: Router) { }
 
   ngOnInit() {
   }
@@ -31,7 +32,7 @@ export class SignupComponent implements OnInit {
 
     this.httpService.SignUp(user).subscribe(
       result=>{
-
+        this._router.navigate['login'];
       }
     )
 
