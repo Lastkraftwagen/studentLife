@@ -20,11 +20,13 @@ import { AuthGuard } from './guards/auth.guard'
 import { UserService } from './services/user.service';
 import { PlayerCreationComponent } from './create-player/player-creation/player-creation.component';
 import { SkillsComponent } from './create-player/skills/skills.component';
+import { GameComponent } from './game-screen/game/game.component';
 
 
 const appRoures: Routes = [
   {
-    path: '', component: PlayerCreationComponent,
+    //path: '', component: PlayerCreationComponent,
+    path: '', component: GameComponent,
     canActivate: [AuthGuard] 
   },
   {
@@ -56,7 +58,8 @@ const appRoures: Routes = [
     LoginLayoutComponent,
     IndicatorComponent,
     PlayerCreationComponent,
-    SkillsComponent
+    SkillsComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

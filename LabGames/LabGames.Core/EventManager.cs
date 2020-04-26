@@ -17,14 +17,13 @@ namespace LabGames.Core
     public static class EventManager
     {
         public static List<BaseEvent> EventList = new List<BaseEvent>();
-        public static List<BaseEvent> OutsideEventList = new List<BaseEvent>();
-        public static List<BaseEvent> PlaceEventList = new List<BaseEvent>();
-
         static EventManager()
         {
-            Player p = new Player();
-            p.Company = CompanyType.Alone;
-            p.Place = PlaceType.Home;
+            Player p = new Player()
+            {
+                Company = CompanyType.Alone,
+                Place = PlaceType.Home
+            };
             EventList.Add(new HobbyReading(p));
             EventList.Add(new HobbySport(p));
             EventList.Add(new ReadLections(p));
@@ -61,10 +60,17 @@ namespace LabGames.Core
             EventList.Add(new SpeekWithFriends(p));
             EventList.Add(new ListenPractice(p));
             EventList.Add(new HelpPopleInTrouble(p));
-
-
         }
-
+        public static BaseEvent GetEventById(int ID, Player p)
+        {
+            switch (ID)
+            {
+                case 1: return new SleepMore(p);
+                case 2: return new DoMorningExercises(p);
+                default:
+                    return null;
+            }
+        }
 
     }
 }

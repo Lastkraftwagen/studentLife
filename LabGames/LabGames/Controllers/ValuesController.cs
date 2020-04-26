@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using LabGames.Core;
 using Microsoft.AspNetCore.Mvc;
+using LabGames.Core.Scene;
+using Microsoft.AspNetCore.Http;
+using LabGames.API.Interfaces;
 
 namespace LabGames.Controllers
 {
@@ -12,13 +15,20 @@ namespace LabGames.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IDataService dataService;
+        public ValuesController(IDataService dataService)
+        {
+            this.dataService = dataService;
+        }
         // GET api/values
         [HttpGet]
-        public ActionResult<string> Get()
+        public ActionResult<string> Get(string Id)
         {
-            string res = TimeManager.CurrentStep.Description;
-            TimeManager.NextPart();
-            return Ok(JsonConvert.SerializeObject(res));
+            //string res = TimeManager.CurrentStep.Description;
+            //TimeManager.NextPart();
+            //return Ok(JsonConvert.SerializeObject(res));
+            
+            return "ok";
         }
 
         // GET api/values/5
@@ -30,8 +40,25 @@ namespace LabGames.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<bool>> Post()
         {
+            try
+            {
+                IFormCollection req = await HttpContext.Request.ReadFormAsync();
+                string Id = req["Id"].ToString();
+                string name = req["name"].ToString();
+                Player p = new Player()
+                {
+                    Name = name
+                };
+                if (!GameManager.Games.ContainsKey(Id))
+                    GameManager.Games.Add(Id, new ChapterA(p));
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            return true;
         }
 
         // PUT api/values/5

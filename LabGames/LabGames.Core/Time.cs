@@ -38,14 +38,14 @@ namespace LabGames.Core
         public PartOfDay partOfDay{ get; set; }
     }
 
-    public static class TimeManager
+    public class TimeManager
     {
-        public static bool isLearningTime = false;
-        public static int Week = 0;
-        public static int Step = 0;
+        public bool isLearningTime = false;
+        public int Week = 0;
+        public int Step = 0;
 
-        private static List<DayStep> Steps = new List<DayStep>();
-        public static bool isWorkDay
+        private List<DayStep> Steps = new List<DayStep>();
+        public bool isWorkDay
         {
             get
             {
@@ -56,15 +56,15 @@ namespace LabGames.Core
                 return false;
             }
         }
-        public static Time CurrentTime { get => new Time() { dayOfWeek = Steps[Step].dayOfWeek, partOfDay = Steps[Step].partOfDay }; private set { } }
-        public static DayStep CurrentStep { get => Steps[Step]; private set { } }
+        public Time CurrentTime { get => new Time() { dayOfWeek = Steps[Step].dayOfWeek, partOfDay = Steps[Step].partOfDay }; private set { } }
+        public DayStep CurrentStep { get => Steps[Step]; private set { } }
 
-        static TimeManager()
+        public TimeManager()
         {
             FillWeek();
         }
 
-        public static void NextPart()
+        public void NextPart()
         {
             Step++;
             if (Step >= Steps.Count)
@@ -74,7 +74,7 @@ namespace LabGames.Core
             }
         }
 
-        private static void FillWeek()
+        private void FillWeek()
         {
             #region Weekends
             for (int i = 0; i < 2; i++)
@@ -104,10 +104,8 @@ namespace LabGames.Core
             }
 
             #endregion
-
             for (int i = 0; i < 5; i++)
             {
-
                 Steps.Add(new DayStep()
                 {
                     Description = Constant.WORKDAY_MORNING,
@@ -151,184 +149,6 @@ namespace LabGames.Core
                     isLearningTime = false
                 });
             }
-
-            //#endregion
-            //#region Tuseday
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.TUESDAY_MORNING,
-            //    dayOfWeek = DayOfWeek.Tuseday,
-            //    partOfDay = PartOfDay.Morning,
-            //    isLearningTime = false
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.TUESDAY_PARA_1,
-            //    dayOfWeek = DayOfWeek.Tuseday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.TUESDAY_PARA_2,
-            //    dayOfWeek = DayOfWeek.Tuseday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.TUESDAY_PARA_3,
-            //    dayOfWeek = DayOfWeek.Tuseday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.TUESDAY_EVENING,
-            //    dayOfWeek = DayOfWeek.Tuseday,
-            //    partOfDay = PartOfDay.Evening,
-            //    isLearningTime = false
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.TUESDAY_NIGHT,
-            //    dayOfWeek = DayOfWeek.Tuseday,
-            //    partOfDay = PartOfDay.Night,
-            //    isLearningTime = false
-            //});
-            //#endregion
-            //#region Wednesday
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.WEDNESDAY_MORNING,
-            //    dayOfWeek = DayOfWeek.Wednesday,
-            //    partOfDay = PartOfDay.Morning,
-            //    isLearningTime = false
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.WEDNESDAY_PARA_1,
-            //    dayOfWeek = DayOfWeek.Wednesday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.WEDNESDAY_PARA_2,
-            //    dayOfWeek = DayOfWeek.Wednesday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.WEDNESDAY_PARA_3,
-            //    dayOfWeek = DayOfWeek.Wednesday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.WEDNESDAY_EVENING,
-            //    dayOfWeek = DayOfWeek.Wednesday,
-            //    partOfDay = PartOfDay.Evening,
-            //    isLearningTime = false
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.WEDNESDAY_NIGHT,
-            //    dayOfWeek = DayOfWeek.Wednesday,
-            //    partOfDay = PartOfDay.Night,
-            //    isLearningTime = false
-            //});
-            //#endregion
-            //#region Thursday
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.THURSDAY_MORNING,
-            //    dayOfWeek = DayOfWeek.Thursday,
-            //    partOfDay = PartOfDay.Morning,
-            //    isLearningTime = false
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.THURSDAY_PARA_1,
-            //    dayOfWeek = DayOfWeek.Thursday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.THURSDAY_PARA_2,
-            //    dayOfWeek = DayOfWeek.Thursday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.THURSDAY_PARA_3,
-            //    dayOfWeek = DayOfWeek.Thursday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.TUESDAY_EVENING,
-            //    dayOfWeek = DayOfWeek.Thursday,
-            //    partOfDay = PartOfDay.Evening,
-            //    isLearningTime = false
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.THURSDAY_NIGHT,
-            //    dayOfWeek = DayOfWeek.Thursday,
-            //    partOfDay = PartOfDay.Night,
-            //    isLearningTime = false
-            //});
-            //#endregion
-            //#region Friday
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.FRIDAY_MORNING,
-            //    dayOfWeek = DayOfWeek.Friday,
-            //    partOfDay = PartOfDay.Morning,
-            //    isLearningTime = false
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.FRIDAY_PARA_1,
-            //    dayOfWeek = DayOfWeek.Friday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.FRIDAY_PARA_2,
-            //    dayOfWeek = DayOfWeek.Friday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.FRIDAY_PARA_3,
-            //    dayOfWeek = DayOfWeek.Friday,
-            //    partOfDay = PartOfDay.Para,
-            //    isLearningTime = true
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.FRIDAY_EVENING,
-            //    dayOfWeek = DayOfWeek.Friday,
-            //    partOfDay = PartOfDay.Evening,
-            //    isLearningTime = false
-            //});
-            //Steps.Add(new DayStep()
-            //{
-            //    Description = Constant.FRIDAY_NIGHT,
-            //    dayOfWeek = DayOfWeek.Thursday,
-            //    partOfDay = PartOfDay.Night,
-            //    isLearningTime = false
-            //});
-            //#endregion
         }
     }
 }

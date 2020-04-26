@@ -1,0 +1,28 @@
+<div class="canvas">
+    <div class="game-screen">
+        <div class="left column">
+            <div class="bonuses">
+                <img *ngFor="let item of bonuses" [src]='item.url'>
+            </div>
+            <button (click)="startGame()">Start Game</button>
+            <div class="description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, necessitatibus fugit. Quas accusamus placeat nisi, repudiandae voluptatum, expedita voluptas, laboriosam vero quis totam deleniti illum quibusdam nulla possimus? Nemo, molestiae?
+            </div>
+        </div>
+
+        <div class="main-field">
+
+        </div>
+
+        <div class="right column">
+            <app-indicator type="Energy"></app-indicator>
+            <app-indicator type="Happiness"></app-indicator>
+            <app-indicator type="Money"></app-indicator>
+        </div>
+    </div>
+
+    <div class="actions">
+
+
+    </div>
+</div>

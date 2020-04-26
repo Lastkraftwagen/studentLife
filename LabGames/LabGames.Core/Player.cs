@@ -50,11 +50,17 @@ namespace LabGames.Core
         public int FriendsRaiting { get; protected set; }
         public int FollowerRaiting { get; protected set; }
         public bool IsDrunk { get; set; }
-        //TODO: ???
         public PlaceType Place { get; set; }
         public CompanyType Company { get; set; }
         public uint LabMarks { get; set; } = 0;
         public uint CountLabs { get; set; } = 0;
-        
+
+        public int _power;
+        public int _agility;
+        public int _intelligence;
+        public int _speek;
+        public int _attention;
+        public int _glamor;
+
     }
 }

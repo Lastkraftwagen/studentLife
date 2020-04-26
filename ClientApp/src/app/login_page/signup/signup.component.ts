@@ -26,9 +26,9 @@ export class SignupComponent implements OnInit {
     
 
     const user: User = new User();
-    user.Email = this.email;
-    user.Name = this.nick;
-    user.Password = Md5.hashAsciiStr(this.password).toString();
+    user.email = this.email;
+    user.name = this.nick;
+    user.password = Md5.hashAsciiStr(this.password).toString();
 
     this.httpService.SignUp(user).subscribe(
       result=>{

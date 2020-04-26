@@ -1,5 +1,6 @@
 ﻿using LabGames.API.Interfaces;
 using LabGames.API.Results;
+using LabGames.Core.Scene;
 using LabGames.Data;
 using LabGames.Data.Models;
 using System;
@@ -12,6 +13,13 @@ namespace LabGames.API.Services
     public class DataService : IDataService
     {
         private UnitOfWork db = new UnitOfWork();
+
+        //public Chapter GetGame(string id)
+        //{
+        //    return Games.
+        //}
+
+       
         public User LogIn(string email, string password)
         {
             User res = db.Users.FirstOrDefault((x => x.Email == email && x.Password == password));
