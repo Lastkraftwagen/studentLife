@@ -9,14 +9,14 @@ namespace LabGames.Core.Events
 {
     class WalkAlone : BaseEvent
     {
-        public WalkAlone(Player player) : base(player)
+        public WalkAlone()
         {
             ID = 9;
             this.EventText = "Прогуляться одному";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

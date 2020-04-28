@@ -19,17 +19,23 @@ namespace LabGames.Core
             TimeManager = new TimeManager();
             for (int i = 0; i < 5; i++)
             {
-                chapters.Add(new Chapter());
+                chapters.Add(new ChapterA());
             }
+        }
+
+        public List<EventModel> GetCurrentEvents()
+        {
+            Chapter scene = chapters[iteration];
+            return scene.GetChapterEventModels(p, TimeManager);
         }
 
         public void ExecuteEvent(int Id)
         {
             Chapter scene = chapters[iteration];
-            BaseEvent baseEvent = scene.SelectEvent(Id, p);
-            if (baseEvent.IsExecutable)
+            BaseEvent baseEvent = scene.SelectEvent(Id);
+            if (baseEvent.IsExecutable(TimeManager.CurrentStep, p))
             {
-                bool executed = baseEvent.Execute();
+                bool executed = baseEvent.Execute(p);
                 if (executed)
                 {
                     string result = baseEvent.EventText;

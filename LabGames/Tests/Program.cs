@@ -13,18 +13,18 @@ namespace Tests
         {
             while (true)
             {
-                Console.ReadLine();
-                Console.WriteLine(TimeManager.CurrentStep.Description);
+                //Console.ReadLine();
+                //Console.WriteLine(TimeManager.CurrentStep.Description);
                 
-                foreach (var item in EventManager.EventList)
-                {
-                    if (item.IsExecutable)
-                    {
-                        Console.WriteLine(item.EventText);
-                    }
-                }
-                TimeManager.NextPart();
-                Console.WriteLine("\n");
+                //foreach (var item in EventManager.EventList)
+                //{
+                //    if (item.IsExecutable)
+                //    {
+                //        Console.WriteLine(item.EventText);
+                //    }
+                //}
+                //TimeManager.NextPart();
+                //Console.WriteLine("\n");
             }
         }
     }

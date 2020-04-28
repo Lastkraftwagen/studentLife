@@ -36,6 +36,20 @@ namespace LabGames.Core
     }
     public class Player
     {
+        public Player()
+        {
+            Theory = 0;
+            Practic = 0;
+            TeacherRaiting = 0;
+            Money = 2500;
+            Happines = 80;
+            Power = 80;
+            FriendsRaiting = 50;
+            FollowerRaiting = 50;
+            hasFollower = true;
+            isDrunk = false;
+        }
+
         public string Name { get; set; }
         public GenderType Gender { get; set; }
 
@@ -49,7 +63,7 @@ namespace LabGames.Core
         public bool hasFollower { get; private set; }
         public int FriendsRaiting { get; protected set; }
         public int FollowerRaiting { get; protected set; }
-        public bool IsDrunk { get; set; }
+        public bool isDrunk { get; set; }
         public PlaceType Place { get; set; }
         public CompanyType Company { get; set; }
         public uint LabMarks { get; set; } = 0;

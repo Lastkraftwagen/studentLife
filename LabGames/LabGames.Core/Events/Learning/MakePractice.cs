@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Learning
 {
     public class MakePractice : BaseEvent
     {
-        public MakePractice(Player player) : base(player)
+        public MakePractice()
         {
             ID = 19;
             this.EventText = "Практиковаться в слабых местах";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

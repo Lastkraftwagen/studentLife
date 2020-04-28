@@ -10,14 +10,14 @@ namespace LabGames.Core.Events.Friends
     internal class ShowCityForTourists : BaseEvent
 
     {
-        public ShowCityForTourists(Player player) : base(player)
+        public ShowCityForTourists()
         {
             ID = 29;
             this.EventText = "Показать ночной город туристам";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

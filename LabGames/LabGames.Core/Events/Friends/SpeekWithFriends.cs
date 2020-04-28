@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Friends
 {
     internal class SpeekWithFriends : BaseEvent
     {
-        public SpeekWithFriends(Player player) : base(player)
+        public SpeekWithFriends()
         {
             ID = 34;
             this.EventText = "Болтать с друзьями";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

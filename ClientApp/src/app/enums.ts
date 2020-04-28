@@ -15,7 +15,8 @@ export enum DayOfWeek {
     Night = 4
   }
   export enum GenderType {
-    Man = 1, Woman = 2
+    Man = 1, 
+    Woman = 2
   }
   
   export enum PlaceType {

@@ -1,5 +1,4 @@
 ﻿using LabGames.Core.Events.Base;
-using LabGames.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace LabGames.Core.Events
 {
     public class DoMorningExercises : BaseEvent
     {
-        public DoMorningExercises(Player player) : base(player)
+        public DoMorningExercises() 
         {
             ID = 2;
             this.EventText = "Заниматься спортом";
@@ -18,11 +17,11 @@ namespace LabGames.Core.Events
         }
 
     
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
-            if (!this.IsExecutable) return false;
+            //if (!this.IsExecutable) return false;
             //TODO: Change player state
-            TimeManager.NextPart();
+            //TimeManager.NextPart();
             return true;
         }
         protected override void CreateConditions()

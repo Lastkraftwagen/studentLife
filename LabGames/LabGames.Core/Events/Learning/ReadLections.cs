@@ -1,5 +1,4 @@
 ﻿using LabGames.Core.Events.Base;
-using LabGames.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace LabGames.Core.Events.Learning
 {
     class ReadLections : BaseEvent
     {
-        public ReadLections(Player player) : base(player)
+        public ReadLections()
         {
             ID = 6;
             this.EventText = "Читать лекции";
@@ -52,11 +51,11 @@ namespace LabGames.Core.Events.Learning
             });
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
-            if (!this.IsExecutable) return false;
+            //if (!this.IsExecutable) return false;
             //TODO: Change player state
-            TimeManager.NextPart();
+            //TimeManager.NextPart();
             return true;
         }
     }

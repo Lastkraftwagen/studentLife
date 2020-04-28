@@ -40,24 +40,8 @@ namespace LabGames.Controllers
 
         // POST api/values
         [HttpPost]
-        public async Task<ActionResult<bool>> Post()
+        public ActionResult<bool> Post()
         {
-            try
-            {
-                IFormCollection req = await HttpContext.Request.ReadFormAsync();
-                string Id = req["Id"].ToString();
-                string name = req["name"].ToString();
-                Player p = new Player()
-                {
-                    Name = name
-                };
-                if (!GameManager.Games.ContainsKey(Id))
-                    GameManager.Games.Add(Id, new ChapterA(p));
-            }
-            catch(Exception e)
-            {
-                return false;
-            }
             return true;
         }
 

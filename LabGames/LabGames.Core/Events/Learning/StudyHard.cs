@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Learning
 {
     public class StudyHard : BaseEvent
     {
-        public StudyHard(Player player) : base(player)
+        public StudyHard()
         {
             ID = 18;
             this.EventText = "Учиться изо всех сил";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

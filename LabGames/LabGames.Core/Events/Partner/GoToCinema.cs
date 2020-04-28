@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Partner
 {
     class GoToCinema : BaseEvent
     {
-        public GoToCinema(Player player) : base(player)
+        public GoToCinema()
         {
             ID = 12;
             this.EventText = "Пойти в кино";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

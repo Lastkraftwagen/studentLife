@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Partner
 {
     internal class SleepToogether : BaseEvent
     {
-        public SleepToogether(Player player) : base(player)
+        public SleepToogether()
         {
             ID = 28;
             this.EventText = "Спать вместе в обнимку";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

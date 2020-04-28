@@ -9,14 +9,14 @@ namespace LabGames.Core.Events
 {
     internal class DrinkBeerAndSleep : BaseEvent
     {
-        public DrinkBeerAndSleep(Player player) : base(player)
+        public DrinkBeerAndSleep()
         {
             ID = 26;
             this.EventText = "Выпить и лечь спать";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http"
 import { Observable, from } from "rxjs"
 import { map } from 'rxjs/operators'
 import { User } from "../models/User";
+import { Player } from "../models/Player";
+import { EventModel } from "../models/EventModel";
 
 @Injectable()
 export class HttpService {
@@ -14,20 +16,46 @@ export class HttpService {
         return this.httpClient.post<User>("https://localhost:44393/api/LogIn", payload);
     }
 
-    public CreateGame(Id: string, name: string): Observable<boolean> {
-        
-        let payload = this.createHttpParams('Id', Id).set('name', name);
-        return this.httpClient.post<boolean>("https://localhost:44393/api/values", payload);
+    public CreateGame(Id: string, player: Player): Observable<Player> {
+        let headers = new HttpHeaders({
+            'Access-Control-Allow-Origin': `*`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        });
+        let options = {
+            headers: headers
+        };
+        let formData = {
+            id: Id,
+            player: player
+        }
+        return this.httpClient.post<Player>("https://localhost:44393/api/StartGame", formData);
+    }
+
+    public GetEvents(Id: string, player: Player): Observable<EventModel[]> {
+        let headers = new HttpHeaders({
+            'Access-Control-Allow-Origin': `*`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        });
+        let options = {
+            headers: headers
+        };
+        let formData = {
+            id: Id,
+            player: player
+        }
+        return this.httpClient.post<EventModel[]>("https://localhost:44393/api/GetEvents", formData);
     }
 
     public Do(Id: string): Observable<string> {
-        let params = new HttpParams().set("id",Id);
-        return this.httpClient.post<string>("https://localhost:44393/api/Do",params);
+        let params = new HttpParams().set("id", Id);
+        return this.httpClient.post<string>("https://localhost:44393/api/Do", params);
     }
 
     public SignUp(user: User): Observable<any> {
         let headers = new HttpHeaders({
-            'Access-Control-Allow-Origin':`*`,
+            'Access-Control-Allow-Origin': `*`,
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         });

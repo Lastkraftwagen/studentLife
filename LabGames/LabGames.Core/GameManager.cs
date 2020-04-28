@@ -9,10 +9,7 @@ namespace LabGames.Core
 {
     public static class GameManager
     {
-        public static Dictionary<string, Chapter> Games = new Dictionary<string, Chapter>();
-
-
-
+        public static Dictionary<string, Game> Games = new Dictionary<string, Game>();
 
     }
 }

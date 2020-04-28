@@ -32,16 +32,17 @@ export class GameComponent implements OnInit {
     this.bonuses.push(new Bonus( Resource.IMG_HAPPINES_PATH, "Beer"));
     this.bonuses.push(new Bonus( Resource.IMG_HAPPINES_PATH, "Beer"));
     this.bonuses.push(new Bonus( Resource.IMG_HAPPINES_PATH, "Beer"));
-    this.userService.CreateGameID(); 
+    this.gameStep();
+    
+  }
+  gameStep() {
+    this.gameService.getEvents(this.gameService.player).subscribe(result=>{
+      console.log(result);
+    })
   }
 
   startGame(){
-    this.gameService.player = new Player();
-    this.gameService.player.name = "Tom";
-    this.gameService.player.gender = GenderType.Man;
-    this.userService.CreateGame("Tom").subscribe(result=>{
-      console.log(result);
-    });
+    console.log(this.gameService.player);
   }
 
   // julia(){

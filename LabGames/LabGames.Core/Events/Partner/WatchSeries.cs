@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Partner
 {
     class WatchSeries : BaseEvent
     {
-        public WatchSeries(Player player) : base(player)
+        public WatchSeries()
         {
             ID = 13;
             this.EventText = "Смотреть сериалы";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

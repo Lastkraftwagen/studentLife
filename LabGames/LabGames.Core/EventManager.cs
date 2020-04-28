@@ -24,53 +24,52 @@ namespace LabGames.Core
                 Company = CompanyType.Alone,
                 Place = PlaceType.Home
             };
-            EventList.Add(new HobbyReading(p));
-            EventList.Add(new HobbySport(p));
-            EventList.Add(new ReadLections(p));
-            EventList.Add(new DoMorningExercises(p));
-            EventList.Add(new SleepMore(p));
-            EventList.Add(new GoHomeOnFoot(p));
-            EventList.Add(new GoHomeWithBus(p));
-            EventList.Add(new WalkWithFriends(p));
-            EventList.Add(new WalkAlone(p));
-            EventList.Add(new WalkWithPartner(p));
-            EventList.Add(new DrinkWithFriends(p));
-            EventList.Add(new GoToCinema(p));
-            EventList.Add(new WatchSeries(p));
-            EventList.Add(new DoWhatLove(p));
-            EventList.Add(new DoSex(p));
-            EventList.Add(new GoToCafe(p));
-            EventList.Add(new MakeLaba(p));
-            EventList.Add(new StudyHard(p));
-            EventList.Add(new MakePractice(p));
-            EventList.Add(new TakeANap(p));
-            EventList.Add(new GoStudyOnFoot(p));
-            EventList.Add(new GoStudyOnBus(p));
-            EventList.Add(new HelpPopleInTrouble(p));
-            EventList.Add(new RobberPeople(p));
-            EventList.Add(new Sleep(p));
-            EventList.Add(new DrinkBeerAndSleep(p));
-            EventList.Add(new PointlessStagnate(p));
-            EventList.Add(new SleepToogether(p));
-            EventList.Add(new ShowCityForTourists(p));
-            EventList.Add(new GoStudyOnTaxi(p));
-            EventList.Add(new ListenLection(p));
-            EventList.Add(new Konspekt(p));
-            EventList.Add(new UseSmartphone(p));
-            EventList.Add(new SpeekWithFriends(p));
-            EventList.Add(new ListenPractice(p));
-            EventList.Add(new HelpPopleInTrouble(p));
+            EventList.Add(new HobbyReading());
+            EventList.Add(new HobbySport());
+            EventList.Add(new ReadLections());
+            EventList.Add(new DoMorningExercises());
+            EventList.Add(new SleepMore());
+            EventList.Add(new GoHomeOnFoot());
+            EventList.Add(new GoHomeWithBus());
+            EventList.Add(new WalkWithFriends());
+            EventList.Add(new WalkAlone());
+            EventList.Add(new WalkWithPartner());
+            EventList.Add(new DrinkWithFriends());
+            EventList.Add(new GoToCinema());
+            EventList.Add(new WatchSeries());
+            EventList.Add(new DoWhatLove());
+            EventList.Add(new DoSex());
+            EventList.Add(new GoToCafe());
+            EventList.Add(new MakeLaba());
+            EventList.Add(new StudyHard());
+            EventList.Add(new MakePractice());
+            EventList.Add(new TakeANap());
+            EventList.Add(new GoStudyOnFoot());
+            EventList.Add(new GoStudyOnBus());
+            EventList.Add(new HelpPopleInTrouble());
+            EventList.Add(new RobberPeople());
+            EventList.Add(new Sleep());
+            EventList.Add(new DrinkBeerAndSleep());
+            EventList.Add(new PointlessStagnate());
+            EventList.Add(new SleepToogether());
+            EventList.Add(new ShowCityForTourists());
+            EventList.Add(new GoStudyOnTaxi());
+            EventList.Add(new ListenLection());
+            EventList.Add(new Konspekt());
+            EventList.Add(new UseSmartphone());
+            EventList.Add(new SpeekWithFriends());
+            EventList.Add(new ListenPractice());
+            EventList.Add(new HelpPopleInTrouble());
         }
-        public static BaseEvent GetEventById(int ID, Player p)
+        public static BaseEvent GetEventById(int ID)
         {
             switch (ID)
             {
-                case 1: return new SleepMore(p);
-                case 2: return new DoMorningExercises(p);
+                case 1: return new SleepMore();
+                case 2: return new DoMorningExercises();
                 default:
                     return null;
             }
         }
-
     }
 }

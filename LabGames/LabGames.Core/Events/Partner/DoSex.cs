@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Partner
 {
     public class DoSex : BaseEvent
     {
-        public DoSex(Player player) : base(player)
+        public DoSex()
         {
             ID = 15;
             this.EventText = "Заняться сексом";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

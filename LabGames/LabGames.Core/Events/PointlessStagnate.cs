@@ -9,14 +9,14 @@ namespace LabGames.Core.Events
 {
     internal class PointlessStagnate : BaseEvent
     {
-        public PointlessStagnate(Player player) : base(player)
+        public PointlessStagnate()
         {
             ID = 28;
             this.EventText = "Бессмысленно стагнировать";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

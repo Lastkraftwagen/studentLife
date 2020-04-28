@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Universitat
 {
     internal class Konspekt : BaseEvent
     {
-        public Konspekt(Player player) : base(player)
+        public Konspekt()
         {
             ID = 32;
             this.EventText = "Конспектировать";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

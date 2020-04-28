@@ -9,14 +9,14 @@ namespace LabGames.Core.Events
 {
     internal class HelpPopleInTrouble : BaseEvent
     {
-        public HelpPopleInTrouble(Player player) : base(player)
+        public HelpPopleInTrouble()
         {
             ID = 23;
             this.EventText = "Помочь людям в беде";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

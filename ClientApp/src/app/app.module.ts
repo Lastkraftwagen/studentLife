@@ -18,19 +18,37 @@ import { IndicatorComponent } from './indicator/indicator.component';
 import { HttpService } from './services/httpservise'
 import { AuthGuard } from './guards/auth.guard'
 import { UserService } from './services/user.service';
+import { GameService } from './services/game.service';
 import { PlayerCreationComponent } from './create-player/player-creation/player-creation.component';
 import { SkillsComponent } from './create-player/skills/skills.component';
 import { GameComponent } from './game-screen/game/game.component';
+import { MenuComponent } from './menu/menu.component';
+import { PlayerCreatedGuard } from './guards/playerCreated.guard';
 
 
 const appRoures: Routes = [
   {
-    //path: '', component: PlayerCreationComponent,
-    path: '', component: GameComponent,
-    canActivate: [AuthGuard] 
+    path: '', component: MenuComponent,
+    // path: '', component: GameComponent,
+    canActivate: [AuthGuard],
   },
   {
-    path: '', 
+    path: 'creation',
+    component: PlayerCreationComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'game',
+    component: GameComponent,
+    canActivate: [PlayerCreatedGuard]
+  },
+  {
+    path: 'records',
+    component: CounterComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '',
     component: LoginLayoutComponent,
     children: [
       { path: 'login', component: LoginComponent },
@@ -39,8 +57,8 @@ const appRoures: Routes = [
       { path: 'fetch', component: FetchDataComponent }
     ]
   },
-  {path: "**", redirectTo: ''}
-  
+  { path: "**", redirectTo: '' }
+
 
 ]
 
@@ -59,20 +77,23 @@ const appRoures: Routes = [
     IndicatorComponent,
     PlayerCreationComponent,
     SkillsComponent,
-    GameComponent
+    GameComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(
-     appRoures
+      appRoures
     )
   ],
   providers: [
     AuthGuard,
+    PlayerCreatedGuard,
     HttpService,
-    UserService 
+    UserService,
+    GameService
   ],
   bootstrap: [AppComponent]
 })

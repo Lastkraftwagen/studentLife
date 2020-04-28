@@ -1,5 +1,5 @@
 ﻿using LabGames.Core.Events.Base;
-using LabGames.Core.Interfaces;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events
 {
-    public class SleepMore : BaseEvent, IEvent
+    public class SleepMore : BaseEvent
     {
-        public SleepMore(Player player) : base(player)
+        public SleepMore()
         {
             ID = 1;
             this.EventText = "Поваляться в корвати";
             this.CreateConditions();
         }
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
-            if (!this.IsExecutable) return false;
+            //if (!this.IsExecutable) return false;
             //TODO: Change player state
-            TimeManager.NextPart();
+            //TimeManager.NextPart();
             return true;
         }
 

@@ -9,14 +9,14 @@ namespace LabGames.Core.Events
 {
     internal class UseSmartphone : BaseEvent
     {
-        public UseSmartphone(Player player) : base(player)
+        public UseSmartphone()
         {
             ID = 33;
             this.EventText = "Листать страницы в инете";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

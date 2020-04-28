@@ -20,6 +20,7 @@ namespace LabGames.API.Controllers
         {
             this.dataService = dataService;
         }
+
         [HttpPost]
         [Route("LogIn")]
         public async Task<ActionResult<User>> LogIn()
@@ -35,7 +36,7 @@ namespace LabGames.API.Controllers
         {
             IFormCollection req = await HttpContext.Request.ReadFormAsync();
             string Id = req["Id"];
-            GameManager.Games[Id].p.IsDrunk = true;
+            GameManager.Games[Id].p.isDrunk = true;
             return Ok("ok");
         }
 

@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <app-skills [(sex)]="sex" (messageEvent)="receiveMessage($event)"></app-skills>
+                <app-skills [(Power)]="Power" [(Agility)]="Agility" [(Intelligence)]="Intelligence" [(Speek)]="Speek" [(Attention)]="Attention" [(Glamor)]="Glamor" [(sex)]="sex" (plusEvent)="plus($event)" (minusEvent)="minus($event)" (messageEvent)="receiveMessage($event)"></app-skills>
             </div>
 
             <div class="right">
@@ -32,7 +32,7 @@
         </div>
         <div class="buttons">
             <button class="button">Назад в меню</button>
-            <button class="button">Почати гру</button>
+            <button class="button" (click)="start()">Почати гру</button>
         </div>
     </div>
 </div>

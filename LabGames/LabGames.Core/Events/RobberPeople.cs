@@ -9,7 +9,7 @@ namespace LabGames.Core.Events
 {
     internal class RobberPeople : BaseEvent
     {
-        public RobberPeople(Player player) : base(player)
+        public RobberPeople()
         {
             ID = 24;
             this.EventText = "Устроить гоп-стоп";
@@ -17,7 +17,7 @@ namespace LabGames.Core.Events
 
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

@@ -3,21 +3,13 @@ import { HttpService } from '../services/httpservise'
 import { Observable, from } from "rxjs"
 import { map } from 'rxjs/operators'
 import { User } from '../models/User'
+import { Player } from "../models/Player"
 
 
 @Injectable()
 export class UserService {
-   
-    CreateGameID() {
-        //LOCAL STORAGE
-        if (!this.gameId) {
-            this.gameId = this.user.id + this.getRandomInt(100);
-        }
-
-    }
-
     user: User = null;
-    gameId = null;
+    gameId: string = null;
     constructor(private httpService: HttpService) { }
 
     public LogIn(email: string, password: string): Observable<boolean> {
@@ -31,8 +23,9 @@ export class UserService {
 
     }
 
-    public CreateGame(name: string): Observable<boolean> {
-        return this.httpService.CreateGame(this.gameId, name);
+    public CreateGame(player: Player): Observable<Player> {
+        this.CreateGameID();
+        return this.httpService.CreateGame(this.gameId, player);
     }
 
     public isLoggedIn(): boolean {
@@ -42,9 +35,25 @@ export class UserService {
         return !!(this.user);
     }
 
-    Do() : Observable<string> {
+    public isGameCreated(): boolean {
+        if (!this.gameId) {
+            this.gameId = localStorage.getItem('Id');
+        }
+        return !!(this.gameId);
+    }
+
+    public Do(): Observable<string> {
         return this.httpService.Do(this.gameId);
-      }
+    }
+
+    private CreateGameID() {
+        //LOCAL STORAGE
+        if (!this.gameId) {
+            this.gameId = this.user.id + this.getRandomInt(100);
+            localStorage.setItem('Id', this.gameId);
+        }
+
+    }
 
     private getRandomInt(max: number) {
         return Math.floor(Math.random() * Math.floor(max));

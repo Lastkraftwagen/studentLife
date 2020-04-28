@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Movement
 {
     class GoHomeWithBus : BaseEvent
     {
-        public GoHomeWithBus(Player player) : base(player)
+        public GoHomeWithBus()
         {
             ID = 7;
             this.EventText = "Домой на автобусе";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

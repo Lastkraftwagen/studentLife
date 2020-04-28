@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Universitat
 {
     internal class ListenLection : BaseEvent
     {
-        public ListenLection(Player player) : base(player)
+        public ListenLection()
         {
             ID = 31;
             this.EventText = "Слушать лекцию";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

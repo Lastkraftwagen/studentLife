@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Movement
 {
     internal class GoStudyOnTaxi : BaseEvent
     {
-        public GoStudyOnTaxi(Player player) : base(player)
+        public GoStudyOnTaxi()
         {
             ID = 30;
             this.EventText = "Универ на такси";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

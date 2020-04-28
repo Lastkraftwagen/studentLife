@@ -9,14 +9,14 @@ namespace LabGames.Core.Events.Friends
 {
     class WalkWithFriends : BaseEvent
     {
-        public WalkWithFriends(Player player) : base(player)
+        public WalkWithFriends()
         {
             ID = 8;
             this.EventText = "Гулять с друзьями";
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }

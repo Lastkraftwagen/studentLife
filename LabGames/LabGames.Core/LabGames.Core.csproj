@@ -83,11 +83,12 @@
     <Compile Include="Events\Partner\WalkWithPartner.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameManager.cs" />
-    <Compile Include="Interfaces\IEvent.cs" />
     <Compile Include="Laba.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\Chapter.cs" />
+    <Compile Include="Scene\ChapterA.cs" />
+    <Compile Include="Scene\ChapterB.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="Weather.cs" />
   </ItemGroup>

@@ -9,14 +9,14 @@ namespace LabGames.Core.Events
 {
     public class TakeANap : BaseEvent
     {
-        public TakeANap(Player player) : base(player)
+        public TakeANap()
         {
             ID = 20;
             this.EventText = "Вздремнуть"; 
             this.CreateConditions();
         }
 
-        public override bool Execute()
+        public override bool Execute(Player p)
         {
             throw new NotImplementedException();
         }
