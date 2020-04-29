@@ -4,6 +4,8 @@ import{UserService} from '../../services/user.service'
 import { GameService } from 'src/app/services/game.service';
 import { Player } from 'src/app/models/Player';
 import { GenderType } from 'src/app/enums';
+import { EventButtonComponent } from '../event-button/event-button.component';
+import { EventModel } from 'src/app/models/EventModel';
 
 class Bonus{
   constructor(url:string, name: string)
@@ -26,18 +28,24 @@ export class GameComponent implements OnInit {
 
   bonuses: Bonus[] = [];
 
+  eventModels : EventModel[] = [];
+
   ngOnInit() {
     this.bonuses.push(new Bonus( Resource.IMG_MONEY_PATH, "Beer"));
     this.bonuses.push(new Bonus( Resource.IMG_HAPPINES_PATH, "Beer"));
     this.bonuses.push(new Bonus( Resource.IMG_HAPPINES_PATH, "Beer"));
     this.bonuses.push(new Bonus( Resource.IMG_HAPPINES_PATH, "Beer"));
     this.bonuses.push(new Bonus( Resource.IMG_HAPPINES_PATH, "Beer"));
+
     this.gameStep();
     
   }
   gameStep() {
     this.gameService.getEvents(this.gameService.player).subscribe(result=>{
-      console.log(result);
+      this.eventModels = [];
+      result.forEach(element => {
+        this.eventModels.push(element);
+      });
     })
   }
 

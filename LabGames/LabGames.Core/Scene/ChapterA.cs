@@ -18,6 +18,8 @@ namespace LabGames.Core.Scene
             this.ChapterEvents.Add(new MakeLaba());
             this.ChapterEvents.Add(new StudyHard());
             this.ChapterEvents.Add(new MakePractice());
+            this.ChapterEvents.Add(new DoMorningExercises());
+            this.ChapterEvents.Add(new HelpPopleInTrouble());
         }
         public override List<EventModel> GetChapterEventModels(Player player, TimeManager time)
         {

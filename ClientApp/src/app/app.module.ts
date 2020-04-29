@@ -24,6 +24,7 @@ import { SkillsComponent } from './create-player/skills/skills.component';
 import { GameComponent } from './game-screen/game/game.component';
 import { MenuComponent } from './menu/menu.component';
 import { PlayerCreatedGuard } from './guards/playerCreated.guard';
+import { EventButtonComponent } from './game-screen/event-button/event-button.component';
 
 
 const appRoures: Routes = [
@@ -78,7 +79,8 @@ const appRoures: Routes = [
     PlayerCreationComponent,
     SkillsComponent,
     GameComponent,
-    MenuComponent
+    MenuComponent,
+    EventButtonComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

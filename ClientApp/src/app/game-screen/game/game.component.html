@@ -22,7 +22,8 @@
     </div>
 
     <div class="actions">
-
-
+        <div *ngFor="let item of eventModels">
+            <app-event-button [model]="item"></app-event-button>
+        </div>
     </div>
 </div>
