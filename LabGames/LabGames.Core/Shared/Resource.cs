@@ -28,8 +28,7 @@ namespace LabGames.Core
         public const string PLUS_TEACHER = "(Відношення викладача покращено)";
         public const string MINUS_TEACHER = "(Відношення викладача погіршено)";
 
-
-
-
+        public const string PLUS_AGILITY = "(Відношення викладача покращено)";
+        public const string MINUS_AGILITY = "(Відношення викладача погіршено)";
     }
 }
