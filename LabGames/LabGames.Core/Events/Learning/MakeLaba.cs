@@ -17,13 +17,16 @@ namespace LabGames.Core.Events.Learning
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            if(p.Place == PlaceType.Universitat)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public override string GenerateDescription(Player p, DayStep time)
         {
             string Description = "Робити лабораторні - найважливіше в універі! ";
-            if (!p.isLabaReady)
+            if (!p.IsOkWithLabs)
             {
                 if (time.dayOfWeek == DayOfWeek.Saturday || time.dayOfWeek == DayOfWeek.Sunday)
                 {

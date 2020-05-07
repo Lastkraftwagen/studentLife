@@ -22,7 +22,7 @@ namespace LabGames.Core.Events.Partner
 
         public override string GenerateDescription(Player p, DayStep time)
         {
-            return "description";
+            return "Можна спати обійнявшись одне з одним";
         }
 
         public override string GenerateName(Player p, DayStep time)

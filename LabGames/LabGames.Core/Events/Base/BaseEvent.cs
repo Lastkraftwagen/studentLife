@@ -19,6 +19,8 @@ namespace LabGames.Core.Events.Base
 
         public List<Condition> Conditions = new List<Condition>();
 
+        public bool RequiredGirlfriend = false;
+
         public bool IsExecutable(DayStep CurrentStep, Player p)
         {
             if (Conditions == null || p == null) { return false; }

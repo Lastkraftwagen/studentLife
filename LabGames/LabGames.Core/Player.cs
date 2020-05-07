@@ -19,6 +19,15 @@ namespace LabGames.Core
         Outside = 3,
         Place = 4
     }
+
+    public enum Places
+    {
+        Bar = 1,
+        Cafe = 2, 
+        Cinema = 3,
+        Park = 4,
+        City = 5
+    }
     public enum DistanceType
     {
         Home = 0,
@@ -55,12 +64,12 @@ namespace LabGames.Core
             FollowerRaiting = 50;
             hasFollower = true;
             isDrunk = false;
+            Labs.Add(new Laba(true));
+            Labs.Add(new Laba(true));
         }
 
         public string Name { get; set; }
         public GenderType Gender { get; set; }
-
-
         public uint Theory { get; set; }
         public uint Practic { get; set; }
         public int TeacherRaiting { get; protected set; }
@@ -72,11 +81,15 @@ namespace LabGames.Core
         public int FollowerRaiting { get; protected set; }
         public bool isDrunk { get; protected set; }
         public DistanceType DistanceFromHome{ get; set; }
+        public DistanceType DistanceFromUniver{ get; set; }
         public PlaceType Place { get; set; }
+        public Places PlaceDescription { get; set; }
         public CompanyType Company { get; set; }
         public uint LabMarks { get; set; } = 0;
         public uint CountLabs { get; set; } = 0;
         public int DrunkLevel { get; set; } = 0;
+
+        public List<Laba> Labs { get; set; } = new List<Laba>();
 
         public string GetDrunk(int value)
         {
@@ -148,7 +161,13 @@ namespace LabGames.Core
             this.TeacherRaiting += value;
         }
 
-        public bool isLabaReady = false;
+        public bool IsOkWithLabs
+        {
+            get
+            {
+                return Labs.Where(x => x.Ready == false).Count() > 0;
+            }
+        }
 
         public int _power;
         public int _agility;

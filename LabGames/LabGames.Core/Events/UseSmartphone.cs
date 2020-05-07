@@ -35,6 +35,12 @@ namespace LabGames.Core.Events
             Conditions.Clear();
             Conditions.Add(new Condition()
             {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Universitat,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
                 Day = Constant.PARA_1,
                 Place = PlaceType.Universitat,
                 CompanyType = CompanyType.Alone
