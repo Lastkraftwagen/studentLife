@@ -13,13 +13,22 @@ namespace LabGames.Core.Events.Friends
         public ShowCityForTourists()
         {
             ID = 29;
-            this.EventText = "Показать ночной город туристам";
             this.CreateConditions();
         }
 
-        public override bool Execute(Player p)
+        public override bool Execute(Player p, DayStep time)
         {
             throw new NotImplementedException();
+        }
+
+        public override string GenerateDescription(Player p, DayStep time)
+        {
+            return "description";
+        }
+
+        public override string GenerateName(Player p, DayStep time)
+        {
+            return "Показати нічне місто туристам";
         }
 
         protected override void CreateConditions()

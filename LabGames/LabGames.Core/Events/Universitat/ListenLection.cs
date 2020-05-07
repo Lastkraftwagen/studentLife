@@ -12,13 +12,22 @@ namespace LabGames.Core.Events.Universitat
         public ListenLection()
         {
             ID = 31;
-            this.EventText = "Слушать лекцию";
             this.CreateConditions();
         }
 
-        public override bool Execute(Player p)
+        public override bool Execute(Player p, DayStep time)
         {
             throw new NotImplementedException();
+        }
+
+        public override string GenerateDescription(Player p, DayStep time)
+        {
+            return "description";
+        }
+
+        public override string GenerateName(Player p, DayStep time)
+        {
+            return "Слухати лекцію";
         }
 
         protected override void CreateConditions()

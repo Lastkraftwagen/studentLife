@@ -25,6 +25,9 @@ import { GameComponent } from './game-screen/game/game.component';
 import { MenuComponent } from './menu/menu.component';
 import { PlayerCreatedGuard } from './guards/playerCreated.guard';
 import { EventButtonComponent } from './game-screen/event-button/event-button.component';
+import { ActionResultComponent } from './action-result/action-result.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const appRoures: Routes = [
@@ -80,7 +83,8 @@ const appRoures: Routes = [
     SkillsComponent,
     GameComponent,
     MenuComponent,
-    EventButtonComponent
+    EventButtonComponent,
+    ActionResultComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -88,7 +92,9 @@ const appRoures: Routes = [
     FormsModule,
     RouterModule.forRoot(
       appRoures
-    )
+    ),
+    BrowserAnimationsModule,
+    MatProgressBarModule
   ],
   providers: [
     AuthGuard,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EventModel } from 'src/app/models/EventModel';
 
 @Component({
@@ -12,7 +12,23 @@ export class EventButtonComponent implements OnInit {
 
   @Input() model: EventModel;
 
+  @Output() enter = new EventEmitter<string>();
+  @Output() leave = new EventEmitter();
+  @Output() select = new EventEmitter<number>();
+
   ngOnInit() {
+  }
+
+  selectEvent(){
+    this.select.next(this.model.id);
+  }
+
+  mouseEnter(){
+    this.enter.next(this.model.description);
+  }
+
+  mouseLeave(){
+    this.leave.next();
   }
 
 }

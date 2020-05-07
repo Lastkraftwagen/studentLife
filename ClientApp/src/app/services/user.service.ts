@@ -15,8 +15,10 @@ export class UserService {
     public LogIn(email: string, password: string): Observable<boolean> {
         return this.httpService.LogIn(email, password).pipe(
             map(result => {
-                this.user = result;
-                localStorage.setItem('user', JSON.stringify(this.user));
+                if (result !== null) {
+                    this.user = result;
+                    localStorage.setItem('user', JSON.stringify(this.user));
+                }
                 return this.isLoggedIn();
             })
         );
@@ -25,6 +27,7 @@ export class UserService {
 
     public CreateGame(player: Player): Observable<Player> {
         this.CreateGameID();
+
         return this.httpService.CreateGame(this.gameId, player);
     }
 
@@ -52,6 +55,9 @@ export class UserService {
             this.gameId = this.user.id + this.getRandomInt(100);
             localStorage.setItem('Id', this.gameId);
         }
+
+        // this.gameId = '1';
+        // localStorage.setItem('Id', this.gameId);
 
     }
 

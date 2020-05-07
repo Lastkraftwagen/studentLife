@@ -1,5 +1,6 @@
 ﻿using LabGames.Core.Events.Base;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LabGames.Core.Scene
 {
@@ -14,7 +15,7 @@ namespace LabGames.Core.Scene
 
         public BaseEvent SelectEvent(int id)
         {
-            return EventManager.GetEventById(id);
+            return this.ChapterEvents.Where(x => x.ID == id).FirstOrDefault();  
         }
 
         public abstract List<EventModel> GetChapterEventModels(Player player, TimeManager time);

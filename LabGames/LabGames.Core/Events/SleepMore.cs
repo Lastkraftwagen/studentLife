@@ -13,15 +13,30 @@ namespace LabGames.Core.Events
         public SleepMore()
         {
             ID = 1;
-            this.EventText = "Поваляться в корвати";
             this.CreateConditions();
         }
-        public override bool Execute(Player p)
+        public override bool Execute(Player p, DayStep time)
         {
-            //if (!this.IsExecutable) return false;
-            //TODO: Change player state
-            //TimeManager.NextPart();
+            this.EventText.Add($"{p.Name} обирає поспати трохи зранку");
+            p.ChangePower(10);
             return true;
+        }
+
+        public override string GenerateDescription(Player p, DayStep time)
+        {
+            string descr;
+            if (p.isDrunk)
+                descr = "З похмілля краще залишатися в горизонтальному положенні";
+            else
+                descr = "Ну хто ж не хоче подовше повалятися у ліжечку зранку?" +
+                " Це стовідсотково підвищить настрій, та можливо навіть продуктивність. " +
+                " Головне - не проспати весь день.";
+            return descr;
+        }
+
+        public override string GenerateName(Player p, DayStep time)
+        {
+            return "Повалятися у ліжечку";
         }
 
         protected override void CreateConditions()

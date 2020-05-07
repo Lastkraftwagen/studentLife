@@ -12,13 +12,22 @@ namespace LabGames.Core.Events.Partner
         public WatchSeries()
         {
             ID = 13;
-            this.EventText = "Смотреть сериалы";
             this.CreateConditions();
         }
 
-        public override bool Execute(Player p)
+        public override bool Execute(Player p, DayStep time)
         {
             throw new NotImplementedException();
+        }
+
+        public override string GenerateDescription(Player p, DayStep time)
+        {
+            return "Дивитися серіали разом";
+        }
+
+        public override string GenerateName(Player p, DayStep time)
+        {
+            return "Дивитися серіали разом";
         }
 
         protected override void CreateConditions()
@@ -51,6 +60,24 @@ namespace LabGames.Core.Events.Partner
             Conditions.Add(new Condition()
             {
                 Day = Constant.PARA_1,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_2,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_3,
+                Place = PlaceType.Home,
+                CompanyType = CompanyType.WithGF
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_EVENING,
                 Place = PlaceType.Home,
                 CompanyType = CompanyType.WithGF
             });

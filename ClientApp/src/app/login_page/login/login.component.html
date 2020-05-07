@@ -11,3 +11,5 @@
     <p class="help-label">Ще не маєете аккаунта?</p>
     <button class="button" [routerLink]="['/signup']">Зареєструватися</button>
 </div>
+<p [style.display]="loginFailed?'block':'none'" class="help-label">Вибачте, на жаль такого користувача не знайдено.</p>
+<mat-progress-bar [ngStyle]="{'visibility': loginProcess ? 'visible' : 'hidden'}" mode="indeterminate"></mat-progress-bar>

@@ -1,4 +1,4 @@
-<div class="canvas">
+<div class="canvas animated">
     <div class="center-dialog">
         <p>Створення персонажа</p>
         <div class="form">
@@ -21,7 +21,7 @@
             </div>
 
             <div class="right">
-                <img class="picture" src="../../../assets/happiness.png">
+                <img class="picture" [src]="studentImg">
 
                 <p>Очки навичок</p>
                 <div class="punkts">
@@ -31,8 +31,8 @@
             </div>
         </div>
         <div class="buttons">
-            <button class="button">Назад в меню</button>
-            <button class="button" (click)="start()">Почати гру</button>
+            <button class="button" (click)="back()">Назад в меню</button>
+            <button class=" button " (click)="start() ">Почати гру</button>
         </div>
     </div>
 </div>

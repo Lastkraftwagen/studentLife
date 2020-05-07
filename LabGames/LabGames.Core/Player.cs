@@ -19,6 +19,13 @@ namespace LabGames.Core
         Outside = 3,
         Place = 4
     }
+    public enum DistanceType
+    {
+        Home = 0,
+        Low = 1,
+        Medium = 2,
+        Large = 3
+    }
 
     public enum CompanyType
     {
@@ -42,8 +49,8 @@ namespace LabGames.Core
             Practic = 0;
             TeacherRaiting = 0;
             Money = 2500;
-            Happines = 80;
-            Power = 80;
+            Happines = 60;
+            Power = 60;
             FriendsRaiting = 50;
             FollowerRaiting = 50;
             hasFollower = true;
@@ -63,11 +70,85 @@ namespace LabGames.Core
         public bool hasFollower { get; private set; }
         public int FriendsRaiting { get; protected set; }
         public int FollowerRaiting { get; protected set; }
-        public bool isDrunk { get; set; }
+        public bool isDrunk { get; protected set; }
+        public DistanceType DistanceFromHome{ get; set; }
         public PlaceType Place { get; set; }
         public CompanyType Company { get; set; }
         public uint LabMarks { get; set; } = 0;
         public uint CountLabs { get; set; } = 0;
+        public int DrunkLevel { get; set; } = 0;
+
+        public string GetDrunk(int value)
+        {
+            this.isDrunk = true;
+            this.DrunkLevel+=value;
+            switch (DrunkLevel)
+            {
+                case 1:
+                    return $"{Name} відчуває алкогольне сп'яніння. Продуктивність знижено.";
+                case 2:
+                    return $"{Name} сильно напивається. Продуктивність значно знижено.";
+                case 3:
+                    return $"{Name} вже на грані. Треба зробити перерву, бо вже нудить.";
+                default:
+                    return $"{Name} втрачає свідомість від алкогольної інтоксикації.";
+            }
+
+        }
+
+        public string ResetDrunk(int value)
+        {
+            this.DrunkLevel-=value;
+            if (DrunkLevel < 0) DrunkLevel = 0;
+            if (DrunkLevel == 0) this.isDrunk = false;
+            switch (DrunkLevel)
+            {
+                case 0:
+                    return $"{Name}  остаточно тверезіє. Продуктивність відновлена.";
+                case 1:
+                    string genderword = this.Gender == GenderType.Man ? "п'яненький" : "п'яненька";
+                    return $"{Name} трохи тверезіє, але все ще {genderword}. Продуктивність покращена.";
+                case 2:
+                    return $"Слава богу, не знудило. {Name} повертається до життя, проте ровно стояти все ще не може.";
+                default:
+                    return $"Бяліь не трабв будо так наждватисюю....";
+            }
+        }
+
+        public ReasonsToDeath IsWantToLive()
+        {
+            if (Money < 0) return ReasonsToDeath.NoMoney;
+            if (Happines < 0) return ReasonsToDeath.NoHappy;
+            if (Power < 0) return ReasonsToDeath.NoPower;
+            return ReasonsToDeath.None;
+        }
+
+        public void ChangePower(int value)
+        {
+            this.Power += value;
+        }
+        public void ChangeHappines(int value)
+        {
+            this.Happines += value;
+        }
+        public void ChangeMoney(int value)
+        {
+            this.Money += value;
+        }
+        public void ChangeFriendsRait(int value)
+        {
+            this.FriendsRaiting += value;
+        }
+        public void ChangeFollowerRait(int value)
+        {
+            this.FollowerRaiting += value;
+        }
+        public void ChangeOP(int value)
+        {
+            this.TeacherRaiting += value;
+        }
+
+        public bool isLabaReady = false;
 
         public int _power;
         public int _agility;
@@ -78,3 +159,5 @@ namespace LabGames.Core
 
     }
 }
+
+  

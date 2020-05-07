@@ -12,14 +12,23 @@ namespace LabGames.Core.Events
         public RobberPeople()
         {
             ID = 24;
-            this.EventText = "Устроить гоп-стоп";
             this.CreateConditions();
 
         }
 
-        public override bool Execute(Player p)
+        public override bool Execute(Player p, DayStep time)
         {
             throw new NotImplementedException();
+        }
+
+        public override string GenerateDescription(Player p, DayStep time)
+        {
+            return "description";
+        }
+
+        public override string GenerateName(Player p, DayStep time)
+        {
+            return "Знайти жертву для льогкої наживи";
         }
 
         protected override void CreateConditions()

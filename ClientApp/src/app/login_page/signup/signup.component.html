@@ -19,3 +19,4 @@
     <p class="help-label">Вже зареєстровані?</p>
     <button class="button" [routerLink]="['/login']">Увійти</button>
 </div>
+<mat-progress-bar [ngStyle]="{'visibility': loginProcess ? 'visible' : 'hidden'}" mode="indeterminate"></mat-progress-bar>

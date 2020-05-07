@@ -36,7 +36,7 @@ namespace LabGames.API.Controllers
         {
             IFormCollection req = await HttpContext.Request.ReadFormAsync();
             string Id = req["Id"];
-            GameManager.Games[Id].p.isDrunk = true;
+            //GameManager.Games[Id].p.isDrunk = true;
             return Ok("ok");
         }
 

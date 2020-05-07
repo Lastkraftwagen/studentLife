@@ -12,13 +12,22 @@ namespace LabGames.Core.Events.Universitat
         public Konspekt()
         {
             ID = 32;
-            this.EventText = "Конспектировать";
             this.CreateConditions();
         }
 
-        public override bool Execute(Player p)
+        public override bool Execute(Player p, DayStep time)
         {
             throw new NotImplementedException();
+        }
+
+        public override string GenerateDescription(Player p, DayStep time)
+        {
+            return "description";
+        }
+
+        public override string GenerateName(Player p, DayStep time)
+        {
+            return "Законспектовувати за вчителем";
         }
 
         protected override void CreateConditions()

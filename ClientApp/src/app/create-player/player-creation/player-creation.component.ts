@@ -21,6 +21,7 @@ export class PlayerCreationComponent implements OnInit {
   arrowLeft: string;
   sex: GenderType = GenderType.Man;
   sexImg: string = "../../../assets/male_gender.png";
+  studentImg: string = "../../../assets/student.png";
   placeholder: string = "Василь";
 
   Power: number;
@@ -53,12 +54,15 @@ export class PlayerCreationComponent implements OnInit {
     if (this.sex === GenderType.Man) {
       this.sex = GenderType.Woman;
       this.placeholder = "Ольга";
+      this.studentImg = "../../../assets/studentka.png";
       this.sexImg = "../../../assets/female_gender.png"
     }
     else {
       this.sex = GenderType.Man;
       this.placeholder = "Василь";
       this.sexImg = "../../../assets/male_gender.png"
+      this.studentImg = "../../../assets/student.png";
+
     }
   }
 
@@ -140,7 +144,7 @@ export class PlayerCreationComponent implements OnInit {
 
   start() {
     let p: Player = new Player();
-    p.gender = this.sex;
+    p.Gender = this.sex;
     p._agility = this.Agility;
     p._attention = this.Attention;
     p._glamor = this.Glamor;
@@ -148,7 +152,7 @@ export class PlayerCreationComponent implements OnInit {
     p._power = this.Power;
     p._speek = this.Speek;
 
-    p.name = this.name;
+    p.Name = this.name;
 
     this.userService.CreateGame(p).subscribe(result => {
       if (result) {
@@ -156,5 +160,9 @@ export class PlayerCreationComponent implements OnInit {
         this.router.navigate(['/game']);
       }
     });
+  }
+
+  back(){
+    this.router.navigate(['']);
   }
 }

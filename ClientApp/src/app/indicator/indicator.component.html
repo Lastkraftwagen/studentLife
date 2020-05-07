@@ -1,8 +1,10 @@
+<p>{{type}}</p>
 <div class="holder">
-    <img [src]="imagePath" />
-    <div>
-        <div class="progress" style="height: 20px;">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-    </div>
+    <img [ngStyle]="{'display': imagePath!='no' ? 'block' : 'none'}" [src]="imagePath" />
+    <progress max="100" value="{{value}}" class="css3">
+			<!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+			<!-- <div class="progress-bar">
+				<span style="width: 60%">60%</span>
+			</div> -->
+	</progress>
 </div>

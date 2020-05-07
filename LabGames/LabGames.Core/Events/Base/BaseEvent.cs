@@ -15,9 +15,7 @@ namespace LabGames.Core.Events.Base
         //    p = player;
         //}
         public int ID;
-        public string EventText { get; protected set; }
-        public string Description { get; protected set; }
-        public string Name { get; protected set; }
+        public List<string> EventText { get; protected set; } = new List<string>();
 
         public List<Condition> Conditions = new List<Condition>();
 
@@ -36,8 +34,13 @@ namespace LabGames.Core.Events.Base
             return false;
         }
 
-        public abstract bool Execute(Player p);
+        public abstract bool Execute(Player p, DayStep time);
+
+        public abstract string GenerateDescription(Player p, DayStep time);
+        public abstract string GenerateName(Player p, DayStep time);
         protected abstract void CreateConditions();
+
+       
     }
 }
     

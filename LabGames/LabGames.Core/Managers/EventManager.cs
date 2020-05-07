@@ -67,6 +67,26 @@ namespace LabGames.Core
             {
                 case 1: return new SleepMore();
                 case 2: return new DoMorningExercises();
+                case 3: return new HobbySport();
+                case 4: return new GoHomeOnFoot();
+                case 5: return new HobbyReading();
+                case 6: return new ReadLections();
+                case 7: return new GoHomeWithBus();
+                case 8: return new WalkWithFriends();
+                case 9: return new WalkAlone();
+                case 10: return new WalkWithPartner();
+                case 11: return new DrinkWithFriends();
+                case 12: return new GoToCinema();
+                case 13: return new WatchSeries();
+                case 14: return new DoWhatLove();
+                case 15: return new DoSex();
+                case 16: return new GoToCafe();
+                case 17: return new MakeLaba();
+                case 18: return new StudyHard();
+                case 19: return new MakePractice();
+                case 20: return new TakeANap();
+                case 21: return new GoStudyOnFoot();
+                case 36: return new GoHomeOnTaxi();
                 default:
                     return null;
             }

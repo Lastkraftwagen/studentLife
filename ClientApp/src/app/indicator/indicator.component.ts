@@ -8,8 +8,8 @@ import {Resource} from 'src/app/resource';
 export class IndicatorComponent implements OnInit {
 
   @Input() type;
-  imagePath : string;
-  value: number;
+  @Input() value : number;
+  imagePath : string = "no";
   Resource = Resource;
   constructor() { 
    
@@ -17,13 +17,21 @@ export class IndicatorComponent implements OnInit {
 
   ngOnInit() {
     switch(this.type){
-      case 'Energy': 
+      case 'Енергія': 
       {this.imagePath = Resource.IMG_ENERGY_PATH; break;}
-      case 'Happiness': 
+      case 'Щастя': 
       {this.imagePath = Resource.IMG_HAPPINES_PATH; break;}
-      case 'Money': 
-      {this.imagePath = Resource.IMG_MONEY_PATH; break;}
-      
+      case 'Ставлення друзів': 
+      {this.imagePath = Resource.IMG_FRIENDS; break;}
+      case 'Ставлення другої половинки': 
+      {this.imagePath = Resource.IMG_LOVE; break;}
+      case 'Ставлення вчителя': 
+      {this.imagePath = Resource.IMG_TEACHER; break;}
+      case 'Теоретичні знання': 
+      {this.imagePath = Resource.IMG_THEORIE; break;}
+      case 'Практичні навички': 
+      {this.imagePath = Resource.IMG_PRAXIS; break;}
+
     }
   }
 

@@ -12,13 +12,24 @@ namespace LabGames.Core.Events.Friends
         public SpeekWithFriends()
         {
             ID = 34;
-            this.EventText = "Болтать с друзьями";
             this.CreateConditions();
         }
 
-        public override bool Execute(Player p)
+        public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            return false;
+        }
+
+        public override string GenerateDescription(Player p, DayStep time)
+        {
+            string Description = "Поговорити з друзями";
+            return Description;
+
+        }
+
+        public override string GenerateName(Player p, DayStep time)
+        {
+            return p.Gender == GenderType.Man?"Спілкуватися з друзями":"Обговорити важливі новини";
         }
 
         protected override void CreateConditions()

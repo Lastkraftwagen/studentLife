@@ -42,3 +42,23 @@ code {
     -ms-filter: blur(0);
     filter: blur(0);
 }
+
+html,
+body {
+    height: 100%;
+}
+
+@font-face {
+    font-family: Goose;
+    src: url(19319.ttf);
+}
+
+@font-face {
+    font-family: Vinnytsia;
+    src: url(19219.ttf);
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

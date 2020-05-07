@@ -12,13 +12,22 @@ namespace LabGames.Core.Events
         public DrinkBeerAndSleep()
         {
             ID = 26;
-            this.EventText = "Выпить и лечь спать";
             this.CreateConditions();
         }
 
-        public override bool Execute(Player p)
+        public override bool Execute(Player p, DayStep time)
         {
             throw new NotImplementedException();
+        }
+
+        public override string GenerateDescription(Player p, DayStep time)
+        {
+            return "description";
+        }
+
+        public override string GenerateName(Player p, DayStep time)
+        {
+            return "Name";
         }
 
         protected override void CreateConditions()

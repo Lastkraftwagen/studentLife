@@ -12,13 +12,22 @@ namespace LabGames.Core.Events
         public UseSmartphone()
         {
             ID = 33;
-            this.EventText = "Листать страницы в инете";
             this.CreateConditions();
         }
 
-        public override bool Execute(Player p)
+        public override bool Execute(Player p, DayStep time)
         {
             throw new NotImplementedException();
+        }
+
+        public override string GenerateDescription(Player p, DayStep time)
+        {
+            return "description";
+        }
+
+        public override string GenerateName(Player p, DayStep time)
+        {
+            return "Продивлятися новини в інтернеті";
         }
 
         protected override void CreateConditions()

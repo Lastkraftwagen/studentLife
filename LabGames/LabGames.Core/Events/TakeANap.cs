@@ -12,13 +12,22 @@ namespace LabGames.Core.Events
         public TakeANap()
         {
             ID = 20;
-            this.EventText = "Вздремнуть"; 
             this.CreateConditions();
         }
 
-        public override bool Execute(Player p)
+        public override bool Execute(Player p, DayStep time)
         {
             throw new NotImplementedException();
+        }
+
+        public override string GenerateDescription(Player p, DayStep time)
+        {
+            return "description";
+        }
+
+        public override string GenerateName(Player p, DayStep time)
+        {
+            return "Подрімати";
         }
 
         protected override void CreateConditions()
@@ -40,6 +49,12 @@ namespace LabGames.Core.Events
             {
                 Day = Constant.PARA_2,
                 Place = PlaceType.Universitat,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_EVENING,
+                Place = PlaceType.Home,
                 CompanyType = CompanyType.Alone
             });
         }

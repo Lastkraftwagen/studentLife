@@ -42,11 +42,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Condition.cs" />
-    <Compile Include="Constant.cs" />
+    <Compile Include="Events\Partner\TakeHomeOnBus.cs" />
+    <Compile Include="Events\Partner\TakeHomeOnFoot.cs" />
+    <Compile Include="Events\SayGoodbye.cs" />
+    <Compile Include="Events\Partner\TakeHome.cs" />
+    <Compile Include="Events\WatchInformativeVideos.cs" />
+    <Compile Include="Events\Work.cs" />
+    <Compile Include="ExecutionResult.cs" />
+    <Compile Include="Shared\Resource.cs" />
+    <Compile Include="Shared\Constant.cs" />
     <Compile Include="EventModel.cs" />
     <Compile Include="Events\Base\BaseEvent.cs" />
     <Compile Include="Events\DoMorningExercises.cs" />
-    <Compile Include="EventManager.cs" />
+    <Compile Include="Managers\EventManager.cs" />
     <Compile Include="Events\DrinkBeerAndSleep.cs" />
     <Compile Include="Events\Friends\DrinkWithFriends.cs" />
     <Compile Include="Events\Friends\ShowCityForTourists.cs" />
@@ -59,6 +67,7 @@
     <Compile Include="Events\Learning\MakePractice.cs" />
     <Compile Include="Events\Learning\ReadLections.cs" />
     <Compile Include="Events\Learning\StudyHard.cs" />
+    <Compile Include="Events\Movement\GoHomeOnTaxi.cs" />
     <Compile Include="Events\Movement\GoHomeWithBus.cs" />
     <Compile Include="Events\Movement\GoHomeOnFoot.cs" />
     <Compile Include="Events\Movement\GoStudyOnBus.cs" />
@@ -82,18 +91,17 @@
     <Compile Include="Events\WalkAlone.cs" />
     <Compile Include="Events\Partner\WalkWithPartner.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GameManager.cs" />
+    <Compile Include="Managers\GameManager.cs" />
     <Compile Include="Laba.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\Chapter.cs" />
     <Compile Include="Scene\ChapterA.cs" />
     <Compile Include="Scene\ChapterB.cs" />
-    <Compile Include="Time.cs" />
+    <Compile Include="Managers\Time.cs" />
+    <Compile Include="Shared\Statuses.cs" />
     <Compile Include="Weather.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Actions\Movement\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

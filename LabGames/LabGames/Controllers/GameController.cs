@@ -21,39 +21,23 @@ namespace LabGames.API.Controllers
         {
             try
             {
-                //IFormCollection req = await HttpContext.Request.ReadFormAsync();
-                //string Id = req["Id"].ToString();
-                //Player p = JsonConvert.DeserializeObject<Player>(req["name"].ToString());
 
-                //Stream req = Request.Body;
-                //req.Seek(0, System.IO.SeekOrigin.Begin);
-                //string json = new StreamReader(req).ReadToEnd();
-
-                //try
-                //{
-                //    input = JsonConvert.DeserializeObject<InputClass>(json);
-                //}
-
-                //catch (Exception ex)
-                //{
-                //    // Try and handle malformed POST body
-                //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                //}
                 Player p = gamePair.Player;
                 string Id = gamePair.Id;
                 p.Place = PlaceType.Home;
                 p.Company = CompanyType.Alone;
-                
+
                 Game game = new Game();
                 game.p = p;
                 if (!GameManager.Games.ContainsKey(Id))
                     GameManager.Games.Add(Id, game);
                 return p;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
+            //return GameManager.Games["1"].p;
         }
 
         [HttpPost]
@@ -80,6 +64,105 @@ namespace LabGames.API.Controllers
                 return null;
             }
         }
+
+        [HttpPost]
+        [Route("GetPlayer")]
+        public async Task<ActionResult<Player>> GetPlayer()
+        {
+            try
+            {
+                IFormCollection req = await HttpContext.Request.ReadFormAsync();
+                string Id = req["gameId"].ToString();
+                Game game = null;
+                if (GameManager.Games.ContainsKey(Id))
+                    game = GameManager.Games[Id];
+                else
+                    return BadRequest();
+
+                Player result = game.p;
+                return Ok(JsonConvert.SerializeObject(result));
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        [HttpPost]
+        [Route("GetTime")]
+        public async Task<ActionResult<EventModel>> GetTime()
+        {
+            try
+            {
+                IFormCollection req = await HttpContext.Request.ReadFormAsync();
+                string Id = req["gameId"].ToString();
+                Game game = null;
+                if (GameManager.Games.ContainsKey(Id))
+                    game = GameManager.Games[Id];
+                else
+                    return BadRequest();
+
+                Time result = game.GetCurrentTime().CurrentTime;
+                return Ok(JsonConvert.SerializeObject(result));
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        [HttpPost]
+        [Route("SelectEvent")]
+        public ActionResult<EventResponce> SelectEvent(StringIntPair formData)
+        {
+            EventResponce response = new EventResponce();
+            try
+            {
+                string Id = formData.gameId;
+                int eventId = formData.selectedEvent;
+                Game game = null;
+                if (GameManager.Games.ContainsKey(Id))
+                    game = GameManager.Games[Id];
+                else
+                    return BadRequest();
+
+                ExecutionResult result = game.ExecuteEvent(eventId);
+              
+                if (result.IsExecuted)
+                {
+                    response.status = Statuses.SUCCESS;
+                    response.result = result.Result;
+                    return Ok(JsonConvert.SerializeObject(response));
+
+                }
+                else if (result.Continued)
+                {
+                    response.status = Statuses.CONTINUED;
+                    response.result = result.Result;
+                    return Ok(JsonConvert.SerializeObject(response));
+                }
+                else if (result.Dead)
+                {
+                    response.status = Statuses.DEAD;
+                    response.result = result.Result;
+                    response.message = result.message;
+                    return Ok(JsonConvert.SerializeObject(response));
+                }
+                else
+                {
+                    response.status = Statuses.FAIL;
+                    return BadRequest(JsonConvert.SerializeObject(response));
+                }
+            }
+            catch (Exception ex)
+            {
+                response.status = Statuses.FAIL;
+                response.message = ex.Message;
+                return BadRequest(JsonConvert.SerializeObject(response));
+            }
+        }
     }
 
 
@@ -88,4 +171,18 @@ namespace LabGames.API.Controllers
         public string Id;
         public Player Player;
     }
+
+    public class StringIntPair
+    {
+        public string gameId;
+        public int selectedEvent;
+    }
+
+    public class EventResponce
+    {
+        public string status;
+        public string message;
+        public List<string> result;
+    }
+
 }

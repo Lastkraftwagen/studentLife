@@ -12,13 +12,22 @@ namespace LabGames.Core.Events.Partner
         public SleepToogether()
         {
             ID = 28;
-            this.EventText = "Спать вместе в обнимку";
             this.CreateConditions();
         }
 
-        public override bool Execute(Player p)
+        public override bool Execute(Player p, DayStep time)
         {
             throw new NotImplementedException();
+        }
+
+        public override string GenerateDescription(Player p, DayStep time)
+        {
+            return "description";
+        }
+
+        public override string GenerateName(Player p, DayStep time)
+        {
+            return "Спати разом в обіймах";
         }
 
         protected override void CreateConditions()

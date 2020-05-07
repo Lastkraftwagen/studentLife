@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   password: string;
   nick: string;
   spassword: string;
+  loginProcess: boolean = false;
   constructor(private httpService: HttpService, private _router: Router) { }
 
   ngOnInit() {
@@ -24,7 +25,8 @@ export class SignupComponent implements OnInit {
     if(this.spassword!=this.password)
     {alert('Паролі не співпадають!'); return;}
     
-
+    this.loginProcess = true;
+    
     const user: User = new User();
     user.email = this.email;
     user.name = this.nick;
@@ -32,7 +34,14 @@ export class SignupComponent implements OnInit {
 
     this.httpService.SignUp(user).subscribe(
       result=>{
-        this._router.navigate['login'];
+        if(result!=null){
+          this.loginProcess = false;
+          this._router.navigate['/login'];
+        }
+          else{
+            {alert('Неможливо зареєструватися зараз, спробуйте пізніше!'); return;}
+          }
+
       }
     )
 
