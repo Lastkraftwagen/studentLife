@@ -196,7 +196,10 @@ export class GameComponent implements OnInit {
       p.innerText = element;
       document.getElementById("textscreen").appendChild(p);
       document.getElementById("textscreen").scrollTop = document.getElementById("textscreen").scrollHeight;
-    })
+    });
+    var p = document.createElement("p");
+    document.getElementById("textscreen").appendChild(p);
+
 
   }
 }

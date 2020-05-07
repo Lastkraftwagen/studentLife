@@ -28,6 +28,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    p {
+        text-align: center;
+    }
 }
 
 .center-dialog {
@@ -144,6 +147,7 @@ input:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
@@ -187,6 +191,9 @@ input:hover {
     .buttons {
         width: 70%;
     }
+    input {
+        padding: 10px 15px;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -197,6 +204,12 @@ input:hover {
     .picture {
         display: none;
     }
+    input {
+        padding: 5px 10px;
+    }
+    .right {
+        width: 15%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -205,6 +218,9 @@ input:hover {
     }
     .holder {
         width: 85%;
+    }
+    .buttons {
+        width: 90%;
     }
 }
 

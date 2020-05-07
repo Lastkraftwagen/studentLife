@@ -89,6 +89,7 @@ namespace LabGames.Core.Events.Movement
                     this.EventText.Add("Така довга подорож в громадському транспорті " +
                         $"виснажить кого завгодно. {Resource.MINUS_HAPPY}");
                     p.ChangeHappines(-5);
+                    p.ChangeFollowerRait(-3);
                     p.DistanceFromHome = DistanceType.Home;
                   
                     return true;

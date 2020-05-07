@@ -50,11 +50,11 @@ namespace LabGames.Core.Events.Friends
                 this.EventText.Add($"Непогано так пройшлись насправді. Не один кілометр, і навіть не два. {Resource.MINUS_ENERGY}");
             }
             p.ChangeFriendsRait(7);
+            p.ChangeFollowerRait(-5);
             p.ChangePower(-10);
 
             if (time.isLearningTime)
             {
-                p.ChangeFollowerRait(-2);
                 p.ChangeOP(-10);
             }
             return true;

@@ -13,7 +13,7 @@ namespace LabGames.Core.Events.Hobby
         {
             ID = 5;
             Random r = new Random();
-            int n = r.Next(0,7);
+            int n = r.Next(0,6);
             switch (n)
             {
                 case 1:
@@ -34,9 +34,6 @@ namespace LabGames.Core.Events.Hobby
                 case 0:
                     BookName = "\"Ти знаєш, що ти за людина?\"";
                     break;
-                case 6:
-                    BookName = "\"Потрійний цикл\"";
-                    break;
                 default:
                     break;
             }
@@ -50,22 +47,36 @@ namespace LabGames.Core.Events.Hobby
         {
             p.ChangeFriendsRait(-7);
             p.ChangeFollowerRait(-7);
+            this.EventText.Add($"Час поринути у світ книжок.");
             if (time.isLearningTime)
             {
                 p.ChangeOP(-5);
             }
             if (p.isDrunk) {
-
+                if (p.DrunkLevel > 2)
+                {
+                    this.EventText.Add($"П'яним важно зусередитися на сюжеті. {Resource.MINUS_ENERGY}");
+                    p.ChangeHappines(10);
+                    this.EventText.Add($"Авхахахаха бязь вахвахвах шо це таке?)) {Resource.PLUS_HAPPY}");
+                    this.EventText.Add($"Авхахахаха бязь вахвахвах шо це таке?)) {Resource.PLUS_ENERGY}");
+                    p.ChangePower(-10);
+                    p._speek += 1;
+                }
+                else
+                {
+                    this.EventText.Add($"Не треба було до того братися у такому стані..." +
+                        $" {Resource.MINUS_ENERGY} {Resource.MINUS_HAPPY}");
+                    p.ChangePower(-10);
+                    p.ChangeHappines(-10);
+                }
                 this.EventText.Add(p.ResetDrunk(1));
-                p.ChangeHappines(10);
-                p.ChangePower(-10);
-                
             }
             else
             {
                 p.ChangeHappines(10);
                 p.ChangePower(-5);
                 p._intelligence += 1;
+                p._speek += 1;
             }
             return true;
         }

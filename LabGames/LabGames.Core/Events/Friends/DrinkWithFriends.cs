@@ -58,7 +58,8 @@ namespace LabGames.Core.Events.Friends
                 if (time.isLearningTime)
                     p.ChangeOP(-5);
                 p.ChangePower(-5);
-                p.ChangeHappines(20);
+                p.ChangeFollowerRait(-5);
+                p.ChangeHappines(17);
                 EventText.Add(p.GetDrunk(1));
                 p.ChangeFriendsRait(20);
                 return true;
@@ -90,8 +91,9 @@ namespace LabGames.Core.Events.Friends
                 EventText.Add(p.GetDrunk(1));
                 p.Company = CompanyType.WithFriends;
                 p.Place = PlaceType.Place;
-                p.ChangeHappines(15);
+                p.ChangeHappines(10);
                 p.ChangeFriendsRait(10);
+                p.ChangeFollowerRait(-5);
                 return false;
             }
 

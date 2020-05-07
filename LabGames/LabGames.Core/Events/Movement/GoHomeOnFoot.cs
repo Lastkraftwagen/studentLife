@@ -45,6 +45,7 @@ namespace LabGames.Core.Events.Movement
                 case DistanceType.Large:
                     p.ChangePower(-20);
                     p.ChangeHappines(-10);
+                    p.ChangeFollowerRait(-3);
                     p.DistanceFromHome = DistanceType.Home;
                     if (p.isDrunk)
                         this.EventText.Add(p.ResetDrunk(2));

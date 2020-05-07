@@ -16,9 +16,81 @@ namespace LabGames.Core.Events.Partner
         }
         int cost = 10;
 
+        private List<string> ZatorReaction(Player p)
+        {
+            string withPartner = p.Gender == GenderType.Man ? "з дівчиною" : "з хлопцем";
+            List<string> reaction = new List<string>();
+            if (p.FollowerRaiting < 30)
+            {
+                reaction.Add($"Стоячи у заторі, {p.Name} {withPartner} " +
+                    $"раптово розуміють, що не мають про що поговорити, аби скоротати" +
+                    $" час. Треба більше часу приділяти відносинам з другою половинкою! {Resource.MINUS_FOLLOWER}");
+                p.ChangeFollowerRait(-5);
+            }
+            else
+            {
+                reaction.Add($"Довкола коптять старі ржаві брички, що їх ведуть " +
+                    $"неголені втомлені водії, потік машин повзе повільніше ніж " +
+                    $"годинна стрілка, бабусі кричать і сваряться, водій психує, а" +
+                    $" {p.Name} {withPartner} не помічають нічого довкола, і слухають" +
+                    $" одну музику на двох з телефона. Правду кажуть - з милим рай і в шалаші. {Resource.PLUS_FOLLOWER}");
+                p.ChangeFollowerRait(5);
+            }
+            return reaction;
+        }
+
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            this.EventText.Clear();
+
+            Random r = new Random();
+            int RandomValue;
+            bool Zator = false;
+
+            if (time.partOfDay == PartOfDay.Night)
+                RandomValue = r.Next(0, 100);
+            else
+                RandomValue = r.Next(0, 10);
+
+            if (RandomValue < 5)
+                Zator = true;
+
+            p.Place = PlaceType.Home;
+            p.Company = CompanyType.Alone;
+            p.ChangeMoney(-cost);
+            string withPartner = p.Gender == GenderType.Man ? "з дівчиною" : "з хлопцем";
+
+
+            switch (p.DistanceFromHome)
+            {
+                case DistanceType.Low:
+                    p.DistanceFromHome = DistanceType.Home;
+                    this.EventText.Add($"{p.Name} {withPartner} вдома.");
+                    return false;
+                case DistanceType.Medium:
+                    if (Zator)
+                    {
+                        this.EventText.AddRange(this.ZatorReaction(p));
+                    }
+                    this.EventText.Add($"{p.Name} нарешті вдома.");
+                    p.DistanceFromHome = DistanceType.Home;
+
+                    return false;
+                case DistanceType.Large:
+                    this.EventText.Add("Їхати треба дууууууже далеко...");
+                    if (Zator)
+                    {
+                        this.EventText.AddRange(this.ZatorReaction(p));
+                    }
+                    this.EventText.Add("Така довга подорож в громадському транспорті " +
+                        $"виснажить кого завгодно. {Resource.MINUS_HAPPY}");
+                    p.ChangeHappines(-5);
+                    p.DistanceFromHome = DistanceType.Home;
+
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         public override string GenerateDescription(Player p, DayStep time)

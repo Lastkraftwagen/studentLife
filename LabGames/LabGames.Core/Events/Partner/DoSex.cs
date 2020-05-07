@@ -21,7 +21,7 @@ namespace LabGames.Core.Events.Partner
         }
         public override string GenerateDescription(Player p, DayStep time)
         {
-            return "description";
+            return "Ну там шурум-пурум, самі розумієте.";
         }
 
         public override string GenerateName(Player p, DayStep time)
