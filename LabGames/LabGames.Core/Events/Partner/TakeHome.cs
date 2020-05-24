@@ -43,6 +43,7 @@ namespace LabGames.Core.Events.Partner
             }
             p.Place = PlaceType.Home;
             p.Company = CompanyType.WithGF;
+            p.DistanceFromUniver = DistanceType.Medium;
             p.ChangeMoney(-cost);
             return false;
         }

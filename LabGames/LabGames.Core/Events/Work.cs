@@ -17,7 +17,21 @@ namespace LabGames.Core.Events
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Add("Запам'ятай назавжди - студенту ніколи не отримати отак запросто хорошу роботу.");
+            EventText.Add($"Робота виснажує. {Resource.MINUS_ENERGY}");
+            EventText.Add($"Монотонність... Одноманітність.... {Resource.MINUS_HAPPY}");
+            p.ChangeHappines(-10);
+            p.ChangeHappines(-8);
+            if (time.isLearningTime)
+            {
+                p.ChangeOP(-4);
+                EventText.Add($"Вчитель не любить, коли пропускають " +
+                    $"його пари... {Resource.MINUS_TEACHER}");
+            }
+            p.ChangeFriendsRait(-4);
+            p.ChangeFollowerRait(-4);
+            EventText.Add("Господи, яка ж нудьга...");
+            return true;
         }
 
         public override string GenerateDescription(Player p, DayStep time)

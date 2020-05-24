@@ -17,12 +17,31 @@ namespace LabGames.Core.Events.Partner
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Clear();
+            this.EventText.Add($"Серія ковтається за серією, час з коханою людиної " +
+                $"плине швидко, але так весело! {Resource.PLUS_HAPPY}");
+            this.EventText.Add($"{p.Name} відчуває теплоту у сердці. " +
+                $"І це взаємно) {Resource.PLUS_FOLLOWER}");
+            p.ChangeHappines(7);
+            p.ChangePower(-10);
+            p.ChangeFollowerRait(10);
+            p.ChangeFriendsRait(-3);
+            if (p.isDrunk)
+            {
+                EventText.Add(p.ResetDrunk(1));
+            }
+            if (time.isLearningTime)
+            {
+                p.ChangeOP(-5);
+            }
+            return true;
         }
 
         public override string GenerateDescription(Player p, DayStep time)
         {
-            return "Дивитися серіали разом";
+            string partner = p.Gender == GenderType.Man ? "дівчиною" : "хлопцем";
+            return $"Дивитися серіали разом з {partner}. Науково доведено, що, " +
+                $"проводячи час разом, пари зближуються і вірогідність їх розриву зменшується.";
         }
 
         public override string GenerateName(Player p, DayStep time)

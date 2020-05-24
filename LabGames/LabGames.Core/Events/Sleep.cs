@@ -17,12 +17,19 @@ namespace LabGames.Core.Events
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Add($"Прекрасні сни, м'якеньке ліжко, а що ще треба? {Resource.PLUS_ENERGY} {Resource.PLUS_HAPPY}");
+            if (p.isDrunk)
+                EventText.Add(p.ResetDrunk(2));
+            p.ChangePower(30);
+            p.ChangeHappines(5);
+            p.ChangeFriendsRait(-2);
+            p.ChangeFollowerRait(-2);
+            return true;
         }
 
         public override string GenerateDescription(Player p, DayStep time)
         {
-            return "description";
+            return "Сон вночі - нормальна справа. Виснаження зніме як рукою.";
         }
 
         public override string GenerateName(Player p, DayStep time)

@@ -23,6 +23,8 @@ namespace LabGames.Core.Events.Base
 
         public bool IsExecutable(DayStep CurrentStep, Player p)
         {
+            if (this.ID == 29 && p.hasJob) return false;
+            if (this.ID == 40 && !p.hasJob) return false;
             if (Conditions == null || p == null) { return false; }
             Condition currentCondition = new Condition()
             {

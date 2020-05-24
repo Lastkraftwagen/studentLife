@@ -17,7 +17,47 @@ namespace LabGames.Core.Events
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Clear();
+            p.Company = CompanyType.Alone;
+            p.DistanceFromUniver = DistanceType.Medium;
+            this.EventText.Add($"{p.Name} відправляється гуляти по місту.");
+            if (p.Place == PlaceType.Home)
+            {
+                p.DistanceFromHome = DistanceType.Low;
+                this.EventText.Add($"Парк неподалік від гуртожитків - непоганий вибір.");
+            }
+            else
+            {
+                p.DistanceFromHome = DistanceType.Medium;
+                this.EventText.Add($"Під час гульок зайшов далеченько - аж на погулянку.");
+            }
+            p.Place = PlaceType.Outside;
+            if (p.isDrunk)
+            {
+                if (p.DrunkLevel >= 2)
+                {
+                    this.EventText.Add("Хех класс, на вулиці чотко. " +
+                        $"Авхвхвхвх, гуси)) Гуси в озері авхахах. {Resource.PLUS_HAPPY}");
+                    p.ChangeHappines(12);
+                }
+                this.EventText.Add(p.ResetDrunk(1));
+                this.EventText.Add($"Фух ходити п'яним тяжко-важко якось... {Resource.MINUS_ENERGY}");
+            }
+            else
+            {
+                this.EventText.Add($"Погода чудова і на душі приємно. {Resource.PLUS_HAPPY} ");
+                p.ChangeHappines(10);
+                this.EventText.Add($"Непогано так пройшов насправді. Не один кілометр, і навіть не два. {Resource.MINUS_ENERGY}");
+            }
+            p.ChangeFriendsRait(-5);
+            p.ChangeFollowerRait(-5);
+            p.ChangePower(-10);
+
+            if (time.isLearningTime)
+            {
+                p.ChangeOP(-10);
+            }
+            return true;
         }
 
         public override string GenerateDescription(Player p, DayStep time)
@@ -52,6 +92,8 @@ namespace LabGames.Core.Events
 
         public override string GenerateName(Player p, DayStep time)
         {
+            if (p.Company == CompanyType.Alone && p.Place == PlaceType.Outside)
+                return "Продовжити гуляти";
             return "Прогулятися по вулиці";
         }
 

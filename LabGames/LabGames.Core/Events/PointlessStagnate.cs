@@ -17,17 +17,29 @@ namespace LabGames.Core.Events
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Add($"Эмм, ну {p.Name} просто нічого не робить.");
+            EventText.Add($"Діла навколо йдуть.");
+            EventText.Add($"А {p.Name} нікуди не йде.");
+            EventText.Add($"Енергія не витрачається, ані краще, ані гірше не стає.");
+            EventText.Add($"В цілому, нормально.");
+            p.ChangeFriendsRait(-5);
+            p.ChangeFollowerRait(-5);
+            if (time.isLearningTime)
+            {
+                p.ChangeOP(-5);
+            }
+            return true;
+
         }
 
         public override string GenerateDescription(Player p, DayStep time)
         {
-            return "description";
+            return "Не робити АБСОЛЮТНО нічого. Не повпливає ні на що.";
         }
 
         public override string GenerateName(Player p, DayStep time)
         {
-            return "безглуздо стагнувати";
+            return "Безглуздо стагнувати";
         }
 
         protected override void CreateConditions()

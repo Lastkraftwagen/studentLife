@@ -17,7 +17,12 @@ namespace LabGames.Core.Events.Universitat
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            p.Place = PlaceType.Outside;
+            p.Company = CompanyType.Alone;
+            p.DistanceFromHome = DistanceType.Medium;
+            p.DistanceFromUniver = DistanceType.Low;
+            EventText.Add($"{p.Name} звалює з пар.");
+            return false;
         }
 
         public override string GenerateDescription(Player p, DayStep time)

@@ -18,14 +18,19 @@
                         <p></p>
                     </div>
                 </div>
-
-                <div id="textscreen" class="main-field default">
-                    {{eventResult}}
+                <div class="main column">
+                    <div id="textscreen" class="main-field default">
+                        {{eventResult}}
+                    </div>
+                    <div class="action-field" [style.display]="ActionFieldWork ? 'block' : 'none'">
+                        <app-work-game (stopEvent)="stopAction($event)"></app-work-game>
+                    </div>
                 </div>
             </div>
             <div class="actions">
-                <div *ngFor="let item of eventModels">
-                    <app-event-button (leave)="mouseLeave()" (select)="selectEvent($event)" (enter)="mouseEnter($event)" [model]="item"></app-event-button>
+                <mat-progress-bar class="left-align" mode="determinate" [value]="progressValue"></mat-progress-bar>
+                <div [ngClass]='{ fadedin:animationTime, fadedout:!animationTime, invisible: !visibility }' *ngFor="let item of eventModels">
+                    <app-event-button (leave)="mouseLeave()" (select)="selectEvent($event)" (enter)="mouseEnter($event)" [multi]="item.isMulti" [model]="item"></app-event-button>
                 </div>
             </div>
         </div>
@@ -57,17 +62,21 @@
             <div>
                 <p>Прогрес лабораторних</p>
                 <div class="custom_row">
-                    <img class="money" [src]="labUrl">
-                    <img class="money" [src]="labUrl">
-                    <img class="money" [src]="labUrl">
+                    <img *ngFor="let item of player.Labs" class="money" [src]='item.Ready?labReadyUrl:labUrl'>
                 </div>
             </div>
             <div>
-                <p>Поточна лаба виконана на: 0%</p>
-                <app-indicator class="indicator" value="0" type=""></app-indicator>
+                <p>Прогрес поточної лаби:</p>
+                <app-indicator class="indicator" [value]="player.CurrentLaba.Progress * 33.3"></app-indicator>
+            </div>
+            <div [style.display]="player.hasJob ? 'block' : 'none'">
+                <p>Робочий прогрес тижня:</p>
+                <p>{{player.WorkTiles}}/{{player.AssignedWork}}</p>
+
+            </div>
+            <div>
             </div>
             <p></p>
         </div>
     </div>
-
 </div>

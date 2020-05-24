@@ -42,11 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Condition.cs" />
+    <Compile Include="Events\FindAJob.cs" />
+    <Compile Include="Events\Hobby\HobbyGames.cs" />
+    <Compile Include="Events\Movement\GoWorkOnFoot.cs" />
     <Compile Include="Events\Partner\TakeHomeOnBus.cs" />
     <Compile Include="Events\Partner\TakeHomeOnFoot.cs" />
     <Compile Include="Events\SayGoodbye.cs" />
     <Compile Include="Events\Partner\TakeHome.cs" />
     <Compile Include="Events\Universitat\LeftUniver.cs" />
+    <Compile Include="Events\Universitat\PassLab.cs" />
     <Compile Include="Events\WatchInformativeVideos.cs" />
     <Compile Include="Events\Work.cs" />
     <Compile Include="ExecutionResult.cs" />

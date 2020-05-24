@@ -14,15 +14,43 @@ namespace LabGames.Core.Events.Movement
             ID = 30;
             this.CreateConditions();
         }
+        int cost = 50;
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Clear();
+            p.Place = PlaceType.Universitat;
+            p.DistanceFromHome = DistanceType.Medium;
+            p.DistanceFromUniver = DistanceType.InPlace;
+            p.Company = CompanyType.Alone;
+            p.ChangeMoney(-cost);
+            string w = p.Gender == GenderType.Man ? "приїхав" : "приїхала";
+            this.EventText.Add($"{p.Name} {w} на пари на таксі.");
+            if (time.partOfDay == PartOfDay.Morning)
+                EventText.Add($"До пар ще є час - можна чимось позайматись.");
+            return false;
         }
 
         public override string GenerateDescription(Player p, DayStep time)
         {
-            return "description";
+            string Description = "Найшвидший спосіб дістатися туди, куди треба.";
+            Random r = new Random();
+            if (p.DistanceFromUniver == DistanceType.Large)
+            {
+                cost = 150 + r.Next(-40, 40);
+                Description += $"(Звідси буде коштувати {cost} грн)";
+            }
+            else if (p.DistanceFromUniver == DistanceType.Medium)
+            {
+                cost = 50 + r.Next(40);
+                Description += $"(Звідси буде коштувати {cost} грн)";
+            }
+            else
+            {
+                cost = 20 + r.Next(5);
+                Description += $"(Звідси буде коштувати {cost} грн. Але, насправді, пішки тут 5 хвилин.";
+            }
+            return Description;
         }
 
         public override string GenerateName(Player p, DayStep time)

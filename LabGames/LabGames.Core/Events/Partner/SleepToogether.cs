@@ -17,12 +17,21 @@ namespace LabGames.Core.Events.Partner
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Add($"В обіймах коханої людини " +
+                $"сни солодші і ліжко м'якіше. {Resource.PLUS_ENERGY} {Resource.PLUS_HAPPY}");
+            if (p.isDrunk)
+                EventText.Add(p.ResetDrunk(2));
+            p.ChangePower(35);
+            p.ChangeHappines(10);
+            p.ChangeFriendsRait(-2);
+            
+            p.ChangeFollowerRait(10);
+            return true;
         }
 
         public override string GenerateDescription(Player p, DayStep time)
         {
-            return "Можна спати обійнявшись одне з одним";
+            return "Можна спати обійнявшись одне з одним. ПРОСТО СПАТИ, нічого більше.";
         }
 
         public override string GenerateName(Player p, DayStep time)

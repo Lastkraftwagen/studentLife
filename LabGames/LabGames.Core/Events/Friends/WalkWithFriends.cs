@@ -17,7 +17,10 @@ namespace LabGames.Core.Events.Friends
 
         public override bool Execute(Player p, DayStep time)
         {
+            EventText.Clear();
+
             p.Company = CompanyType.WithFriends;
+            p.DistanceFromUniver = DistanceType.Medium;
             this.EventText.Add($"{p.Name} відправляється з друзями гуляти по місту.");
             if (p.Place == PlaceType.Home)
             {
@@ -38,7 +41,7 @@ namespace LabGames.Core.Events.Friends
                     this.EventText.Add("Хех класс, на вулиці чотко. " +
                         $"Авхвхвхвх, гуси)) Гуси в озері авхахах. {Resource.PLUS_HAPPY}");
                     this.EventText.Add($"Чорт його зна звідки в {variant} взявся хліб, але гусі нагодовані. {Resource.PLUS_FRIENDS}"); ;
-                    p.ChangeHappines(12);
+                    p.ChangeHappines(6);
                 }
                 this.EventText.Add(p.ResetDrunk(1));
                 this.EventText.Add($"Фух ходити п'яним тяжко-важко якось... {Resource.MINUS_ENERGY}");
@@ -46,10 +49,10 @@ namespace LabGames.Core.Events.Friends
             else
             {
                 this.EventText.Add($"Погода чудова, копманія приємна і на душі приємно. {Resource.PLUS_HAPPY} {Resource.PLUS_FRIENDS}");
-                p.ChangeHappines(10);
+                p.ChangeHappines(5);
                 this.EventText.Add($"Непогано так пройшлись насправді. Не один кілометр, і навіть не два. {Resource.MINUS_ENERGY}");
             }
-            p.ChangeFriendsRait(7);
+            p.ChangeFriendsRait(10);
             p.ChangeFollowerRait(-5);
             p.ChangePower(-10);
 
@@ -75,7 +78,9 @@ namespace LabGames.Core.Events.Friends
 
         public override string GenerateName(Player p, DayStep time)
         {
-            return "Піти погуляти з друзями";
+            if(p.Place == PlaceType.Outside && p.Company == CompanyType.WithFriends) 
+                return "Продовжувати гуляти з друзями";
+            return "Погуляти з друзями";
         }
 
         protected override void CreateConditions()

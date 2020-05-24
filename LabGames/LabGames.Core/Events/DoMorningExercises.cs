@@ -18,34 +18,62 @@ namespace LabGames.Core.Events
     
         public override bool Execute(Player p, DayStep time)
         {
+            EventText.Clear();
             string text;
             if (p.isDrunk)
             {
-                this.EventText.Add($"Зайняття спортом на п'яну голову було поганою ідеєю. {Resource.MINUS_HAPPY}");
-                text = p.Gender == GenderType.Man ? "Всього від десяти віджимань " +
-                    $"{p.Name} починає відчувати нудоту і буквально чує власне сердцебиття! {Resource.MINUS_ENERGY}" 
-                    : $"Під час розтяжки, {p.Name} потягнула зв'язки, забилася об край столу, та вирішила " +
-                    $"зупинитися, відчувши присмак вчорашньої їжі у роті. {Resource.MINUS_ENERGY}";
-                this.EventText.Add(text);
-                p.ChangePower(-10);
-                p.ChangeHappines(-10);
-                return false;
-            }
-            this.EventText.Add($"Зайняття спортом робить щасливим. {Resource.PLUS_HAPPY}");
-            this.EventText.Add($"{p.Name} підвищує спортивні навички. (+1)");
-            if (p._power < 5)
-            {
-                this.EventText.Add($"Заняття спортом трохи втомлює. {Resource.MINUS_ENERGY}");
-                p.ChangePower(-10);
+                if (p.DrunkLevel > 2)
+                {
+                    this.EventText.Add($"Зайняття спортом на п'яну голову було поганою ідеєю. {Resource.MINUS_HAPPY}");
+                    text = p.Gender == GenderType.Man ? "Всього від десяти віджимань " +
+                        $"{p.Name} починає відчувати нудоту і буквально чує власне сердцебиття! {Resource.MINUS_ENERGY}"
+                        : $"Під час розтяжки, {p.Name} потягнула зв'язки, забилася об край столу, та вирішила " +
+                        $"зупинитися, відчувши присмак вчорашньої їжі у роті. {Resource.MINUS_ENERGY}";
+                    this.EventText.Add(text);
+                    p.ChangePower(-10);
+                    p.ChangeHappines(-10);
+                    return false;
+                }
+                else
+                {
+                    if (p._power < 7)
+                    {
+                        this.EventText.Add($"Заняття спортом трохи втомлює. {Resource.MINUS_ENERGY}");
+                        p.ChangePower(-5);
+                        this.EventText.Add($"Особливо під мухою. {Resource.MINUS_ENERGY}");
+                        p.ChangePower(-5);
+                    }
+                    else
+                    {
+                        string pronoun = p.Gender == GenderType.Man ? "його" : "її";
+                        this.EventText.Add($"{p.Name} непоганий спортсмен, і подібні навантаження" +
+                            $" {pronoun} взагалі не втомлюють!");
+                        this.EventText.Add($"Хоча нє, під мухою складніше ніж здається. {Resource.MINUS_ENERGY}");
+                        p.ChangePower(-5);
+                    }
+                    EventText.Add(p.ResetDrunk(1));
+                }
             }
             else
             {
-                string pronoun = p.Gender == GenderType.Man ? "його" : "її";
-                this.EventText.Add($"{p.Name} непоганий спортсмен, і подібні навантаження" +
-                    $" {pronoun} взагалі не втомлюють!");
+                this.EventText.Add($"Зайняття спортом робить щасливим. {Resource.PLUS_HAPPY}");
+                this.EventText.Add($"{p.Name} підвищує спортивні навички. {Resource.PLUS_POWER}");
+                if (p._power < 5)
+                {
+                    this.EventText.Add($"Заняття спортом трохи втомлює. {Resource.MINUS_ENERGY}");
+                    p.ChangePower(-5);
+                }
+                else
+                {
+                    string pronoun = p.Gender == GenderType.Man ? "його" : "її";
+                    this.EventText.Add($"{p.Name} непоганий спортсмен, і подібні навантаження" +
+                        $" {pronoun} взагалі не втомлюють! Навіть придають сил! {Resource.PLUS_POWER}");
+                    p.ChangePower(5);
+                }
+                p._power += 1;
             }
+            EventText.Add($"Після зарядки зранку настрій завжди покращується. {Resource.PLUS_HAPPY}");
             p.ChangeHappines(10);
-            p._power += 1;
             return false;
         }
 

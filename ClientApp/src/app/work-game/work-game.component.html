@@ -1,0 +1,16 @@
+<div class="canvas">
+    <div class="left">
+        <p>Якість:</p>
+        <p>{{(100-(2500-this.quality)/25).toFixed(1)}}%</p>
+        <progress max="2500" value="{{quality}}" class="css3">
+	</progress>
+    </div>
+    <div class="center">
+        <p></p>
+        <a [ngClass]='{ btn: true, clicked: isClicked, unclicked: !isClicked }' (click)="DoWork()"></a>
+        <p></p>
+    </div>
+    <div class="right">
+        <p>Час гри: {{time}}</p>
+    </div>
+</div>

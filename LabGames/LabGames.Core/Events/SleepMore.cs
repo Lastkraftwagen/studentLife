@@ -17,8 +17,14 @@ namespace LabGames.Core.Events
         }
         public override bool Execute(Player p, DayStep time)
         {
-            this.EventText.Add($"{p.Name} обирає поспати трохи зранку");
-            p.ChangePower(10);
+            EventText.Add($"Трохи перепочити в першій половині дня - " +
+                $"дуже приємно, тут не посперечаєшся. {Resource.PLUS_ENERGY}{Resource.PLUS_HAPPY}");
+            if (p.isDrunk)
+                EventText.Add(p.ResetDrunk(2));
+            p.ChangePower(15);
+            p.ChangeHappines(15);
+            p.ChangeFriendsRait(-7);
+            p.ChangeFollowerRait(-7);
             return true;
         }
 

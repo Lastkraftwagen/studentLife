@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Scene
 {
-    class ChapterC : Chapter
+    public class ChapterC : Chapter
     {
         public ChapterC()
         {
@@ -44,6 +44,78 @@ namespace LabGames.Core.Scene
             List<EventModel> result = new List<EventModel>();
             foreach (var item in ChapterEvents)
             {
+                if (this.combineAble[0].Contains(item.ID))
+                {
+                    if (result.Where(x => x.id == 101).Count() == 0)
+                    {
+                        EventModel res = new EventModel();
+                        res.id = 101;
+                        res.description = "Відправитися додому";
+                        res.name = "Відправитися додому...";
+                        foreach (var subeventId in this.combineAble[0])
+                        {
+                            var ev = ChapterEvents.Where(x => x.ID == subeventId).FirstOrDefault();
+                            if (ev != null)
+                            {
+                                if (ev.IsExecutable(time.CurrentStep, player))
+                                {
+                                    res.submodels.Add(new EventModel()
+                                    {
+                                        id = ev.ID,
+                                        description = ev.GenerateDescription(player, time.CurrentStep),
+                                        name = ev.GenerateName(player, time.CurrentStep)
+                                    });
+                                }
+                            }
+                        }
+                        if (res.submodels.Count == this.combineAble[0].Count)
+                        {
+                            res.isMulti = true;
+                            result.Add(res);
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                if (this.combineAble[4].Contains(item.ID))
+                {
+                    if (result.Where(x => x.id == 105).Count() == 0)
+                    {
+                        EventModel res = new EventModel();
+                        res.id = 105;
+                        res.description = "Навчатися в університеті - головне! ;)";
+                        res.name = $"Навчатися...";
+                        foreach (var subeventId in this.combineAble[4])
+                        {
+                            var ev = ChapterEvents.Where(x => x.ID == subeventId).FirstOrDefault();
+                            if (ev != null)
+                            {
+                                if (ev.IsExecutable(time.CurrentStep, player))
+                                {
+                                    res.submodels.Add(new EventModel()
+                                    {
+                                        id = ev.ID,
+                                        description = ev.GenerateDescription(player, time.CurrentStep),
+                                        name = ev.GenerateName(player, time.CurrentStep)
+                                    });
+                                }
+                            }
+                        }
+                        if (res.submodels.Count == this.combineAble[4].Count)
+                        {
+                            res.isMulti = true;
+                            result.Add(res);
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
                 if (item.IsExecutable(time.CurrentStep, player))
                     result.Add(new EventModel()
                     {
@@ -52,6 +124,12 @@ namespace LabGames.Core.Scene
                         name = item.GenerateName(player, time.CurrentStep)
                     });
             }
+            return result;
+        }
+
+        public override List<string> ExecuteSpecialEvents(Player player, TimeManager time)
+        {
+            List<string> result = new List<string>();
             return result;
         }
     }

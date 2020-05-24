@@ -17,12 +17,24 @@ namespace LabGames.Core.Events.Partner
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            string partner = p.Gender == GenderType.Man ? "дівчиною" : "хлопцем";
+            EventText.Add($"{p.Name} розмальовує по номерам картину з" +
+                $" {partner}. {Resource.PLUS_FOLLOWER}");
+            p.ChangeFollowerRait(10);
+            p.ChangeFriendsRait(-3);
+            p.ChangeHappines(5);
+            p.ChangePower(-5);
+            if (p.isDrunk)
+            {
+                EventText.Add(p.ResetDrunk(1));
+            }
+            EventText.Add("Час проведено приємно і з користю.");
+            return true;
         }
 
         public override string GenerateDescription(Player p, DayStep time)
         {
-            return "description";
+            return "Це завжди гарна ідея для підтримання стосунків у формі.";
         }
 
         public override string GenerateName(Player p, DayStep time)

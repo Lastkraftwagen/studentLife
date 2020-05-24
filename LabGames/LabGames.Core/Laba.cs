@@ -8,10 +8,10 @@ namespace LabGames.Core
 {
 
     public enum LabaProgress {
-        NotStarted = 1,
-        Started = 2,
-        Half = 3,
-        Ready = 4
+        NotStarted = 0,
+        Started = 1,
+        Half = 2,
+        Ready = 3
     }
 
     public class Laba
@@ -30,9 +30,12 @@ namespace LabGames.Core
         public LabaProgress Progress { get; private set; }
         public bool Own { get; set; }
         public bool Ready { get; set; }
+        public int Mark { get; set; }
         public void DoPart()
         {
-            Progress += 1;
+            if(Progress != LabaProgress.Ready)
+                Progress += 1;
+
             if (Progress == LabaProgress.Ready)
                 Ready = true;
         }

@@ -17,15 +17,67 @@ namespace LabGames.Core.Events.Hobby
 
         public override bool Execute(Player p, DayStep time)
         {
-            //if (!this.IsExecutable) return false;
-            //TODO: Change player state
-            //TimeManager.NextPart();
+            p.ChangeFriendsRait(-5);
+            p.ChangeFollowerRait(-5);
+            this.EventText.Add($"Саме час приділити увагу своєму тілу.");
+            if (time.isLearningTime)
+            {
+                p.ChangeOP(-5);
+            }
+            if (p.isDrunk)
+            {
+                if (p.DrunkLevel <= 2)
+                {
+                    this.EventText.Add($"На підпитку фізичні навантаження " +
+                        $"погано впливають на серце. {Resource.MINUS_ENERGY}");
+                    p.ChangeHappines(10);
+                    this.EventText.Add($"Дивитися в дзеркало після вправ" +
+                        $"значно приємніше. {Resource.PLUS_HAPPY}");
+                    string genderText = p.Gender == GenderType.Man ? "кубики пресу" : "струнка талія";
+                    this.EventText.Add($"Хехехе, {genderText}, класс. {Resource.PLUS_GLAMOUR}");
+                    p.ChangePower(-20);
+                    p._glamor += 1;
+                }
+                else
+                {
+                    this.EventText.Add($"Не треба було до того братися у такому стані..." +
+                        $" {Resource.MINUS_ENERGY} {Resource.MINUS_HAPPY}");
+                    p.ChangePower(-10);
+                    p.ChangeHappines(-10);
+                    return false;
+                }
+                this.EventText.Add(p.ResetDrunk(1));
+            }
+            else
+            {
+                this.EventText.Add($"Вправи доволі виснажливі. {Resource.MINUS_ENERGY}");
+                this.EventText.Add($"Але результати того варті. {Resource.PLUS_HAPPY}");
+                this.EventText.Add($"Зроби сьогодні скільки зможеш - завтра зможеш ще " +
+                    $"більше. {Resource.PLUS_POWER} {Resource.PLUS_GLAMOUR}");
+                p.ChangeHappines(10);
+                p.ChangePower(-5);
+                p._power  += 1;
+                p._glamor += 1;
+            }
             return true;
         }
             
         public override string GenerateDescription(Player p, DayStep time)
         {
-            string Description = "Займатися фізичними вправами";
+            string people = p.Gender == GenderType.Man ? "дівчат" : "хлопців";
+            string Description = "Фізичні навантаження покращують самопочуття" +
+                $", підвищують настрій та популярність у {people}. ";
+            if (p.isDrunk)
+            {
+                if (p.DrunkLevel <= 2)
+                    Description += "Але треба пам'ятати, що на підпитку подібні " +
+                        "вправи не дають стовідсоткового результату.";
+                else
+                {
+                    Description = $"Серйозно? {p.Name} в такому стані " +
+                        $"навіть стояти нормально не може, які вправи?";
+                }
+            }
             return Description;
         }
 

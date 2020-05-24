@@ -56,7 +56,8 @@ namespace LabGames.Core.Events.Partner
                 Zator = true;
 
             p.Place = PlaceType.Home;
-            p.Company = CompanyType.Alone;
+            p.DistanceFromUniver = DistanceType.Medium;
+            p.Company = CompanyType.WithGF;
             p.ChangeMoney(-cost);
             string withPartner = p.Gender == GenderType.Man ? "з дівчиною" : "з хлопцем";
 
@@ -64,17 +65,16 @@ namespace LabGames.Core.Events.Partner
             switch (p.DistanceFromHome)
             {
                 case DistanceType.Low:
-                    p.DistanceFromHome = DistanceType.Home;
                     this.EventText.Add($"{p.Name} {withPartner} вдома.");
+                    p.DistanceFromHome = DistanceType.InPlace;
                     return false;
                 case DistanceType.Medium:
                     if (Zator)
                     {
                         this.EventText.AddRange(this.ZatorReaction(p));
                     }
+                    p.DistanceFromHome = DistanceType.InPlace;
                     this.EventText.Add($"{p.Name} нарешті вдома.");
-                    p.DistanceFromHome = DistanceType.Home;
-
                     return false;
                 case DistanceType.Large:
                     this.EventText.Add("Їхати треба дууууууже далеко...");
@@ -85,8 +85,7 @@ namespace LabGames.Core.Events.Partner
                     this.EventText.Add("Така довга подорож в громадському транспорті " +
                         $"виснажить кого завгодно. {Resource.MINUS_HAPPY}");
                     p.ChangeHappines(-5);
-                    p.DistanceFromHome = DistanceType.Home;
-
+                    p.DistanceFromHome = DistanceType.InPlace;
                     return true;
                 default:
                     return false;

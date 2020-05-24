@@ -91,7 +91,7 @@ namespace LabGames.API.Controllers
 
         [HttpPost]
         [Route("GetTime")]
-        public async Task<ActionResult<EventModel>> GetTime()
+        public async Task<ActionResult<Time>> GetTime()
         {
             try
             {
@@ -105,6 +105,30 @@ namespace LabGames.API.Controllers
 
                 Time result = game.GetCurrentTime().CurrentTime;
                 return Ok(JsonConvert.SerializeObject(result));
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        [HttpPost]
+        [Route("WorkDone")]
+        public async Task<ActionResult<Player>> WorkDone()
+        {
+            try
+            {
+                IFormCollection req = await HttpContext.Request.ReadFormAsync();
+                string Id = req["gameId"].ToString();
+                Game game = null;
+                if (GameManager.Games.ContainsKey(Id))
+                    game = GameManager.Games[Id];
+                else
+                    return BadRequest();
+
+                game.p.WorkTiles += 1;
+                return Ok(JsonConvert.SerializeObject(game.p));
 
             }
             catch (Exception ex)
@@ -134,8 +158,12 @@ namespace LabGames.API.Controllers
                 {
                     response.status = Statuses.SUCCESS;
                     response.result = result.Result;
+                    if(game.actionEventsIds.Contains(eventId))
+                    {
+                        response.isAction = true;
+                        response.actionId = eventId;
+                    }
                     return Ok(JsonConvert.SerializeObject(response));
-
                 }
                 else if (result.Continued)
                 {
@@ -182,6 +210,8 @@ namespace LabGames.API.Controllers
     {
         public string status;
         public string message;
+        public bool isAction = false;
+        public int actionId = 0;
         public List<string> result;
     }
 

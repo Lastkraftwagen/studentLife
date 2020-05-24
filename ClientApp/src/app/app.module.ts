@@ -28,6 +28,7 @@ import { EventButtonComponent } from './game-screen/event-button/event-button.co
 import { ActionResultComponent } from './action-result/action-result.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WorkGameComponent } from './work-game/work-game.component';
 
 
 const appRoures: Routes = [
@@ -84,7 +85,8 @@ const appRoures: Routes = [
     GameComponent,
     MenuComponent,
     EventButtonComponent,
-    ActionResultComponent
+    ActionResultComponent,
+    WorkGameComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

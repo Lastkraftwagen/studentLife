@@ -11,5 +11,7 @@ namespace LabGames.Core
         public int id;
         public string name;
         public string description;
+        public bool isMulti = false;
+        public List<EventModel> submodels = new List<EventModel>();
     }
 }

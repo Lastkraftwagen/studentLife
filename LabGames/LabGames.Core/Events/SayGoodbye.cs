@@ -17,25 +17,37 @@ namespace LabGames.Core.Events
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Clear();
+            if (p.Place == PlaceType.Place)
+                p.Place = PlaceType.Outside;
+            if (p.Company == CompanyType.WithGF)
+            {
+                EventText.Add($"{p.Name} прощається з дівчиною.");
+            }
+            else
+            {
+                EventText.Add($"{p.Name} прощається з друзями.");
+            }
+            p.Company = CompanyType.Alone;
+            return false;
         }
 
         public override string GenerateDescription(Player p, DayStep time)
         {
             if (p.Company == CompanyType.WithGF)
             {
-                return "Прощатися з " + (p.Gender == GenderType.Man ? "дівчиною." : "хлопцем.");
+                return "Прощатися з " + (p.Gender == GenderType.Man ? "дівчиною" : "хлопцем");
             }
-            return "Прощатися з друзями.";
+            return "Прощатися з друзями";
         }
 
         public override string GenerateName(Player p, DayStep time)
         {
             if(p.Company == CompanyType.WithGF)
             {
-                return "Прощатися з " + (p.Gender == GenderType.Man ? "дівчиною." : "хлопцем."); 
+                return "Прощатися з " + (p.Gender == GenderType.Man ? "дівчиною" : "хлопцем"); 
             }
-            return "Прощатися з друзями.";
+            return "Прощатися з друзями";
         }
 
         protected override void CreateConditions()

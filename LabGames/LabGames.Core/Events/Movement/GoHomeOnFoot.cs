@@ -18,19 +18,20 @@ namespace LabGames.Core.Events.Movement
         public override bool Execute(Player p, DayStep time)
         {
             this.EventText.Clear();
-            if (p.DistanceFromHome == DistanceType.Home)
+            if (p.DistanceFromHome == DistanceType.InPlace)
             {
                 this.EventText.Add($"Це якась помилка, ти маєш бути і так вдома. Баг!");
                 return false;
             }
 
             p.Place = PlaceType.Home;
+            p.DistanceFromUniver = DistanceType.Medium;
             p.Company = CompanyType.Alone;
             switch (p.DistanceFromHome)
             {
                 case DistanceType.Low:
-                    p.ChangePower(-5);
-                    p.DistanceFromHome = DistanceType.Home;
+                    p.ChangePower(-2);
+                    p.DistanceFromHome = DistanceType.InPlace;
                     this.EventText.Add($"{p.Name} вдома.");
                     return false;
                 case DistanceType.Medium:
@@ -38,15 +39,14 @@ namespace LabGames.Core.Events.Movement
                     p.ChangeHappines(-5);
                     if (p.isDrunk)
                         this.EventText.Add(p.ResetDrunk(1));
-                    p.DistanceFromHome = DistanceType.Home;
                     this.EventText.Add($"{p.Name} трохи втомлюється по дорозі додому." +
                         $" {Resource.MINUS_ENERGY} {Resource.MINUS_HAPPY}");
+                    p.DistanceFromHome = DistanceType.InPlace;
                     return false;
                 case DistanceType.Large:
                     p.ChangePower(-20);
                     p.ChangeHappines(-10);
                     p.ChangeFollowerRait(-3);
-                    p.DistanceFromHome = DistanceType.Home;
                     if (p.isDrunk)
                         this.EventText.Add(p.ResetDrunk(2));
                     this.EventText.Add($"{p.Name} виснажується від такої довгої подорожі." +
@@ -55,7 +55,10 @@ namespace LabGames.Core.Events.Movement
                     {
                         p.ChangeOP(-10);
                     }
-                    return true;
+                    p.DistanceFromHome = DistanceType.InPlace;
+                    if(time.partOfDay != PartOfDay.Night)
+                        return true;
+                    return false;
                 default:
                     return false;
             }
@@ -90,7 +93,7 @@ namespace LabGames.Core.Events.Movement
 
         public override string GenerateName(Player p, DayStep time)
         {
-            return "Відправитися додому пішки";
+            return "Додому пішки";
         }
 
         protected override void CreateConditions()
@@ -361,7 +364,36 @@ namespace LabGames.Core.Events.Movement
             });
             #endregion
 
-
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_2,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_3,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_EVENING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.Alone
+            });
         }
     }
 }

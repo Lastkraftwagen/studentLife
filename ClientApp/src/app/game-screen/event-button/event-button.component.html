@@ -1,1 +1,13 @@
-<button class="button" (click)="selectEvent()" (mouseenter)="mouseEnter() " (mouseleave)="mouseLeave()">{{model.name}}</button>
+<button *ngIf="!multi" class="bubbly-button" (click)="selectEvent($event)" (mouseenter)="mouseEnter() " (mouseleave)="mouseLeave()">{{model.name}}</button>
+
+
+<button *ngIf="multi" [style.top]="top" (click)="selectEventFirst()" (mouseenter)="mouseEnterFirst() " (mouseleave)="mouseLeave()" [style.left]="left" [ngClass]="{ 'first': true, 'float-circle': true, 'open': opened }">
+   {{model.submodels[0].name}}
+</button>
+<button *ngIf="multi" [style.top]="top" (click)="selectEventSecond()" (mouseenter)="mouseEnterSecond() " (mouseleave)="mouseLeave()" [style.left]="left" [ngClass]="{ 'second': true, 'float-circle': true, 'open': opened }">
+  {{model.submodels[1].name}}
+</button>
+<button *ngIf="multi" [style.top]="top" (click)="selectEventThird()" (mouseenter)="mouseEnterThird() " (mouseleave)="mouseLeave()" [style.left]="left" [ngClass]="{ 'third': true, 'float-circle': true, 'open': opened }">
+    {{model.submodels[2].name}}
+</button>
+<div *ngIf="multi" [id]="id" (click)="toggle()" class="bubbly-button" (mouseenter)="mouseEnter() " (mouseleave)="mouseLeave()">{{model.name}}</div>

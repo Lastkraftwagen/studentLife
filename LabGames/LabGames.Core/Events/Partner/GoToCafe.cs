@@ -17,16 +17,19 @@ namespace LabGames.Core.Events.Partner
 
         public override bool Execute(Player p, DayStep time)
         {
+            EventText.Clear();
             this.EventText.Add($"{p.Name} відправляється на побачення. Має бути романтично))");
             p.Place = PlaceType.Place;
             p.Company = CompanyType.WithGF;
             p.DistanceFromHome = DistanceType.Medium;
+            p.DistanceFromUniver = DistanceType.Medium;
             this.EventText.Add("В кафе замовили білого вина та мідії, говорили, сміялись і цілувались..." +
                 $"Треба частіше гуляти разом. {Resource.PLUS_FOLLOWER}" );
             p.ChangeMoney(-320);
-            p.ChangeHappines(10);
+            p.ChangeHappines(7);
             p.ChangePower(-10);
-            p.ChangeFollowerRait(15);
+            p.ChangeFriendsRait(-3);
+            p.ChangeFollowerRait(20);
             this.EventText.Add(p.GetDrunk(1));
             this.EventText.Add($"Довелося віддати 320 грн, проте вилазка була незабутня! {Resource.PLUS_HAPPY}");
             return true;

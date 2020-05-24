@@ -28,8 +28,19 @@ export class GameService {
     getTime():Observable<Time> {
       return this.httpService.GetCurrentTime(this.userService.gameId);
     }
-
     player: Player = null;
+
+    workDone():Observable<Player> {
+      return this.httpService.WorkDone(this.userService.gameId).pipe(
+        map(result=>{
+          if(result!=null){
+            this.player = result;
+          }
+          return this.player;
+        })
+      );
+    }
+
 
     getPlayer():Observable<Player>{
       return this.httpService.GetPlayer(this.userService.gameId).pipe(

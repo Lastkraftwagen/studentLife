@@ -13,14 +13,35 @@ namespace LabGames.Core
         public Player p;
         private TimeManager TimeManager;
         private int iteration = 0;
+        public Dictionary<int, int> LabCount = new Dictionary<int, int>()
+        {
+            {1, 2},
+            {2, 4},
+            {3, 6}
+        };
+        public List<int> actionEventsIds = new List<int>();
         List<Chapter> chapters = new List<Chapter>();
         public Game()
         {
             TimeManager = new TimeManager();
-            for (int i = 0; i < 5; i++)
+            actionEventsIds.Add(40);
+            for (int j = 0; j < 2; j++)
             {
-                chapters.Add(new ChapterA());
-                chapters.Add(new ChapterA());
+                for (int i = 0; i < 2; i++)
+                {
+                    chapters.Add(new ChapterA());
+                    chapters.Add(new ChapterB());
+                    chapters.Add(new ChapterC());
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    chapters.Add(new ChapterD());
+                    chapters.Add(new ChapterE());
+                    chapters.Add(new ChapterF());
+                    chapters.Add(new ChapterG());
+                    chapters.Add(new ChapterH());
+                    chapters.Add(new ChapterC());
+                }
             }
         }
 
@@ -46,9 +67,22 @@ namespace LabGames.Core
                 bool executed = baseEvent.Execute(p, TimeManager.CurrentStep);
                 if (executed)
                 {
+                    List<string> additional = scene.ExecuteSpecialEvents(p, TimeManager);
+                    if (additional.Count > 0)
+                        baseEvent.EventText.AddRange(additional);
+
+                    if (p.DrunkLevel == 4)
+                    {
+                        baseEvent.EventText.Add($"{p.Name} проводить деякий час у відключці.");
+                        baseEvent.EventText.Add(p.ResetDrunk(2));
+                        this.iteration+=2;
+                        TimeManager.NextPart();
+                        TimeManager.NextPart();
+                    }
                     result.Success(baseEvent.EventText);
                     this.iteration++;
                     TimeManager.NextPart();
+                    
                 }
                 else
                 {

@@ -19,17 +19,17 @@ namespace LabGames.Core.Events.Movement
 
         public override bool Execute(Player p, DayStep time)
         {
+            EventText.Clear();
             p.Place = PlaceType.Home;
-            p.DistanceFromHome = DistanceType.Home;
+            p.DistanceFromHome = DistanceType.InPlace;
+            p.DistanceFromUniver = DistanceType.Medium;
             p.Company = CompanyType.Alone;
             p.ChangeMoney(-cost);
-            p.ChangeFriendsRait(-2);
             string w = p.Gender == GenderType.Man ? "приїхав" : "приїхала";
             this.EventText.Add($"{p.Name} {w} до дому на таксі.");
-            p.ChangeFollowerRait(-2);
             if (time.isLearningTime)
             {
-                p.ChangeOP(-10);
+                p.ChangeOP(-5);
             }
             return false;
         }
@@ -53,7 +53,6 @@ namespace LabGames.Core.Events.Movement
                 cost = 20 + r.Next(5);
                 Description += $"(Звідси буде коштувати {cost} грн. Але, насправді, пішки тут 5 хвилин.";
             }
-
             return Description;
         }
 
@@ -70,6 +69,18 @@ namespace LabGames.Core.Events.Movement
             {
                 Day = Constant.WEEKEND_MORNING,
                 Place = PlaceType.Outside,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WEEKEND_MORNING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WEEKEND_EVENING,
+                Place = PlaceType.Place,
                 CompanyType = CompanyType.Alone
             });
             Conditions.Add(new Condition()
@@ -328,6 +339,37 @@ namespace LabGames.Core.Events.Movement
                 CompanyType = CompanyType.WithFriends
             });
             #endregion
+
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_1,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_2,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.PARA_3,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_EVENING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.Alone
+            });
+            Conditions.Add(new Condition()
+            {
+                Day = Constant.WORKDAY_MORNING,
+                Place = PlaceType.Place,
+                CompanyType = CompanyType.Alone
+            });
         }
     }
 }

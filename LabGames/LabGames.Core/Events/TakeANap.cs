@@ -17,12 +17,18 @@ namespace LabGames.Core.Events
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Add($"Швидкий сон вдень - те, що треба. {Resource.PLUS_ENERGY}");
+            if (p.isDrunk)
+                EventText.Add(p.ResetDrunk(2));
+            p.ChangePower(10);
+            p.ChangeFriendsRait(-3);
+            p.ChangeFollowerRait(-3);
+            return true;
         }
 
         public override string GenerateDescription(Player p, DayStep time)
         {
-            return "description";
+            return "Трохи поспати корисно для відновлення енергії. (І отверезіння)";
         }
 
         public override string GenerateName(Player p, DayStep time)

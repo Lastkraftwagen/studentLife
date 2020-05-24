@@ -17,7 +17,48 @@ namespace LabGames.Core.Events.Partner
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Clear();
+            p.Company = CompanyType.WithGF;
+            p.DistanceFromUniver = DistanceType.Medium;
+            string withPartner = p.Gender == GenderType.Man ? "з дівчиною" : "з хлопцем";
+            this.EventText.Add($"{p.Name} відправляється гуляти по місту {withPartner}.");
+            if (p.Place == PlaceType.Home)
+            {
+                p.DistanceFromHome = DistanceType.Low;
+                this.EventText.Add($"Парк неподалік від гуртожитків - непоганий вибір.");
+            }
+            else
+            {
+                p.DistanceFromHome = DistanceType.Medium;
+                this.EventText.Add($"Під час гульок зайшли далеченько.");
+            }
+            p.Place = PlaceType.Outside;
+            if (p.isDrunk)
+            {
+                if (p.DrunkLevel >= 2)
+                {
+                    this.EventText.Add("Хех класс, на вулиці чотко. " +
+                        $"Авхвхвхвх, гуси)) Гуси в озері авхахах. {Resource.PLUS_HAPPY}");
+                    p.ChangeHappines(6);
+                }
+                this.EventText.Add(p.ResetDrunk(1));
+                this.EventText.Add($"Фух ходити п'яним тяжко-важко якось... {Resource.MINUS_ENERGY}");
+            }
+            else
+            {
+                this.EventText.Add($"Погода чудова, копманія приємна і на душі приємно. {Resource.PLUS_HAPPY} {Resource.PLUS_FOLLOWER}");
+                p.ChangeHappines(5);
+                this.EventText.Add($"Непогано так пройшлись насправді. Не один кілометр, і навіть не два. {Resource.MINUS_ENERGY}");
+            }
+            p.ChangeFriendsRait(-5);
+            p.ChangeFollowerRait(10);
+            p.ChangePower(-10);
+
+            if (time.isLearningTime)
+            {
+                p.ChangeOP(-10);
+            }
+            return true;
         }
 
         public override string GenerateDescription(Player p, DayStep time)

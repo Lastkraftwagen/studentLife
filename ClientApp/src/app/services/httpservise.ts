@@ -9,8 +9,9 @@ import { EventResponse } from "../models/EventResponse";
 
 @Injectable()
 export class HttpService {
-   
-    
+
+
+
     constructor(private httpClient: HttpClient) { }
 
     public LogIn(email: string, password: string): Observable<User> {
@@ -37,7 +38,13 @@ export class HttpService {
     GetCurrentTime(gameId: string): Observable<import("../models/Time").Time> {
         let payload = this.createHttpParams('gameId', gameId);
         return this.httpClient.post<import("../models/Time").Time>("https://localhost:44393/api/GetTime", payload);
-      }
+    }
+
+    WorkDone(gameId: string): Observable<Player> {
+        let payload = this.createHttpParams('gameId', gameId);
+        return this.httpClient.post<Player>("https://localhost:44393/api/WorkDone", payload);
+    }
+
 
     public GetEvents(Id: string, player: Player): Observable<EventModel[]> {
         let headers = new HttpHeaders({

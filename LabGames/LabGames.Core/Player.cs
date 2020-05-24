@@ -30,7 +30,7 @@ namespace LabGames.Core
     }
     public enum DistanceType
     {
-        Home = 0,
+        InPlace = 0,
         Low = 1,
         Medium = 2,
         Large = 3
@@ -56,7 +56,7 @@ namespace LabGames.Core
         {
             Theory = 0;
             Practic = 0;
-            TeacherRaiting = 0;
+            TeacherRaiting = 20;
             Money = 2500;
             Happines = 60;
             Power = 60;
@@ -64,8 +64,12 @@ namespace LabGames.Core
             FollowerRaiting = 50;
             hasFollower = true;
             isDrunk = false;
+            DistanceFromHome = DistanceType.InPlace;
+            DistanceFromUniver = DistanceType.Medium;
             Labs.Add(new Laba(true));
             Labs.Add(new Laba(true));
+            Labs.Add(new Laba(true));
+            CurrentLaba = Labs[0];
         }
 
         public string Name { get; set; }
@@ -80,16 +84,22 @@ namespace LabGames.Core
         public int FriendsRaiting { get; protected set; }
         public int FollowerRaiting { get; protected set; }
         public bool isDrunk { get; protected set; }
+        public bool hasJob { get; set; } = false;
         public DistanceType DistanceFromHome{ get; set; }
         public DistanceType DistanceFromUniver{ get; set; }
         public PlaceType Place { get; set; }
         public Places PlaceDescription { get; set; }
         public CompanyType Company { get; set; }
+        public Laba CurrentLaba { get; set; }
         public uint LabMarks { get; set; } = 0;
-        public uint CountLabs { get; set; } = 0;
         public int DrunkLevel { get; set; } = 0;
-
+        public int WorkTiles { get; set; } = 0;
+        public int AssignedWork { get; set; } = 0;
         public List<Laba> Labs { get; set; } = new List<Laba>();
+        public int CountLabs
+        {
+            get => Labs.Where(x => x.Own).Where(x => x.Ready).Count();
+        }
 
         public string GetDrunk(int value)
         {
@@ -122,7 +132,7 @@ namespace LabGames.Core
                     string genderword = this.Gender == GenderType.Man ? "п'яненький" : "п'яненька";
                     return $"{Name} трохи тверезіє, але все ще {genderword}. Продуктивність покращена.";
                 case 2:
-                    return $"Слава богу, не знудило. {Name} повертається до життя, проте ровно стояти все ще не може.";
+                    return $"Слава богу, не знудило. {Name} повертається до життя, проте рівно стояти все ще не може.";
                 default:
                     return $"Бяліь не трабв будо так наждватисюю....";
             }
@@ -165,16 +175,18 @@ namespace LabGames.Core
         {
             get
             {
-                return Labs.Where(x => x.Ready == false).Count() > 0;
+                return Labs.Where(x=>x.Own).Where(x => x.Ready == false).Count() > 0;
             }
         }
 
-        public int _power;
-        public int _agility;
-        public int _intelligence;
-        public int _speek;
-        public int _attention;
-        public int _glamor;
+        public int _power; //ChangePower
+
+        public int _agility; //Пригодится на экзамене
+        public int _intelligence; // ChangeOP
+        public int _speek; //ChangeFriendsRait
+
+        public int _attention; //ChangeMoney
+        public int _glamor; //ChangeFollowerRait
 
     }
 }

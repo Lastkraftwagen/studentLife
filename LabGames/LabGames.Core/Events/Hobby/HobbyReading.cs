@@ -18,21 +18,38 @@ namespace LabGames.Core.Events.Hobby
             {
                 case 1:
                     BookName = "\"Мартин Бараболя\"";
+                    Cytate = $"\"Ох, дi­ти-дi­ти! " +
+                        $"Як­би ви зна­ли, як-то хо­четься " +
+                        $"ба­чить вас хо­ро­ши­ми людьми, " +
+                        $"щоб ви не черст­вий хлiб їли… " +
+                        $"Як­би-то зна­ли… то­дi б ви зро­зу­мi­ли, " +
+                        $"що батьки не во­ро­ги вам…\"";
                     break;
                 case 2:
                     BookName = "\"Хіба реве студент, як залік здано?\"";
+                    Cytate = $"\"Життя, — що стерняста нива: не пройдеш, ноги не вколовши.\"";
                     break;
                 case 3:
                     BookName = "\"Груша всохла\"";
+                    Cytate = $"\"Заговорив дрібно й сердито, " +
+                        $"наговорив синам сім мішків гречаної вовни\"";
                     break;
                 case 4:
                     BookName = "\"Він вона воно (Романтика)\"";
+                    Cytate = $"\"І тепер я маю одно тільки " +
+                        $"право: — нікому, ніколи й нічого не говорити, " +
+                        $"як розкололось моє власне \"я\"\"";
                     break;
                 case 5:
                     BookName = "\"Котолови\"";
+                    Cytate = $"\"Він боявся, нарешті, сам спати - і одружився. " +
+                        $"А одружившись, утікав геть на люди, боявся ночувати вдома…\"";
                     break;
                 case 0:
                     BookName = "\"Ти знаєш, що ти за людина?\"";
+                    Cytate = $"\"Найпрекрасніша мати щаслива, найсолодші " +
+                   $"кохані вуста, найчистіша душа незрадлива, найскладніша " +
+                   $"людина проста.\"";
                     break;
                 default:
                     break;
@@ -42,23 +59,24 @@ namespace LabGames.Core.Events.Hobby
         }
 
         string BookName = "";
+        string Cytate = "";
 
         public override bool Execute(Player p, DayStep time)
         {
-            p.ChangeFriendsRait(-7);
-            p.ChangeFollowerRait(-7);
+            p.ChangeFriendsRait(-5);
+            p.ChangeFollowerRait(-5);
             this.EventText.Add($"Час поринути у світ книжок.");
             if (time.isLearningTime)
             {
                 p.ChangeOP(-5);
             }
             if (p.isDrunk) {
-                if (p.DrunkLevel > 2)
+                if (p.DrunkLevel <= 2)
                 {
                     this.EventText.Add($"П'яним важно зусередитися на сюжеті. {Resource.MINUS_ENERGY}");
-                    p.ChangeHappines(10);
+                    p.ChangeHappines(5);
                     this.EventText.Add($"Авхахахаха бязь вахвахвах шо це таке?)) {Resource.PLUS_HAPPY}");
-                    this.EventText.Add($"Авхахахаха бязь вахвахвах шо це таке?)) {Resource.PLUS_ENERGY}");
+                    this.EventText.Add($"Треба загуглити... {Resource.PLUS_SPEEK}");
                     p.ChangePower(-10);
                     p._speek += 1;
                 }
@@ -68,12 +86,17 @@ namespace LabGames.Core.Events.Hobby
                         $" {Resource.MINUS_ENERGY} {Resource.MINUS_HAPPY}");
                     p.ChangePower(-10);
                     p.ChangeHappines(-10);
+                    return false;
                 }
                 this.EventText.Add(p.ResetDrunk(1));
             }
             else
             {
-                p.ChangeHappines(10);
+                this.EventText.Add($"Хороша література надихає. {Resource.PLUS_HAPPY}");
+                this.EventText.Add($"Уважно вчитуючись в написане, {p.Name} відкриває " +
+                    $"для себе нове і незбагненне. {Resource.PLUS_INTELLIGENSE}");
+                this.EventText.Add($"{Cytate} {Resource.PLUS_SPEEK}");
+                p.ChangeHappines(5);
                 p.ChangePower(-5);
                 p._intelligence += 1;
                 p._speek += 1;

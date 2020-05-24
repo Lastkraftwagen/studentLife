@@ -20,8 +20,8 @@ namespace LabGames.Core.Events.Learning
         public override bool Execute(Player p, DayStep time)
         {
             this.EventText.Clear();
-            p.ChangeFollowerRait(-5);
-            p.ChangeFriendsRait(-5);
+            p.ChangeFollowerRait(-3);
+            p.ChangeFriendsRait(-3);
             this.EventText.Add($"Навчання ніколи не дається просто. {Resource.MINUS_ENERGY} {Resource.MINUS_HAPPY}");
             p.ChangePower(-10);
             p.ChangeHappines(-10);
@@ -29,7 +29,7 @@ namespace LabGames.Core.Events.Learning
             {
                 p.Theory += 20;
                 this.EventText.Add($"Перечитавши тонну літератури можна бути значно " +
-                    $"більш впевненим у своїх силах. {Resource.PLUS_PRACTICE}");
+                    $"більш впевненим у своїх силах. {Resource.PLUS_THEORY}");
             }
             else
             {
@@ -39,7 +39,7 @@ namespace LabGames.Core.Events.Learning
                 {
                     p.Theory += 15;
                     this.EventText.Add($"Долаючи непереборну жагу відволікатися {p.Name} " +
-                        $"вчить новий для себе матеріал. Наступного разу краще робити це на тверезу голову {Resource.PLUS_PRACTICE}");
+                        $"вчить новий для себе матеріал. Наступного разу краще робити це на тверезу голову {Resource.PLUS_THEORY}");
                 }
                 else
                 {

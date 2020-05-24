@@ -17,11 +17,21 @@ namespace LabGames.Core.Events.Partner
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Add($"Довелося витратися на презервативи. (-60 грн)");
+            p.ChangeMoney(-90);
+            p.ChangePower(45);
+            p.ChangeHappines(15);
+            p.ChangeFriendsRait(-2);
+            EventText.Add($"Після подібних навантажень сон особливо " +
+             $"приємний. {Resource.PLUS_ENERGY} {Resource.PLUS_HAPPY}");
+            if (p.isDrunk)
+                EventText.Add(p.ResetDrunk(2));
+            p.ChangeFollowerRait(10);
+            return true;
         }
         public override string GenerateDescription(Player p, DayStep time)
         {
-            return "Ну там шурум-пурум, самі розумієте.";
+            return "Ну там шурум-пурум, самі розумієте. А потім - спати.";
         }
 
         public override string GenerateName(Player p, DayStep time)

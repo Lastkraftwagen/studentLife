@@ -1,4 +1,5 @@
 import { GenderType, PlaceType, DistanceType, CompanyType } from "../enums";
+import { Laba } from "./Laba";
 
 export class Player {
 
@@ -13,6 +14,10 @@ export class Player {
     public Happines: number;
     public Power: number;
     public hasFollower: boolean;
+    public hasJob: boolean;
+    public WorkTiles: number;
+    public AssignedWork: number;
+
     public FriendsRaiting: number;
     public FollowerRaiting: number;
     public isDrunk: number;
@@ -26,7 +31,11 @@ export class Player {
 
     public Place: PlaceType;
     public labMarks: number;
-    public countLabs: number;
+
+    public Labs: Laba[];
+
+    public CurrentLaba: Laba; 
+
 
     public distanceFromHome: DistanceType;
     public Company: CompanyType;

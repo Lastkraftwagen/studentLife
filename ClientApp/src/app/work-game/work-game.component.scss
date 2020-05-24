@@ -1,0 +1,61 @@
+.canvas {
+    display: flex;
+    height: 100%;
+    min-width: 100%;
+    flex-direction: row;
+}
+
+.left {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.center {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+$brown: #404040;
+.btn {
+    top: 0;
+    left: 0;
+    border-radius: 100%;
+    transition: all .15s linear 0s;
+    position: absolute;
+    display: inline-block;
+    padding: 40px 80px;
+    background-color: red;
+    box-shadow: -1px 12px 0 $brown;
+}
+
+.clicked {
+    transition: all .15s linear 0s;
+    top: 10px;
+    left: -1px;
+    box-shadow: none;
+}
+
+.unclicked {
+    transition: all .15s linear 0s;
+    top: 0px;
+    left: 0px;
+}
+
+a.btn {
+    position: relative;
+}

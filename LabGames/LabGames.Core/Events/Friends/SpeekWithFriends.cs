@@ -17,12 +17,34 @@ namespace LabGames.Core.Events.Friends
 
         public override bool Execute(Player p, DayStep time)
         {
-            return false;
+            this.EventText.Clear();
+
+            EventText.Add($"{p.Name} вбиває час в універі за розмовою з друзями.");
+            p.ChangeFollowerRait(-3);
+            p.ChangeFriendsRait(7);
+            p.ChangePower(-2);
+            p.ChangeHappines(5);
+
+            if (time.isLearningTime)
+            {
+                if (p.TeacherRaiting < 70)
+                {
+                    EventText.Add($"Вчителю не подобається подібна поведінка. {Resource.MINUS_TEACHER}");
+                    p.ChangeOP(-7);
+                }
+                else
+                {
+                    EventText.Add($"{p.Name} вже дуже добре спілкується з " +
+                        $"викладачем, і подібна поведінка не повпливає на їх відносини. {Resource.PLUS_TEACHER}");
+                }
+            }
+            return true;
         }
 
         public override string GenerateDescription(Player p, DayStep time)
         {
-            string Description = "Поговорити з друзями";
+            string Description = "Можна підняти собі настрій, та покращити " +
+                "відносини з друзями, обговоривши останні події в житті і у світі.";
             return Description;
 
         }

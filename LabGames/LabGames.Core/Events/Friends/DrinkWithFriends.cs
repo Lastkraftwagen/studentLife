@@ -86,7 +86,7 @@ namespace LabGames.Core.Events.Friends
                 EventText.Add(p.Gender == GenderType.Man ? $"{p.Name} {withFriends} " +
                     $"весело гуляє в барі, пиво ллється рікою а веселі історії, " +
                     $"здається, не закінчаться ніколи! {Resource.PLUS_HAPPY} {Resource.PLUS_FRIENDS}"
-                    : $"{p.Name} {withFriends} п'ють вино, обговорюють важливі теми та оцінюють" +
+                    : $"{p.Name} {withFriends} п'ють вино, обговорюють важливі теми та оцінюють хлопців." +
                     $"");
                 EventText.Add(p.GetDrunk(1));
                 p.Company = CompanyType.WithFriends;

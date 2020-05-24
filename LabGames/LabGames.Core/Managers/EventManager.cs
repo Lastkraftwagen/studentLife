@@ -46,20 +46,15 @@ namespace LabGames.Core
             EventList.Add(new TakeANap());
             EventList.Add(new GoStudyOnFoot());
             EventList.Add(new GoStudyOnBus());
-            EventList.Add(new HelpPopleInTrouble());
-            EventList.Add(new RobberPeople());
             EventList.Add(new Sleep());
-            EventList.Add(new DrinkBeerAndSleep());
             EventList.Add(new PointlessStagnate());
             EventList.Add(new SleepToogether());
-            EventList.Add(new ShowCityForTourists());
             EventList.Add(new GoStudyOnTaxi());
             EventList.Add(new ListenLection());
             EventList.Add(new Konspekt());
             EventList.Add(new UseSmartphone());
             EventList.Add(new SpeekWithFriends());
-            EventList.Add(new ListenPractice());
-            EventList.Add(new HelpPopleInTrouble());
+            EventList.Add(new ListenPractice());    
         }
         public static BaseEvent GetEventById(int ID)
         {

@@ -17,12 +17,31 @@ namespace LabGames.Core.Events.Partner
 
         public override bool Execute(Player p, DayStep time)
         {
-            throw new NotImplementedException();
+            EventText.Clear();
+            this.EventText.Add($"{p.Name} відправляється у кіно");
+            p.Place = PlaceType.Place;
+            p.Company = CompanyType.WithGF;
+            p.DistanceFromHome = DistanceType.Medium;
+            p.DistanceFromUniver = DistanceType.Medium;
+            this.EventText.Add($"В кіно подивилися веселий фільм, час з коханою людиної плине швидко.  {Resource.PLUS_HAPPY}");
+            this.EventText.Add($"Треба частіше гуляти разом. {Resource.PLUS_FOLLOWER}");
+            p.ChangeMoney(-180);
+            p.ChangeHappines(7);
+            p.ChangePower(-10);
+            p.ChangeFollowerRait(15);
+            p.ChangeFriendsRait(-3);
+            this.EventText.Add($"Довелося віддати 180 грн, проте вилазка була незабутня!");
+            return true;
         }
 
         public override string GenerateDescription(Player p, DayStep time)
         {
-            return "description";
+            string partner = p.Gender == GenderType.Man ? "дівчиною" : "хлопцем";
+            string words = p.Gender == GenderType.Woman ? "свій зовнішній вигляд, " +
+                "щоб сяяти на червоній доріжці" 
+                : 
+                "квитки і попкорн";
+            return $"Доведеться трохи витратися на {words}, проте прекрасний вечір з {partner} гарантовано.";
         }
 
         public override string GenerateName(Player p, DayStep time)
