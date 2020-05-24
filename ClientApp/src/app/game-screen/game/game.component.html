@@ -1,0 +1,73 @@
+<div class="canvas">
+    <div class="game-screen">
+        <div class="field">
+            <div class="twoblocks">
+                <div class="left column">
+                    <div class="bonuses">
+                        <img *ngFor="let item of bonuses" [src]='item.url'>
+                    </div>
+                    <div class="column">
+                        <p>Сьогодні: </p>
+                        <p>{{dayUkr}}</p>
+                        <p>Час:</p>
+                        <p>{{partUkr}}</p>
+                    </div>
+                    <div class="description">
+                        <P></P>
+                        <p> {{descriptionText}}</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div id="textscreen" class="main-field default">
+                    {{eventResult}}
+                </div>
+            </div>
+            <div class="actions">
+                <div *ngFor="let item of eventModels">
+                    <app-event-button (leave)="mouseLeave()" (select)="selectEvent($event)" (enter)="mouseEnter($event)" [model]="item"></app-event-button>
+                </div>
+            </div>
+        </div>
+
+        <div class="right column">
+            <div class="custom_row">
+                <p class="name">{{name}}</p>
+                <img class="face-logo" [src]="happinessUrl">
+            </div>
+            <app-indicator class="indicator" [value]="player.Power" type="Енергія"></app-indicator>
+            <app-indicator class="indicator" [value]="player.Happines" type="Щастя"></app-indicator>
+
+            <div class="left-align">
+                <p>Гроші: </p>
+                <div class="custom_row">
+                    <img class="money" [src]="moneyUrl">
+                    <p>{{player.Money}}</p>
+                </div>
+            </div>
+            <div class="line"></div>
+
+            <app-indicator class="indicator" [value]="player.FriendsRaiting" type="Ставлення друзів"></app-indicator>
+            <app-indicator class="indicator" [value]="player.FollowerRaiting" type="Ставлення другої половинки"></app-indicator>
+            <app-indicator class="indicator" [value]="player.TeacherRaiting" type="Ставлення вчителя"></app-indicator>
+
+            <div class="line"></div>
+            <app-indicator class="indicator" [value]="player.Theory" type="Теоретичні знання"></app-indicator>
+            <app-indicator class="indicator" [value]="player.Practic" type="Практичні навички"></app-indicator>
+            <div>
+                <p>Прогрес лабораторних</p>
+                <div class="custom_row">
+                    <img class="money" [src]="labUrl">
+                    <img class="money" [src]="labUrl">
+                    <img class="money" [src]="labUrl">
+                </div>
+            </div>
+            <div>
+                <p>Поточна лаба виконана на: 0%</p>
+                <app-indicator class="indicator" value="0" type=""></app-indicator>
+            </div>
+            <p></p>
+        </div>
+    </div>
+
+</div>

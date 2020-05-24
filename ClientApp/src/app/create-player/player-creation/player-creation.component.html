@@ -1,0 +1,38 @@
+<div class="canvas animated">
+    <div class="center-dialog">
+        <p>Створення персонажа</p>
+        <div class="form">
+            <div class="left">
+                <div class="upperblock">
+                    <div class="block">
+                        <p class="label">Ім'я вашого персонажа</p>
+                        <input [placeholder]="placeholder" required [(ngModel)]="name">
+                    </div>
+                    <div class="block">
+                        <p class="label1">Стать</p>
+                        <div class=sex_block>
+                            <img src="../../../assets/arrow_left.png" class="arrow" (click)="toggleSex()">
+                            <img [src]="sexImg" class="sex">
+                            <img src="../../../assets/arrow_right.png" class="arrow" (click)="toggleSex()">
+                        </div>
+                    </div>
+                </div>
+                <app-skills [(Power)]="Power" [(Agility)]="Agility" [(Intelligence)]="Intelligence" [(Speek)]="Speek" [(Attention)]="Attention" [(Glamor)]="Glamor" [(sex)]="sex" (plusEvent)="plus($event)" (minusEvent)="minus($event)" (messageEvent)="receiveMessage($event)"></app-skills>
+            </div>
+
+            <div class="right">
+                <img class="picture" [src]="studentImg">
+
+                <p>Бали навичок</p>
+                <div class="punkts">
+                    <p>{{this.points}}</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="button" (click)="back()">Назад в меню</button>
+            <button class=" button " (click)="start() ">Почати гру</button>
+        </div>
+    </div>
+</div>

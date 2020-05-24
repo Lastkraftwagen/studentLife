@@ -1,0 +1,9 @@
+D:\Projects\LabGames\LabGames\Tests\bin\Debug\Tests.exe.config
+D:\Projects\LabGames\LabGames\Tests\bin\Debug\Tests.exe
+D:\Projects\LabGames\LabGames\Tests\bin\Debug\Tests.pdb
+D:\Projects\LabGames\LabGames\Tests\obj\Debug\Tests.csprojAssemblyReference.cache
+D:\Projects\LabGames\LabGames\Tests\obj\Debug\Tests.exe
+D:\Projects\LabGames\LabGames\Tests\obj\Debug\Tests.pdb
+D:\Projects\LabGames\LabGames\Tests\bin\Debug\LabGames.Core.dll
+D:\Projects\LabGames\LabGames\Tests\bin\Debug\LabGames.Core.pdb
+D:\Projects\LabGames\LabGames\Tests\obj\Debug\Tests.csproj.CopyComplete

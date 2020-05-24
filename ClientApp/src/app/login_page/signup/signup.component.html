@@ -1,0 +1,22 @@
+<div class="block">
+    <p class="label">Email</p>
+    <input placeholder="Email adress" type="email" required [(ngModel)]="email">
+</div>
+<div class="block">
+    <p class="label">Пароль</p>
+    <input placeholder="Password" type="password" required [(ngModel)]="password">
+</div>
+<div class="block">
+    <p class="label">Повторіть пароль</p>
+    <input placeholder="Password" type="password" required [(ngModel)]="spassword">
+</div>
+<div class="block">
+    <p class="label">Ім'я для таблиці рекордів</p>
+    <input placeholder="Nickname" required [(ngModel)]="nick">
+</div>
+<div class="buttons">
+    <button class="button" (click)="signUp()">Зареєструватися</button>
+    <p class="help-label">Вже зареєстровані?</p>
+    <button class="button" [routerLink]="['/login']">Увійти</button>
+</div>
+<mat-progress-bar [ngStyle]="{'visibility': loginProcess ? 'visible' : 'hidden'}" mode="indeterminate"></mat-progress-bar>

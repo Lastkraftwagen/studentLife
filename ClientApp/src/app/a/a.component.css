@@ -1,0 +1,29 @@
+.flex-container {
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .item {
+    width: 70%;
+    max-width: 70%;
+    height: 800px;
+  }
+  .screen{
+    display: flex;
+    orientation: row;
+  }
+
+  .text{
+    width: 100%;
+    word-wrap: break-word;
+  }
+
+  .red{
+    background-color: red;
+    flex: 70 0px;
+  }
+  .blue{
+    background-color: blue;
+    flex: 30 0px;
+  }

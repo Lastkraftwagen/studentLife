@@ -1,0 +1,25 @@
+export const Resource = {
+    IMG_ENERGY_PATH: './assets/hp.png',
+    IMG_HAPPINES_PATH: './assets/happiness.png',
+    IMG_MONEY_PATH: './assets/money.png',
+    IMG_BIG_MONEY_PATH: './assets/big_money.png',
+    IMG_ALCOHOL: './assets/beer.png',
+    IMG_HOME: './assets/place_Home.png',
+    IMG_LAB: './assets/lab.png',
+    IMG_FRIENDS: './assets/friends.png',
+    IMG_LOVE: './assets/love.png',
+    IMG_TEACHER: './assets/teacher.png',
+    IMG_THEORIE: './assets/theorie.png',
+    IMG_PRAXIS: './assets/praxis.png',
+    IMG_STUDENT: './assets/student.png',
+    IMG_STUDENTKA: './assets/studentka.png',
+    IMG_OUTSIDE: './assets/place_Street.png',
+    IMG_PLACE: './assets/place_Bar.png',
+    IMG_UNIVER: './assets/place_Universitat.png',
+    IMG_ALONE: './assets/alone.png',
+    FAIL: 'failed',
+    DEAD: 'dead',
+    SUCCESS: 'ok',
+    CONTINUED: 'continued'
+}
+

@@ -1,0 +1,67 @@
+.canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('resources/login.jpeg');
+    background-attachment: fixed;
+    background-color: #F1F1F5;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.center-dialog {
+    width: 50%;
+    background-color: #cde9ff;
+    border-radius: 15px;
+    border: 2px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    transition: .3s linear;
+    padding-top: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.holder {
+    width: 50%;
+    padding-bottom: 30px;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .center-dialog {
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .center-dialog {
+        width: 90%;
+    }
+    .holder {
+        width: 85%;
+    }
+}
+
+@media (max-width: 576px) {
+    .center-dialog {
+        width: 100%;
+    }
+}
+
+.title {
+    font-size: 25px;
+    padding-top: 15px;
+    margin: 0;
+}

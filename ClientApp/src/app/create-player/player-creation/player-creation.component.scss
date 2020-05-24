@@ -1,0 +1,231 @@
+.canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    //background-color: #F1F1F5;
+}
+
+.left {
+    width: 70%;
+}
+
+.label {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.label1 {
+    margin-left: 48px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+}
+
+.right {
+    padding-top: 30px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+        text-align: center;
+    }
+}
+
+.center-dialog {
+    width: 60%;
+    height: 80%;
+    background-color: #cde9ff;
+    border-radius: 15px;
+    border: 2px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    transition: .2s linear;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.form {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.punkts {
+    padding: 0 20px 20px 20px;
+    p {
+        font-size: 60px;
+    }
+}
+
+.arrow {
+    margin: 3px;
+    height: 30px;
+    width: 30px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.arrow:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.sex {
+    height: 70px;
+    width: 70px;
+    border: 1px solid gray;
+    border-radius: 15px;
+}
+
+.title {
+    font-size: 25px;
+    padding-top: 15px;
+    margin: 0;
+}
+
+input {
+    width: 300px;
+    padding: 16px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: .2s linear;
+}
+
+input:hover {
+    border-radius: 4px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.holder {
+    width: 50%;
+    padding-bottom: 30px;
+}
+
+.block {
+    margin: 10px;
+}
+
+.buttons {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.button:hover {
+    background-color: blue;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.button {
+    padding: 10px 20px 10px 20px;
+    margin: 10px;
+    font-size: 20px;
+    border-radius: 0px;
+    border: 0 solid green;
+    background-color: rgb(18, 18, 179);
+    color: white;
+    margin-bottom: 10px;
+    width: 80%;
+    transition: .2s linear;
+}
+
+.picture {
+    border-radius: 10px;
+    margin-bottom: 20px;
+    height: 400px;
+    width: 100%;
+}
+
+.upperblock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.sex_block {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animated {
+    background: linear-gradient(45deg, #abe7ff, #e2ff62);
+    background-size: 200% 200%;
+    animation: gradient 15s linear infinite;
+}
+
+@media (max-width: 1400px) {
+    .center-dialog {
+        width: 85%;
+    }
+    .buttons {
+        width: 70%;
+    }
+    input {
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .block {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .picture {
+        display: none;
+    }
+    input {
+        padding: 5px 10px;
+    }
+    .right {
+        width: 15%;
+    }
+}
+
+@media (max-width: 768px) {
+    .center-dialog {
+        width: 100%;
+    }
+    .holder {
+        width: 85%;
+    }
+    .buttons {
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .center-dialog {
+        width: 100%;
+    }
+}
