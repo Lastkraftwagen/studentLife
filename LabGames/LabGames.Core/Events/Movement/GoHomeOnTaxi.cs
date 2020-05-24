@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Movement
 {
+    [Serializable]
     public class GoHomeOnTaxi : BaseEvent
     {
         public GoHomeOnTaxi()

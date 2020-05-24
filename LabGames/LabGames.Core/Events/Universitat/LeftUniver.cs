@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Universitat
 {
+    [Serializable]
     public class LeftUniver : BaseEvent
     {
         public LeftUniver()

@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
+using LabGames.API.Interfaces;
 
 namespace LabGames.API.Controllers
 {
@@ -14,6 +15,11 @@ namespace LabGames.API.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
+        private readonly IDataService dataService;
+        public GameController(IDataService dataService)
+        {
+            this.dataService = dataService;
+        }
 
         [HttpPost]
         [Route("StartGame")]
@@ -21,7 +27,6 @@ namespace LabGames.API.Controllers
         {
             try
             {
-
                 Player p = gamePair.Player;
                 string Id = gamePair.Id;
                 p.Place = PlaceType.Home;
@@ -110,6 +115,59 @@ namespace LabGames.API.Controllers
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+
+        [HttpPost]
+        [Route("SaveGame")]
+        public async Task<ActionResult<string>> SaveGame()
+        {
+            try
+            {
+                IFormCollection req = await HttpContext.Request.ReadFormAsync();
+                string Id = req["gameId"].ToString();
+                int userId = int.Parse(req["userId"]);
+                string saveName = req["saveName"].ToString();
+                Game game = null;
+                if (GameManager.Games.ContainsKey(Id))
+                    game = GameManager.Games[Id];
+                else
+                    return BadRequest();
+
+                if (dataService.SaveGame(game, userId, saveName))
+                    return Ok(JsonConvert.SerializeObject("Saved"));
+                else
+                {
+                    return BadRequest();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        [Route("LoadGame")]
+        public async Task<ActionResult<bool>> LoadGame()
+        {
+            try
+            {
+                IFormCollection req = await HttpContext.Request.ReadFormAsync();
+                string gameId = req["gameId"].ToString();
+                int userId = int.Parse(req["userId"]);
+                int savedGameId = int.Parse(req["savedGameId"]);
+                Game game = dataService.LoadGame(userId, savedGameId);
+                if (GameManager.Games.ContainsKey(gameId))
+                    GameManager.Games.Remove(gameId);
+                GameManager.Games.Add(gameId, game);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
             }
         }
 

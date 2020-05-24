@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events
 {
+    [Serializable]
     public class SleepMore : BaseEvent
     {
         public SleepMore()

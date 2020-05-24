@@ -1,9 +1,11 @@
 ﻿using LabGames.Core.Events.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LabGames.Core.Scene
 {
+    [Serializable]
     public abstract class Chapter
     {
         public BaseEvent SelectedEvent;

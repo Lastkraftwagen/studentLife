@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Friends
 {
+    [Serializable]
     class WalkWithFriends : BaseEvent
     {
         public WalkWithFriends()

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core
 {
+    [Serializable]
     public class Game
     {
         public Player p;

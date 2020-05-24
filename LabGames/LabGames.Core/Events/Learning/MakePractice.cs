@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Learning
 {
+    [Serializable]
     public class MakePractice : BaseEvent
     {
         public MakePractice()

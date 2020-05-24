@@ -6,18 +6,32 @@ import { User } from "../models/User";
 import { Player } from "../models/Player";
 import { EventModel } from "../models/EventModel";
 import { EventResponse } from "../models/EventResponse";
+import { SavedGame } from "../models/SavedGame";
 
 @Injectable()
 export class HttpService {
-
-
-
+    
     constructor(private httpClient: HttpClient) { }
 
     public LogIn(email: string, password: string): Observable<User> {
         let payload = this.createHttpParams('email', email).set('password', password);
         return this.httpClient.post<User>("https://localhost:44393/api/LogIn", payload);
     }
+
+    LoadGame(id: string, selectedId: number, gameId: string): Observable<boolean> {
+        let payload = this.createHttpParams('userId', id).set('savedGameId', selectedId.toString()).set('gameId', gameId);
+        return this.httpClient.post<boolean>("https://localhost:44393/api/LoadGame", payload);
+    }
+
+    GetSavedGames(userId: string): Observable<SavedGame[]> {
+        let payload = this.createHttpParams('userId', userId);
+        return this.httpClient.post<SavedGame[]>("https://localhost:44393/api/GetSavedGames", payload);
+    }
+
+    SaveGame(gameId: string, userId: string, saveName: string): Observable<boolean> {
+        let payload = this.createHttpParams('gameId', gameId).set('userId', userId).set('saveName', saveName);
+        return this.httpClient.post<boolean>("https://localhost:44393/api/SaveGame", payload);
+      }
 
     public CreateGame(Id: string, player: Player): Observable<Player> {
         let headers = new HttpHeaders({

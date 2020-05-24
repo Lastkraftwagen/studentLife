@@ -97,6 +97,7 @@ export class GameComponent implements OnInit {
     this.gameService.getPlayer().subscribe(result => {
       this.eventResult = "Зараз ранок суботи, ".concat(result.Name).concat(" знаходиться вдома і не знає, що робити. Можна обрати будь-який варіант, з описаних нижче.");
       this.name = result.Name;
+      this.updateTime();
     })
     this.updatePlayer();
   }
@@ -119,6 +120,12 @@ export class GameComponent implements OnInit {
     this.descriptionText = "";
   }
 
+  saveGame(){
+    this.gameService.saveGame("test3").subscribe(result=>{
+      if(result)
+        alert("Success");
+    })
+  }
   mouseEnter(text: string) {
     this.descriptionText = text;
   }

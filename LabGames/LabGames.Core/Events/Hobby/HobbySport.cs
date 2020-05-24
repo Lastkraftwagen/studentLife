@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Hobby
 {
+    [Serializable]
     class HobbySport : BaseEvent
     {
         public HobbySport()

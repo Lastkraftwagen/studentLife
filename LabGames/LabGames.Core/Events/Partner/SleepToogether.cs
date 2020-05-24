@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Partner
 {
+    [Serializable]
     internal class SleepToogether : BaseEvent
     {
         public SleepToogether()

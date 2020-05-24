@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Partner
 {
+    [Serializable]
     class WatchSeries : BaseEvent
     {
         public WatchSeries()

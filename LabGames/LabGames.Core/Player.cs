@@ -50,6 +50,7 @@ namespace LabGames.Core
         NoHappy = 3,
         NoPower = 4
     }
+    [Serializable]
     public class Player
     {
         public Player()

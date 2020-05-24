@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events
 {
+    [Serializable]
     public class TakeANap : BaseEvent
     {
         public TakeANap()

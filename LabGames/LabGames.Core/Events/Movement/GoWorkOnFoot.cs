@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Movement
 {
+    [Serializable]
     internal class GoWorkOnFoot : BaseEvent
     {
         public GoWorkOnFoot()

@@ -7,6 +7,7 @@
                         <img *ngFor="let item of bonuses" [src]='item.url'>
                     </div>
                     <div class="column">
+                        <button (click)="saveGame()">Сохранить игру</button>
                         <p>Сьогодні: </p>
                         <p>{{dayUkr}}</p>
                         <p>Час:</p>

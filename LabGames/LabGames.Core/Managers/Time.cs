@@ -24,12 +24,14 @@ namespace LabGames.Core
         Night = 5
     }
 
+    [Serializable]
     public class Time
     {
         public DayOfWeek dayOfWeek;
         public PartOfDay partOfDay;
     }
 
+    [Serializable]
     public class DayStep
     {
         public string Description { get; set; }
@@ -38,6 +40,7 @@ namespace LabGames.Core
         public PartOfDay partOfDay{ get; set; }
     }
 
+    [Serializable]
     public class TimeManager
     {
         public bool isLearningTime = false;

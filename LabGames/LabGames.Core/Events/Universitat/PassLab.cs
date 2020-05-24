@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Universitat
 {
+    [Serializable]
     internal class PassLab : BaseEvent
     {
         public PassLab()

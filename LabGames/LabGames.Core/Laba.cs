@@ -14,6 +14,7 @@ namespace LabGames.Core
         Ready = 3
     }
 
+    [Serializable]
     public class Laba
     {
         public Laba()

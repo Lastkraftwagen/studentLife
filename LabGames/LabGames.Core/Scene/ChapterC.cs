@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Scene
 {
+    [Serializable]
     public class ChapterC : Chapter
     {
         public ChapterC()

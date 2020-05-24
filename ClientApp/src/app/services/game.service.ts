@@ -25,6 +25,10 @@ export class GameService {
       return this.httpService.SelectEvent(this.userService.gameId, id);
     }
 
+    public saveGame(saveName: string):Observable<boolean> {
+      return this.httpService.SaveGame(this.userService.gameId, this.userService.getUser().id, saveName);
+    }
+
     getTime():Observable<Time> {
       return this.httpService.GetCurrentTime(this.userService.gameId);
     }

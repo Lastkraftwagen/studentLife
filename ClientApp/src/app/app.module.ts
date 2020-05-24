@@ -6,8 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AComponent } from './a/a.component';
 import { FooterComponent } from './footer/footer.component';
 import { ControlPanelComponent } from './control-panel/control-panel.component';
@@ -29,6 +27,7 @@ import { ActionResultComponent } from './action-result/action-result.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WorkGameComponent } from './work-game/work-game.component';
+import { LoadGameComponent } from './load-game/load-game.component';
 
 
 const appRoures: Routes = [
@@ -49,7 +48,12 @@ const appRoures: Routes = [
   },
   {
     path: 'records',
-    component: CounterComponent,
+    component: LoadGameComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'load',
+    component: LoadGameComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -57,9 +61,7 @@ const appRoures: Routes = [
     component: LoginLayoutComponent,
     children: [
       { path: 'login', component: LoginComponent },
-      { path: 'signup', component: SignupComponent },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch', component: FetchDataComponent }
+      { path: 'signup', component: SignupComponent }
     ]
   },
   { path: "**", redirectTo: '' }
@@ -71,8 +73,6 @@ const appRoures: Routes = [
   declarations: [
     AppComponent,
     NavMenuComponent,
-    CounterComponent,
-    FetchDataComponent,
     AComponent,
     FooterComponent,
     ControlPanelComponent,
@@ -86,7 +86,8 @@ const appRoures: Routes = [
     MenuComponent,
     EventButtonComponent,
     ActionResultComponent,
-    WorkGameComponent
+    WorkGameComponent,
+    LoadGameComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

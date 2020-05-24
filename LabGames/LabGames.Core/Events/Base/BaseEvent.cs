@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Base
-{ 
+{
+    [Serializable]
     public abstract class BaseEvent
     {
         //public BaseEvent(Player player)

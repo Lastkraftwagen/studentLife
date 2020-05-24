@@ -10,6 +10,7 @@ namespace LabGames.Data.Models
 {
     public class User
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
@@ -18,5 +19,7 @@ namespace LabGames.Data.Models
         public string Password { get; set; }
         [Required]
         public string Email { get; set; }
+
+        public ICollection<SavedGame> SavedGames { get; set; }
     }
 }

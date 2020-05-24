@@ -17,4 +17,7 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/creation']);
   }
 
+  loadPage(){
+    this.router.navigate(['/load']);
+  }
 }

@@ -8,6 +8,7 @@ using LabGames.Core;
 using LabGames.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace LabGames.API.Controllers
 {
@@ -36,7 +37,6 @@ namespace LabGames.API.Controllers
         {
             IFormCollection req = await HttpContext.Request.ReadFormAsync();
             string Id = req["Id"];
-            //GameManager.Games[Id].p.isDrunk = true;
             return Ok("ok");
         }
 
@@ -45,12 +45,35 @@ namespace LabGames.API.Controllers
         [Route("SignUp")]
         public ActionResult<User> SignUp(User user)
         {
-            RegisterResult result = dataService.RegisterUser(user);
-            if (!result.Exist) return null;
-
-            return Ok(result.User);
+            try
+            {
+                RegisterResult result = dataService.RegisterUser(user);
+                if (!result.Exist) return BadRequest();
+                return Ok(result.User);
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-       
+
+
+        [HttpPost]
+        [Route("GetSavedGames")]
+        public async Task<ActionResult<List<SavedGame>>> GetSavedGames()
+        {
+            try
+            {
+                IFormCollection req = await HttpContext.Request.ReadFormAsync();
+                int userId = int.Parse(req["userId"]);
+                List<SavedGame> savedGames = this.dataService.GetUserSavedGames(userId);
+                return Ok(JsonConvert.SerializeObject(savedGames));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
     }
 }

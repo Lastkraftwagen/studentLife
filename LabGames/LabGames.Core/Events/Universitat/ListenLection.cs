@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Universitat
 {
+    [Serializable]
     internal class ListenLection : BaseEvent
     {
         public ListenLection()

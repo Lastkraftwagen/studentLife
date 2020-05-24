@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core.Events.Partner
 {
+    [Serializable]
     public class DoWhatLove : BaseEvent
     {
         public DoWhatLove()

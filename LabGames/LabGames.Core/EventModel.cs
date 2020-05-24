@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace LabGames.Core
 {
+    [Serializable]
     public class EventModel
     {
         public int id;
