@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\Record.cs" />
     <Compile Include="Models\SavedGame.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="Models\User.cs" />

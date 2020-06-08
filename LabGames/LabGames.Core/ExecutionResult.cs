@@ -14,6 +14,7 @@ namespace LabGames.Core
         public bool IsExecuted { get; private set; } = false;
         public bool Continued { get; private set; } = false;
         public bool Dead { get; private set; } = false;
+        public bool Win { get; set; } = false;
 
         public string message;
 

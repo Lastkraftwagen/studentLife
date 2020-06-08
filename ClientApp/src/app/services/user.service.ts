@@ -5,10 +5,12 @@ import { map } from 'rxjs/operators'
 import { User } from '../models/User'
 import { Player } from "../models/Player"
 import { SavedGame } from "../models/SavedGame"
+import { Record } from "../models/Record"
 
 
 @Injectable()
 export class UserService {
+   
     
     user: User = null;
     gameId: string = null;
@@ -26,7 +28,9 @@ export class UserService {
         );
 
     }
-
+    GetRecords(): Observable<Record[]> {
+        return this.httpService.GetRecords();
+      }
     LoadGame(selectedId: number): Observable<boolean> {
         this.CreateGameID();
         return this.httpService.LoadGame(this.getUser().id, selectedId, this.gameId);

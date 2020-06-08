@@ -7,15 +7,20 @@ import { Player } from "../models/Player";
 import { EventModel } from "../models/EventModel";
 import { EventResponse } from "../models/EventResponse";
 import { SavedGame } from "../models/SavedGame";
+import { Record } from "../models/Record";
 
 @Injectable()
 export class HttpService {
+    
     
     constructor(private httpClient: HttpClient) { }
 
     public LogIn(email: string, password: string): Observable<User> {
         let payload = this.createHttpParams('email', email).set('password', password);
         return this.httpClient.post<User>("https://localhost:44393/api/LogIn", payload);
+    }
+    GetRecords():  Observable<Record[]> {
+        return this.httpClient.get<Record[]>("https://localhost:44393/api/GetRecords");
     }
 
     LoadGame(id: string, selectedId: number, gameId: string): Observable<boolean> {

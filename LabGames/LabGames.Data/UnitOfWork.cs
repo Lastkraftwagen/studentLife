@@ -13,6 +13,8 @@ namespace LabGames.Data
         public UnitOfWork(): base("Connection")
         { }
         public DbSet<User> Users { get; set; }
+        public DbSet<Record> Records { get; set; }
         public DbSet<SavedGame> SavedGames { get; set; }
+        public DbSet<Gender> Genders { get; set; }
     }
 }

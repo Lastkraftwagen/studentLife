@@ -1,0 +1,21 @@
+<div class="canvas">
+    <div class="center-dialog">
+
+        <div class="field">
+            <div class="item" *ngFor="let item of Records" [ngClass]='{ selected:item.GameId==selectedId }' (click)=select(item.GameId)>
+                <div class="column">
+                    <div>Гравець: {{item.PlayerName}}</div>
+                    <div>Дата встановленого рекорду: {{item.Date.substring(0,10)}}</div>
+                </div>
+                <div>Результат: {{item.Points}}</div>
+            </div>
+        </div>
+
+        <div class="progressholder">
+            <mat-progress-bar [ngStyle]="{'visibility': loginProcess ? 'visible' : 'hidden'}" mode="indeterminate"></mat-progress-bar>
+        </div>
+        <div class="buttons">
+            <button class="button" (click)="back()">Назад до меню</button>
+        </div>
+    </div>
+</div>

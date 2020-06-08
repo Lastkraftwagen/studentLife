@@ -49,9 +49,9 @@ namespace LabGames.Core.Events.Partner
             bool Zator = false;
 
             if (time.partOfDay == PartOfDay.Night)
-                RandomValue = r.Next(0, 100);
-            else
                 RandomValue = r.Next(0, 10);
+            else
+                RandomValue = r.Next(0, 6);
 
             if (RandomValue < 5)
                 Zator = true;
@@ -75,7 +75,7 @@ namespace LabGames.Core.Events.Partner
                         this.EventText.AddRange(this.ZatorReaction(p));
                     }
                     p.DistanceFromHome = DistanceType.InPlace;
-                    this.EventText.Add($"{p.Name} нарешті вдома.");
+                    this.EventText.Add($"{p.Name} {withPartner} нарешті вдома.");
                     return false;
                 case DistanceType.Large:
                     this.EventText.Add("Їхати треба дууууууже далеко...");
@@ -96,7 +96,7 @@ namespace LabGames.Core.Events.Partner
         public override string GenerateDescription(Player p, DayStep time)
         {
             string partner = p.Gender == GenderType.Man ? "дівчиною" : "хлопцем";
-                string Description = $"Відправитися з {partner} додому на таксі. ";
+                string Description = $"Відправитися з {partner} додому на автобусі. ";
                 Random r = new Random();
                 if (p.DistanceFromHome == DistanceType.Large)
                 {

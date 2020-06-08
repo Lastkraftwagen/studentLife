@@ -31,13 +31,11 @@ namespace LabGames.API.Controllers
             return Ok(user);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("Do")]
-        public async Task<ActionResult<string>> Do()
+        public ActionResult<string> Do()
         {
-            IFormCollection req = await HttpContext.Request.ReadFormAsync();
-            string Id = req["Id"];
-            return Ok("ok");
+            return Ok("server works");
         }
 
 
@@ -67,6 +65,21 @@ namespace LabGames.API.Controllers
                 int userId = int.Parse(req["userId"]);
                 List<SavedGame> savedGames = this.dataService.GetUserSavedGames(userId);
                 return Ok(JsonConvert.SerializeObject(savedGames));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("GetRecords")]
+        public ActionResult<List<Record>> GetRecords()
+        {
+            try
+            {
+                List<Record> records = this.dataService.GetRecords();
+                return Ok(JsonConvert.SerializeObject(records));
             }
             catch (Exception ex)
             {

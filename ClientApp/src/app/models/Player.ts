@@ -1,4 +1,4 @@
-import { GenderType, PlaceType, DistanceType, CompanyType } from "../enums";
+import { GenderType, PlaceType, DistanceType, CompanyType, RandomSkill } from "../enums";
 import { Laba } from "./Laba";
 
 export class Player {
@@ -35,7 +35,7 @@ export class Player {
     public Labs: Laba[];
 
     public CurrentLaba: Laba; 
-
+    public RandomSkill: RandomSkill;
 
     public distanceFromHome: DistanceType;
     public Company: CompanyType;

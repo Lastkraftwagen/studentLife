@@ -33,6 +33,7 @@ export class PlayerCreationComponent implements OnInit {
 
   points: number = 7;
 
+  first: number;
   ngOnInit() {
     this.Power = 1;
     this.Agility = 1;
@@ -40,7 +41,7 @@ export class PlayerCreationComponent implements OnInit {
     this.Speek = 1;
     this.Attention = 1;
     this.Glamor = 1;
-    this.randomSkill = this.getRandomInt(3);
+    this.first = new Date().getUTCMilliseconds();
   }
 
   receiveMessage($event) {
@@ -143,6 +144,12 @@ export class PlayerCreationComponent implements OnInit {
   }
 
   start() {
+    var second = new Date().getUTCMilliseconds();
+    var diff = Math.abs(this.first - second)%3;
+    this.randomSkill = diff;
+    console.log(this.first);
+    console.log(second);
+    console.log(diff);
     let p: Player = new Player();
     p.Gender = this.sex;
     p._agility = this.Agility;
@@ -151,7 +158,7 @@ export class PlayerCreationComponent implements OnInit {
     p._intelligence = this.Intelligence;
     p._power = this.Power;
     p._speek = this.Speek;
-
+    p.RandomSkill = this.randomSkill;
     p.Name = this.name;
 
     this.userService.CreateGame(p).subscribe(result => {

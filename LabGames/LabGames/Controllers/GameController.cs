@@ -33,9 +33,28 @@ namespace LabGames.API.Controllers
                 p.Company = CompanyType.Alone;
 
                 Game game = new Game();
+                switch (p.RandomSkill)
+                {
+                    case RandomSkill.Reach:
+                        p.ChangeMoney(500);
+                        break;
+                    case RandomSkill.Happy:
+                        p.ChangeHappines(10);
+                        break;
+                    case RandomSkill.Strong:
+                        p.ChangePower(10);
+                        break;
+                    default:
+                        break;
+                }
                 game.p = p;
                 if (!GameManager.Games.ContainsKey(Id))
                     GameManager.Games.Add(Id, game);
+                else if (GameManager.Games.ContainsKey(Id))
+                {
+                        GameManager.Games.Remove(Id);
+                    GameManager.Games.Add(Id, game);
+                }
                 return p;
             }
             catch (Exception ex)
@@ -57,16 +76,14 @@ namespace LabGames.API.Controllers
                 if (GameManager.Games.ContainsKey(Id))
                     game = GameManager.Games[Id];
                 else
-                    return BadRequest();
+                    return BadRequest("No game with this ID started.");
 
                 var result = game.GetCurrentEvents();
-
                 return Ok(JsonConvert.SerializeObject(game.GetCurrentEvents().ToArray())); 
-
             }
             catch (Exception ex)
             {
-                return null;
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -211,8 +228,14 @@ namespace LabGames.API.Controllers
                     return BadRequest();
 
                 ExecutionResult result = game.ExecuteEvent(eventId);
-              
-                if (result.IsExecuted)
+                if (result.Win)
+                {
+                    response.status = Statuses.WIN;
+                    response.result = result.Result;
+                    response.message = result.message;
+                    return Ok(JsonConvert.SerializeObject(response));
+                }
+                else if (result.IsExecuted)
                 {
                     response.status = Statuses.SUCCESS;
                     response.result = result.Result;

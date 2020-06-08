@@ -6,6 +6,7 @@ export const Resource = {
     IMG_ALCOHOL: './assets/beer.png',
     IMG_HOME: './assets/place_Home.png',
     IMG_LAB: './assets/lab.png',
+    IMG_NOT_READY_LAB: './assets/lab_failed.png',
     IMG_READY_LAB: './assets/lab_ready.png',
     IMG_FRIENDS: './assets/friends.png',
     IMG_LOVE: './assets/love.png',
@@ -21,6 +22,7 @@ export const Resource = {
     FAIL: 'failed',
     DEAD: 'dead',
     SUCCESS: 'ok',
-    CONTINUED: 'continued'
+    CONTINUED: 'continued',
+    WIN: 'win'
 }
 

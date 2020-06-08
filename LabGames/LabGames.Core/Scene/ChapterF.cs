@@ -258,7 +258,7 @@ namespace LabGames.Core.Scene
         public override List<string> ExecuteSpecialEvents(Player player, TimeManager time)
         {
             List<string> result = new List<string>();
-            return result; return null;
+            return result;
         }
     }
 }

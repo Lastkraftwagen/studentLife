@@ -3,7 +3,8 @@
 
         <div class="field">
             <div class="item" *ngFor="let item of SavedGames" [ngClass]='{ selected:item.GameId==selectedId }' (click)=select(item.GameId)>
-                {{item.SaveName}}
+                <div>{{item.SaveName}}</div>
+                <div>{{item.SaveDate.substring(0,10)}}</div>
             </div>
         </div>
 

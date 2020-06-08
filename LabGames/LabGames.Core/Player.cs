@@ -36,6 +36,14 @@ namespace LabGames.Core
         Large = 3
     }
 
+    public enum RandomSkill
+    {
+        Reach = 0,
+        Happy = 1,
+        Strong = 2
+    }
+
+
     public enum CompanyType
     {
         Alone = 1,
@@ -77,21 +85,22 @@ namespace LabGames.Core
         public GenderType Gender { get; set; }
         public uint Theory { get; set; }
         public uint Practic { get; set; }
-        public int TeacherRaiting { get; protected set; }
-        public int Money { get; protected set; }
-        public int Happines { get; protected set; }
-        public int Power { get; protected set; }
+        public double TeacherRaiting { get; protected set; }
+        public double Money { get; protected set; }
+        public double Happines { get; protected set; }
+        public double Power { get; protected set; }
         public bool hasFollower { get; private set; }
-        public int FriendsRaiting { get; protected set; }
-        public int FollowerRaiting { get; protected set; }
+        public double FriendsRaiting { get; protected set; }
+        public double FollowerRaiting { get; protected set; }
         public bool isDrunk { get; protected set; }
         public bool hasJob { get; set; } = false;
         public DistanceType DistanceFromHome{ get; set; }
         public DistanceType DistanceFromUniver{ get; set; }
         public PlaceType Place { get; set; }
+        public RandomSkill RandomSkill { get; set; } = RandomSkill.Strong;
         public Places PlaceDescription { get; set; }
         public CompanyType Company { get; set; }
-        public Laba CurrentLaba { get; set; }
+        public Laba  CurrentLaba { get; set; }
         public uint LabMarks { get; set; } = 0;
         public int DrunkLevel { get; set; } = 0;
         public int WorkTiles { get; set; } = 0;
@@ -99,7 +108,7 @@ namespace LabGames.Core
         public List<Laba> Labs { get; set; } = new List<Laba>();
         public int CountLabs
         {
-            get => Labs.Where(x => x.Own).Where(x => x.Ready).Count();
+            get => Labs.Where(x => x.Own).Where(x => x.Passed).Count();
         }
 
         public string GetDrunk(int value)
@@ -149,7 +158,8 @@ namespace LabGames.Core
 
         public void ChangePower(int value)
         {
-            this.Power += value;
+            double res = value < 0 ? value + value * this._power * 0.25 : value;
+            this.Power += res;
         }
         public void ChangeHappines(int value)
         {
@@ -157,19 +167,23 @@ namespace LabGames.Core
         }
         public void ChangeMoney(int value)
         {
-            this.Money += value;
+            double res = value < 0 ? value + value * this._attention * 0.25 : value;
+            this.Money += res;
         }
         public void ChangeFriendsRait(int value)
         {
-            this.FriendsRaiting += value;
+            double res = value < 0 ? value + value * this._speek * 0.25 : value;
+            this.FriendsRaiting += res;
         }
         public void ChangeFollowerRait(int value)
         {
-            this.FollowerRaiting += value;
+            double res = value < 0 ? value + value * this._glamor * 0.25 : value;
+            this.FollowerRaiting += res;
         }
         public void ChangeOP(int value)
         {
-            this.TeacherRaiting += value;
+            double res = value < 0 ? value + value * this._intelligence * 0.25 : value;
+            this.TeacherRaiting += res;
         }
 
         public bool IsOkWithLabs
@@ -181,14 +195,11 @@ namespace LabGames.Core
         }
 
         public int _power; //ChangePower
-
-        public int _agility; //Пригодится на экзамене
-        public int _intelligence; // ChangeOP
-        public int _speek; //ChangeFriendsRait
-
         public int _attention; //ChangeMoney
         public int _glamor; //ChangeFollowerRait
-
+        public int _agility; //Необхідно для екзаменів
+        public int _intelligence; // ChangeOP
+        public int _speek; //ChangeFriendsRait
     }
 }
 

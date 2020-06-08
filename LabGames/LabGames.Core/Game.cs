@@ -26,7 +26,7 @@ namespace LabGames.Core
         {
             TimeManager = new TimeManager();
             actionEventsIds.Add(40);
-            for (int j = 0; j < 2; j++)
+            for (int j = 0; j < 1; j++)
             {
                 for (int i = 0; i < 2; i++)
                 {
@@ -44,6 +44,12 @@ namespace LabGames.Core
                     chapters.Add(new ChapterC());
                 }
             }
+            chapters.Add(new ChapterA());
+            chapters.Add(new ChapterB());
+            chapters.Add(new ChapterC());
+            chapters.Add(new ChapterD());
+            chapters.Add(new ChapterExam());
+            chapters.Add(new ChapterExam());
         }
 
         public List<EventModel> GetCurrentEvents()
@@ -81,9 +87,16 @@ namespace LabGames.Core
                         TimeManager.NextPart();
                     }
                     result.Success(baseEvent.EventText);
+                    if(baseEvent.ID == 45 || baseEvent.ID == 46)
+                    {
+                        result.Win = true;
+                    }
+                    else if (iteration>=chapters.Count())
+                    {
+                        result.Win = true;
+                    }
                     this.iteration++;
                     TimeManager.NextPart();
-                    
                 }
                 else
                 {
@@ -122,8 +135,5 @@ namespace LabGames.Core
                 return result;
             }
         }
-
-
-
     }
 }

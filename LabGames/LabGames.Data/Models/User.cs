@@ -21,5 +21,6 @@ namespace LabGames.Data.Models
         public string Email { get; set; }
 
         public ICollection<SavedGame> SavedGames { get; set; }
+        public ICollection<Record> Records { get; set; }
     }
 }

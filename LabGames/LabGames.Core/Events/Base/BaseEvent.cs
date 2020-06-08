@@ -10,11 +10,6 @@ namespace LabGames.Core.Events.Base
     [Serializable]
     public abstract class BaseEvent
     {
-        //public BaseEvent(Player player)
-        //{
-        //    if (player == null) { throw new ArgumentNullException(); }
-        //    p = player;
-        //}
         public int ID;
         public List<string> EventText { get; protected set; } = new List<string>();
 
@@ -26,6 +21,7 @@ namespace LabGames.Core.Events.Base
         {
             if (this.ID == 29 && p.hasJob) return false;
             if (this.ID == 40 && !p.hasJob) return false;
+            if (this.ID == 26 && !p.hasJob) return false;
             if (Conditions == null || p == null) { return false; }
             Condition currentCondition = new Condition()
             {
@@ -44,8 +40,6 @@ namespace LabGames.Core.Events.Base
         public abstract string GenerateDescription(Player p, DayStep time);
         public abstract string GenerateName(Player p, DayStep time);
         protected abstract void CreateConditions();
-
-       
     }
 }
     

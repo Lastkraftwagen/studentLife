@@ -98,5 +98,13 @@ namespace LabGames.API.Services
             }
 
         }
+
+        public List<Record> GetRecords()
+        {
+            using (UnitOfWork db = new UnitOfWork())
+            {
+                return db.Records.ToList();
+            }
+        }
     }
 }

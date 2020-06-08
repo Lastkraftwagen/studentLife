@@ -1,0 +1,7 @@
+<div mat-dialog-content>
+    <p>Введіть ім'я збереження</p>
+    <input matInput [(ngModel)]="data">
+</div>
+<div mat-dialog-actions>
+    <button class="button" [mat-dialog-close]="data" cdkFocusInitial>Зберегти</button>
+</div>

@@ -51,7 +51,6 @@ namespace LabGames.Core.Events.Friends
             this.EventText.Clear();
             string withFriends = p.Gender == GenderType.Man ? "з хлопцями" : "з дівчатами";
             p.DistanceFromHome = DistanceType.Medium;
-            p.ChangeFollowerRait(-5);
             if (p.Place == PlaceType.Place && p.Company == CompanyType.WithFriends)
             {
                 EventText.Add($"Після недовгих перемовин {withFriends} було " +

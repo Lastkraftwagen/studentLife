@@ -120,7 +120,7 @@ namespace LabGames.Core.Events.Hobby
                             Description += $" Лекцію вже пропусти{ending}, може до практики отверезієш...";
                             break;
                         case Constant.PARA_2:
-                            Description += $" Як би то отверезіти до лаби, чи може чорт з ним?";
+                            Description += $" Як би то отверезіти до лаби, чи може пропустити?";
                             break;
                         case Constant.PARA_3:
                             Description += $" Пити всередині дня було поганою ідеєю - лаба пропущена";

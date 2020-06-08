@@ -17,8 +17,6 @@ namespace LabGames.Core.Scene
     {
         public ChapterD()
         {
-            this.ChapterEvents.Add(new FindAJob());
-
             this.ChapterEvents.Add(new GoHomeOnTaxi());
             this.ChapterEvents.Add(new GoHomeOnFoot());
             this.ChapterEvents.Add(new GoHomeWithBus());

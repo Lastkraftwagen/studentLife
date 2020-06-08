@@ -20,4 +20,8 @@ export class MenuComponent implements OnInit {
   loadPage(){
     this.router.navigate(['/load']);
   }
+
+  records(){
+    this.router.navigate(['/records']);
+  }
 }

@@ -16,5 +16,6 @@ namespace LabGames.API.Interfaces
         bool SaveGame(Game game, int userId, string saveName);
         List<SavedGame> GetUserSavedGames(int userId);
         Game LoadGame(int userId, int savedGameId);
+        List<Record> GetRecords();
     }
 }

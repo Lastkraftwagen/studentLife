@@ -14,5 +14,6 @@ namespace LabGames.Core
         public const string SUCCESS = "ok";
         public const string CONTINUED = "continued";
         public const string DEAD = "dead";
+        public const string WIN = "win";
     }
 }

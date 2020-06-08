@@ -36,6 +36,7 @@ export class SignupComponent implements OnInit {
       result=>{
         if(result!=null){
           this.loginProcess = false;
+          alert('Успішно зареєстровано.');
           this._router.navigate['/login'];
         }
           else{

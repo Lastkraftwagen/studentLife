@@ -19,7 +19,7 @@ import { UserService } from './services/user.service';
 import { GameService } from './services/game.service';
 import { PlayerCreationComponent } from './create-player/player-creation/player-creation.component';
 import { SkillsComponent } from './create-player/skills/skills.component';
-import { GameComponent } from './game-screen/game/game.component';
+import { GameComponent, DialogOverviewExampleDialog } from './game-screen/game/game.component';
 import { MenuComponent } from './menu/menu.component';
 import { PlayerCreatedGuard } from './guards/playerCreated.guard';
 import { EventButtonComponent } from './game-screen/event-button/event-button.component';
@@ -28,6 +28,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WorkGameComponent } from './work-game/work-game.component';
 import { LoadGameComponent } from './load-game/load-game.component';
+import { RecordsComponent } from './records/records.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 
 const appRoures: Routes = [
@@ -48,7 +51,7 @@ const appRoures: Routes = [
   },
   {
     path: 'records',
-    component: LoadGameComponent,
+    component: RecordsComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -87,11 +90,18 @@ const appRoures: Routes = [
     EventButtonComponent,
     ActionResultComponent,
     WorkGameComponent,
-    LoadGameComponent
+    LoadGameComponent,
+    RecordsComponent,
+    DialogOverviewExampleDialog
+    
+  ],
+  entryComponents: [
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    MatDialogModule,
     FormsModule,
     RouterModule.forRoot(
       appRoures
@@ -104,7 +114,8 @@ const appRoures: Routes = [
     PlayerCreatedGuard,
     HttpService,
     UserService,
-    GameService
+    GameService,
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]
 })

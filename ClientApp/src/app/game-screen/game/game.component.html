@@ -3,11 +3,12 @@
         <div class="field">
             <div class="twoblocks">
                 <div class="left column">
+                    <button class="button" (click)="saveGame()">Зберегти прогресс</button>
+                    <button class="button" (click)="back()">Вийти в меню</button>
                     <div class="bonuses">
-                        <img *ngFor="let item of bonuses" [src]='item.url'>
+                        <img *ngFor="let item of bonuses" [title]='item.name' class="tltip" [src]='item.url'>
                     </div>
                     <div class="column">
-                        <button (click)="saveGame()">Сохранить игру</button>
                         <p>Сьогодні: </p>
                         <p>{{dayUkr}}</p>
                         <p>Час:</p>
@@ -39,7 +40,7 @@
         <div class="right column">
             <div class="custom_row">
                 <p class="name">{{name}}</p>
-                <img class="face-logo" [src]="happinessUrl">
+                <img class="face-logo" [src]="profilePic">
             </div>
             <app-indicator class="indicator" [value]="player.Power" type="Енергія"></app-indicator>
             <app-indicator class="indicator" [value]="player.Happines" type="Щастя"></app-indicator>
@@ -63,7 +64,7 @@
             <div>
                 <p>Прогрес лабораторних</p>
                 <div class="custom_row">
-                    <img *ngFor="let item of player.Labs" class="money" [src]='item.Ready?labReadyUrl:labUrl'>
+                    <img *ngFor="let item of player.Labs" class="money" [src]='item.Passed?labPassedUrl:(item.Ready?labReadyUrl:labUrl)'>
                 </div>
             </div>
             <div>

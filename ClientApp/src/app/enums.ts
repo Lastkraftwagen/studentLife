@@ -39,3 +39,10 @@ export enum CompanyType {
   WithGF = 2,
   WithFriends = 3
 }
+
+export enum RandomSkill
+{
+    Reach = 0,
+    Happy = 1,
+    Strong = 2
+}
