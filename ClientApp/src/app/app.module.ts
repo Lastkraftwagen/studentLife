@@ -19,7 +19,8 @@ import { UserService } from './services/user.service';
 import { GameService } from './services/game.service';
 import { PlayerCreationComponent } from './create-player/player-creation/player-creation.component';
 import { SkillsComponent } from './create-player/skills/skills.component';
-import { GameComponent, DialogOverviewExampleDialog } from './game-screen/game/game.component';
+import { GameComponent } from './game-screen/game/game.component';
+import { DialogOverviewExampleDialog } from './game-screen/save-dialog/dialog-overview-example';
 import { MenuComponent } from './menu/menu.component';
 import { PlayerCreatedGuard } from './guards/playerCreated.guard';
 import { EventButtonComponent } from './game-screen/event-button/event-button.component';
@@ -31,6 +32,7 @@ import { LoadGameComponent } from './load-game/load-game.component';
 import { RecordsComponent } from './records/records.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { SkillsDialogComponent } from './game-screen/skills-dialog/skills-dialog.component';
 
 
 const appRoures: Routes = [
@@ -92,11 +94,13 @@ const appRoures: Routes = [
     WorkGameComponent,
     LoadGameComponent,
     RecordsComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    SkillsDialogComponent
     
   ],
   entryComponents: [
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    SkillsDialogComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

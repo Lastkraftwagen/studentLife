@@ -9,6 +9,8 @@ import { EventModel } from 'src/app/models/EventModel';
 import { PartOfDay, DayOfWeek } from 'src/app/enums';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogOverviewExampleDialog } from '../save-dialog/dialog-overview-example';
+import { SkillsDialogComponent } from '../skills-dialog/skills-dialog.component';
 
 
 class Bonus {
@@ -137,7 +139,6 @@ export class GameComponent implements OnInit {
       data: this.saveName
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.saveName = result;
       this.gameService.saveGame(this.saveName).subscribe(result => {
         if (result)
@@ -146,6 +147,15 @@ export class GameComponent implements OnInit {
     });
 
   }
+
+  showSkills() {
+    const dialRef = this.dialog.open(SkillsDialogComponent, {
+      width: '300px',
+      data: this.saveName
+    });
+    dialRef.afterClosed().subscribe(r=>{});
+  }
+
   mouseEnter(text: string) {
     this.descriptionText = text;
   }
@@ -329,20 +339,4 @@ export class GameComponent implements OnInit {
 }
 
 
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
-  styleUrls: ['dialog-overview-example-dialog.scss']
-
-})
-export class DialogOverviewExampleDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: string) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
 

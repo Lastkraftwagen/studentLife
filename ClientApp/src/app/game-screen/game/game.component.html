@@ -39,7 +39,7 @@
 
         <div class="right column">
             <div class="custom_row">
-                <p class="name">{{name}}</p>
+                <p class="name" (click)="showSkills()">{{name}}</p>
                 <img class="face-logo" [src]="profilePic">
             </div>
             <app-indicator class="indicator" [value]="player.Power" type="Енергія"></app-indicator>

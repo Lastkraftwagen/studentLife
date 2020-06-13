@@ -1,0 +1,37 @@
+<div mat-dialog-content>
+    <div class="skills">
+        <p class="label">Сила</p>
+        <div class="block">
+            <progress max="10" [value]="p._power"></progress>
+            <p class="points_count">{{p._power}}</p>
+        </div>
+        <p class="label">Спритність</p>
+        <div class="block">
+            <progress max="10" [value]="p._agility"></progress>
+            <p class="points_count">{{p._agility}}</p>
+        </div>
+        <p class="label">Інтелект</p>
+        <div class="block">
+            <progress max="10" [value]="p._intelligence"></progress>
+            <p class="points_count">{{p._intelligence}}</p>
+        </div>
+        <p class="label">Красномовнісь</p>
+        <div class="block">
+            <progress max="10" [value]="p._speek"></progress>
+            <p class="points_count">{{p._speek}}</p>
+        </div>
+        <p class="label">Увага</p>
+        <div class="block">
+            <progress max="10" [value]="p._attention"></progress>
+            <p class="points_count">{{p._attention}}</p>
+        </div>
+        <p class="label">Чарівність</p>
+        <div class="block">
+            <progress max="10" [value]="p._glamor"></progress>
+            <p class="points_count">{{p._glamor}}</p>
+        </div>
+    </div>
+</div>
+<div class="buttons" mat-dialog-actions>
+    <button class="button" (click)="onNoClick()" cdkFocusInitial>Зачинити</button>
+</div>
