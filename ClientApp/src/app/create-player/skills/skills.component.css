@@ -79,3 +79,18 @@ progress::-webkit-progress-value {
         padding-left: 100px;
     }
 }
+
+@media (max-width: 815px) {
+    .label {
+        padding-left: 80px;
+    }
+    .block {
+        padding-bottom: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .label {
+        padding-left: 20px;
+    }
+}

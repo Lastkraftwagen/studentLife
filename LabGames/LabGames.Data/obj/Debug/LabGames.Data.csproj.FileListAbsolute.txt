@@ -9,3 +9,4 @@ D:\Projects\LabGames\LabGames\LabGames.Data\obj\Debug\LabGames.Data.csprojAssemb
 D:\Projects\LabGames\LabGames\LabGames.Data\obj\Debug\LabGames.Data.csproj.CopyComplete
 D:\Projects\LabGames\LabGames\LabGames.Data\obj\Debug\LabGames.Data.exe
 D:\Projects\LabGames\LabGames\LabGames.Data\obj\Debug\LabGames.Data.pdb
+D:\Projects\LabGames\LabGames\LabGames.Data\obj\Debug\LabGames.Data.csproj.CoreCompileInputs.cache

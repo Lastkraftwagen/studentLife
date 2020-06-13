@@ -159,5 +159,19 @@ p[data-value]:after {
     background-image: -moz-linear-gradient( 135deg, transparent, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -moz-linear-gradient( top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .2)), -moz-linear-gradient( left, #09c, #690);
 }
 
+@media (max-width: 815px) {
+    img {
+        height: 25px;
+        width: 25px;
+        margin-right: 0px;
+    }
+    p {
+        font-size: 11px;
+    }
+    progress {
+        height: 12px;
+    }
+}
+
 
 /* Now we are good to duplicate html code for other skills and then add the css code for the new skill based on data-skill */

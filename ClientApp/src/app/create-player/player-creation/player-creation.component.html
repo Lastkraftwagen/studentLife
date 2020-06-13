@@ -16,6 +16,12 @@
                             <img src="../../../assets/arrow_right.png" class="arrow" (click)="toggleSex()">
                         </div>
                     </div>
+                    <div class="block invisibled">
+                        <p>Бали навичок</p>
+                        <div class="punkts1">
+                            <p>{{this.points}}</p>
+                        </div>
+                    </div>
                 </div>
                 <app-skills [(Power)]="Power" [(Agility)]="Agility" [(Intelligence)]="Intelligence" [(Speek)]="Speek" [(Attention)]="Attention" [(Glamor)]="Glamor" [(sex)]="sex" (plusEvent)="plus($event)" (minusEvent)="minus($event)" (messageEvent)="receiveMessage($event)"></app-skills>
             </div>

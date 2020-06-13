@@ -5,7 +5,6 @@
   },
   "projects": {
     "D:\\Projects\\LabGames\\LabGames\\LabGames.Core\\LabGames.Core.csproj": {
-      "version": "1.0.0",
       "restore": {
         "projectUniqueName": "D:\\Projects\\LabGames\\LabGames\\LabGames.Core\\LabGames.Core.csproj",
         "projectName": "LabGames.Core",
@@ -16,7 +15,6 @@
       }
     },
     "D:\\Projects\\LabGames\\LabGames\\LabGames.Data\\LabGames.Data.csproj": {
-      "version": "1.0.0",
       "restore": {
         "projectUniqueName": "D:\\Projects\\LabGames\\LabGames\\LabGames.Data\\LabGames.Data.csproj",
         "projectName": "LabGames.Data",
@@ -119,7 +117,7 @@
               "version": "[12.0.3, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
